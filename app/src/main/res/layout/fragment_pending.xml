@@ -16,23 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Question Fragment" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Who's your daddy?"
-            android:textSize="25sp" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/net_salary"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"
-            android:gravity="top"
-            android:hint="What's on your mind?"
-            android:inputType="text" />
+            android:text="Pending Fragment" />
 
         <com.balysv.materialripple.MaterialRippleLayout
             android:layout_width="match_parent"
@@ -43,15 +27,17 @@
             app:mrl_rippleOverlay="true">
 
             <Button
-                android:id="@+id/submit_button"
+                android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorGreen"
                 android:gravity="center"
-                android:text="Submit"
+                android:text="Next"
                 android:textColor="@color/colorWhite" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
+
+
 
 
     </LinearLayout>
