@@ -30,7 +30,7 @@
                 android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorGreen"
+                android:background="@drawable/rounded_button_green"
                 android:gravity="center"
                 android:text="Next"
                 android:textColor="@color/colorWhite" />
