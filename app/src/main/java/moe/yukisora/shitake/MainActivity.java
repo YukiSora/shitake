@@ -39,25 +39,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBar supportActionBar = getSupportActionBar();
         if(supportActionBar != null){
             supportActionBar.setDisplayHomeAsUpEnabled(true);
-            supportActionBar.setTitle("Don't Eat Alone");
+            supportActionBar.setTitle(getResources().getString(R.string.app_name));
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+
         switch (item.getItemId()) {
             case R.id.account:
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.activity_main_vg_fragment, new SignupFragment())
-//                        .commit();
+                intent = new Intent(getApplicationContext(), AccountActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
                 break;
 
             case R.id.lobby:
                 break;
 
             case R.id.game:
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent = new Intent(getApplicationContext(), GameActivity.class);
                 intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
 
                 startActivity(intent);

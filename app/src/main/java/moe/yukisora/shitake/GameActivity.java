@@ -14,7 +14,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_game);
+        setContentView(R.layout.fragment_generic);
 
         getSupportFragmentManager()
                 .beginTransaction()
