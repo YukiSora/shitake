@@ -1,4 +1,4 @@
-package moe.yukisora.shitake.ui;
+package moe.yukisora.shitake.ui.game;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

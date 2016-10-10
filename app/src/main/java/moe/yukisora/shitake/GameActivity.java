@@ -3,7 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import moe.yukisora.shitake.ui.QuestionFragment;
+import moe.yukisora.shitake.ui.game.QuestionFragment;
 
 /**
  * Created by Delacrix on 22/09/2016.

@@ -1,4 +1,4 @@
-package moe.yukisora.shitake.ui;
+package moe.yukisora.shitake.ui.game;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
