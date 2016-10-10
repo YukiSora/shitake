@@ -40,6 +40,8 @@ com_crashlytics_export_strings.xml
 
 # Intellij
 .idea/libraries/
+.idea/dictionaries/
+.idea/inspectionProfiles/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/.name
