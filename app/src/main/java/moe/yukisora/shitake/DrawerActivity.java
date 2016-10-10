@@ -8,6 +8,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 /**
  * Created by Delacrix on 22/09/2016.
  */
@@ -41,8 +44,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.game:
-                finish();
-                startActivity(new Intent(this, GameActivity.class));
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
 
                 break;
 
