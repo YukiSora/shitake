@@ -20,5 +20,6 @@ public class AccountActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new RegisterFragment())
                 .commit();
+
     }
 }
