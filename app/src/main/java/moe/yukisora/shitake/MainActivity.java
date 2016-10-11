@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.lobby:
+                intent = new Intent(getApplicationContext(), LobbyActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
                 break;
 
             case R.id.game:
@@ -67,9 +71,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.tutorial:
+                intent = new Intent(getApplicationContext(), AccountActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
+
                 break;
 
             case R.id.about:
+                intent = new Intent(getApplicationContext(), AccountActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
                 break;
 
         }
@@ -80,12 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);

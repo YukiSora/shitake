@@ -40,7 +40,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             app:mrl_rippleDuration="600"
-            app:mrl_rippleOverlay="true">
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleRoundedCorners="50dp">
 
             <Button
                 android:id="@+id/submit_button"

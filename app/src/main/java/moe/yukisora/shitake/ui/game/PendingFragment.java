@@ -35,15 +35,19 @@ public class PendingFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendingFragment.this.getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .addToBackStack("PendingFragment")
-                        .commit();
+                PendingFragment.this.showPendingFragment();
             }
         });
 
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void showPendingFragment() {
+        PendingFragment.this.getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack("PendingFragment")
+                .commit();
     }
 }
