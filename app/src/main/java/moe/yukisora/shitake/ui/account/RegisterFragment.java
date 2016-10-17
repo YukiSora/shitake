@@ -6,14 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import moe.yukisora.shitake.R;
 
-/**
- * Created by Delacrix on 10/10/2016.
- */
-
 public class RegisterFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,5 +24,17 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ((Button) getView().findViewById(R.id.btRegister)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText etNickname = ((EditText) getView().findViewById(R.id.etNickname));
+                String nickname = etNickname.getText().toString();
+                System.out.println(nickname);
+                etNickname.setText("");
+            }
+        });
     }
+
+
 }
