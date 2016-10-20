@@ -3,12 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import moe.yukisora.shitake.ui.account.RegisterFragment;
-import moe.yukisora.shitake.ui.game.QuestionFragment;
-
-/**
- * Created by Delacrix on 10/10/2016.
- */
+import moe.yukisora.shitake.ui.account.TauntFragment;
 
 public class AccountActivity extends AppCompatActivity {
     @Override
@@ -18,8 +13,12 @@ public class AccountActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new RegisterFragment())
+                .replace(R.id.activity_main_vg_fragment, new TauntFragment())
                 .commit();
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

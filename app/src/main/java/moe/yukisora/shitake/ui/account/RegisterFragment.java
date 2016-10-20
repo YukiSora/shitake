@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import moe.yukisora.shitake.R;
@@ -25,10 +24,10 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((Button) getView().findViewById(R.id.btRegister)).setOnClickListener(new View.OnClickListener() {
+        getView().findViewById(R.id.btRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText etNickname = ((EditText) getView().findViewById(R.id.etNickname));
+                EditText etNickname = (EditText) getView().findViewById(R.id.etNickname);
                 String nickname = etNickname.getText().toString();
                 System.out.println(nickname);
                 etNickname.setText("");
