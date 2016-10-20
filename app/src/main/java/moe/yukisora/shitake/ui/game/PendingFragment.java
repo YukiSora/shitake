@@ -35,14 +35,14 @@ public class PendingFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendingFragment.this.showPendingFragment();
+                PendingFragment.this.showAnswerFragment();
             }
         });
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showPendingFragment() {
+    public void showAnswerFragment() {
         PendingFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new AnswerFragment())

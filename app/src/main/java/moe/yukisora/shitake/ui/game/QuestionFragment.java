@@ -35,14 +35,14 @@ public class QuestionFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QuestionFragment.this.showQuestionFragment();
+                QuestionFragment.this.showPendingFragment();
             }
         });
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showQuestionFragment(){
+    public void showPendingFragment(){
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new PendingFragment())
