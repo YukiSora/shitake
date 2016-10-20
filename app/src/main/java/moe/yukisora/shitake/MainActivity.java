@@ -1,15 +1,26 @@
 package moe.yukisora.shitake;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.MenuItem;
+import android.view.View;
+
+import moe.yukisora.shitake.adapter.DeckListAdapter;
+import moe.yukisora.shitake.model.Deck;
+import moe.yukisora.shitake.ui.lobby.HostFragment;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
@@ -32,12 +43,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
+        setupDrawerLayout();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new HostFragment())
+                .commit();
+    }
+
+    public void setupDrawerLayout() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(0xFFFFFFFF);
         setSupportActionBar(toolbar);
 
         ActionBar supportActionBar = getSupportActionBar();
-        if(supportActionBar != null){
+        if (supportActionBar != null) {
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(getResources().getString(R.string.app_name));
         }
