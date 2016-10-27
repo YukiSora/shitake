@@ -4,6 +4,12 @@
     {"Question" : "Which species stole the plans to the Death Star?", "Answer" : "Bothans"},
     {"Question" : "What was the original name of the first Star Wars movie when it went into production?", "Answer" : "Adventures of Luke Starkiller"},
     {"Question" : "Which bounty hunter in The Empire Strikes Back is wearing an old costume from a Doctor Who episode?", "Answer" : "Bossk"},
-    {"Question" : "What is the name of Boba Fett's ship?", "Answer" : "Slave 1"}
+    {"Question" : "What is the name of Boba Fett's ship?", "Answer" : "Slave 1"},
+    {"Question" : "How many members are there in the Jedi Council?", "Answer" : "12"},
+    {"Question" : "What were the last words spoken in The Empire Strikes Back?", "Answer" : "May the Force be with you"},
+    {"Question" : "What U.S. magazine declared Star Wars “the year’s best movie” in its May 30, 1977, issue?", "Answer" : "Times Magazine"},
+    {"Question" : "What planet is home to Chewbacca and the Wookiees?", "Answer" : "Kashyyyk"},
+    {"Question" : "Bail Organa is Princess Leia’s adoptive father. What is her adoptive mother’s name?", "Answer" : "Breha Organa"},
+    {"Question" : ". What was Lukeʼs auntʼs name?", "Answer" : "Beru Lars"}
   ]
 }
