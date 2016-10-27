@@ -19,6 +19,7 @@
             android:text="Question Fragment" />
 
         <TextView
+            android:id="@+id/question_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -32,7 +33,7 @@
             android:layout_marginTop="10dp"
             android:gravity="top"
             android:hint="What's on your mind?"
-            android:inputType="text" />
+            android:inputType="textCapSentences" />
 
         <com.balysv.materialripple.MaterialRippleLayout
             android:layout_width="match_parent"
