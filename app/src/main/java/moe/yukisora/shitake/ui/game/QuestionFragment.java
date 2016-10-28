@@ -46,7 +46,7 @@ public class QuestionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mQuestionTitle.setText(DeckAPIClient.getInstance(getContext(), "isthatafact").getDeck().getmQuestion());
+        mQuestionTitle.setText(DeckAPIClient.getInstance().getDeck().getmQuestion());
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override

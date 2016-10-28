@@ -32,6 +32,15 @@ public class DeckAPIClient {
     private ArrayList<Deck> mDeck = new ArrayList<>();
     private SharedPreferences mSharedPreferences;
 
+    // Singleton Instances
+    public static synchronized DeckAPIClient newInstance(@NonNull Context context, String filename) {
+        if (sSharedInstance == null && sCurrentDeck != filename) {
+            sSharedInstance = new DeckAPIClient(context, filename);
+        }
+
+        return sSharedInstance;
+    }
+
     // Constructor
     private DeckAPIClient(@NonNull Context context, String filename) {
         mCounter = 0;
@@ -45,12 +54,25 @@ public class DeckAPIClient {
     }
 
     // Singleton Instances
-    public static synchronized DeckAPIClient getInstance(@NonNull Context context, String filename) {
-        if (sSharedInstance == null && sCurrentDeck != filename) {
-            sSharedInstance = new DeckAPIClient(context, filename);
-        }
-
+    public static synchronized DeckAPIClient getInstance() {
         return sSharedInstance;
+    }
+
+
+    private void populateQuestions(Context context) {
+        try {
+            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context)));
+            JSONArray jsonArray = jsonRootObject.optJSONArray(sCurrentDeck);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                mDeck.add(new Deck(jsonObject.optString("Question"), jsonObject.optString("Answer")));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private StringBuilder loadJSONFromAsset(Context context) {
@@ -73,24 +95,6 @@ public class DeckAPIClient {
 
         return buf;
     }
-
-    private void populateQuestions(Context context) {
-        try {
-            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context)));
-            JSONArray jsonArray = jsonRootObject.optJSONArray(sCurrentDeck);
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                mDeck.add(new Deck(jsonObject.optString("Question"), jsonObject.optString("Answer")));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
     public Deck getDeck(){
         return mDeck.get(mCounter++);

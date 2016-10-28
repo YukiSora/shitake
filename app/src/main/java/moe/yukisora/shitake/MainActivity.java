@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import moe.yukisora.shitake.adapter.DeckListAdapter;
+import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.model.Deck;
 import moe.yukisora.shitake.ui.lobby.HostFragment;
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView.setNavigationItemSelectedListener(this);
 
         setupDrawerLayout();
+
+        DeckAPIClient.newInstance(this, "isthatafact");
 
         getSupportFragmentManager()
                 .beginTransaction()
