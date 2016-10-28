@@ -3,7 +3,6 @@ package moe.yukisora.shitake.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,59 +13,51 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-
-import moe.yukisora.shitake.model.Deck;
+import moe.yukisora.shitake.model.User;
 
 /**
- * Created by Delacrix on 27/10/2016.
+ * Created by Delacrix on 28/10/2016.
  */
 
-public class DeckAPIClient {
+public class UserAPIClient {
+    private static UserAPIClient sSharedInstance;
+    private static String sUserSample;
 
-    private static DeckAPIClient sSharedInstance;
-    private static String sCurrentDeck;
-
-    private int mCounter;
-    private ArrayList<Deck> mDeck = new ArrayList<>();
+    private ArrayList<User> mUser = new ArrayList<>();
     private SharedPreferences mSharedPreferences;
 
     // Singleton New Instance
-    public static synchronized DeckAPIClient newInstance(@NonNull Context context, String filename) {
-        if (sSharedInstance == null && sCurrentDeck != filename) {
-            sSharedInstance = new DeckAPIClient(context, filename);
+    public static synchronized UserAPIClient newInstance(@NonNull Context context) {
+        if (sSharedInstance == null) {
+            sSharedInstance = new UserAPIClient(context);
         }
 
         return sSharedInstance;
     }
 
     // Singleton Get Instance
-    public static synchronized DeckAPIClient getInstance() {
+    public static synchronized UserAPIClient getInstance() {
         return sSharedInstance;
     }
 
     // Constructor
-    private DeckAPIClient(@NonNull Context context, String filename) {
-        mCounter = 0;
-        sCurrentDeck = filename;
+    private UserAPIClient(@NonNull Context context) {
+        sUserSample = "sample_user";
+
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
-        populateQuestions(context);
-
-        Collections.shuffle(mDeck, new Random(System.nanoTime()));
-
+        populateUsers(context);
     }
 
-    private void populateQuestions(Context context) {
+    private void populateUsers(Context context) {
         try {
             JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context)));
-            JSONArray jsonArray = jsonRootObject.optJSONArray(sCurrentDeck);
+            JSONArray jsonArray = jsonRootObject.optJSONArray(sUserSample);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                mDeck.add(new Deck(jsonObject.optString("Question"), jsonObject.optString("Answer")));
+                mUser.add(new User(jsonObject.optString("Username"), jsonObject.optString("Profile Picture")));
             }
 
         } catch (JSONException e) {
@@ -78,7 +69,7 @@ public class DeckAPIClient {
         StringBuilder buf = new StringBuilder();
 
         try {
-            InputStream json = context.getAssets().open(sCurrentDeck + ".json");
+            InputStream json = context.getAssets().open(sUserSample + ".json");
             BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
             String str;
 
@@ -93,9 +84,5 @@ public class DeckAPIClient {
         }
 
         return buf;
-    }
-
-    public Deck getDeck(){
-        return mDeck.get(mCounter++);
     }
 }
