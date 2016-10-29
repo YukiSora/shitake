@@ -47,10 +47,7 @@
                 android:id="@+id/submit_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_button_green"
-                android:gravity="center"
-                android:text="Submit"
-                android:textColor="@color/colorWhite" />
+                android:text="Submit" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
 

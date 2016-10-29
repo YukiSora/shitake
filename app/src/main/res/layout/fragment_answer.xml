@@ -36,10 +36,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_button_green"
-                android:gravity="center"
-                android:text="Jocelyn"
-                android:textColor="@color/colorWhite" />
+                android:text="Jocelyn" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
 
@@ -54,10 +51,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_button_green"
-                android:gravity="center"
-                android:text="Jocelyn"
-                android:textColor="@color/colorWhite" />
+                android:text="Jocelyn" />
+
 
         </com.balysv.materialripple.MaterialRippleLayout>
 
@@ -72,14 +67,9 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Jocelyn"
-                android:background="@drawable/rounded_button_green"
-                android:textColor="@color/colorWhite" />
+                android:text="Jocelyn" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
-
-
 
 
     </LinearLayout>

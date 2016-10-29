@@ -46,10 +46,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setupDrawerLayout() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(0xFFFFFFFF);
-        setSupportActionBar(toolbar);
-
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setDisplayHomeAsUpEnabled(true);

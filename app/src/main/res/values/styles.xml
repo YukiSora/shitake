@@ -6,6 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:buttonStyle">@style/GreenButton</item>
+    </style>
+
+    <style name="GreenButton" parent="AppTheme">
+        <item name="android:background">@drawable/rounded_button_green</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">15dp</item>
     </style>
 
 </resources>

@@ -27,7 +27,5 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".LobbyActivity" />
         <activity android:name=".TutorialActivity" />
-
     </application>
-
 </manifest>
