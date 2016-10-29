@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
+import moe.yukisora.shitake.model.Deck;
 import moe.yukisora.shitake.ui.lobby.DeckViewHolder;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.ui.lobby.JoinViewHolder;
@@ -16,6 +19,9 @@ import moe.yukisora.shitake.ui.lobby.JoinViewHolder;
 public class HostRecyclerAdapter extends RecyclerView.Adapter {
 
     private DeckViewHolder.OnDeckSelectedListener mDeckListener;
+    private ArrayList<String> mDeckList = new ArrayList<>();
+
+    // Override Methods
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,23 +38,32 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    }
-
-    public DeckViewHolder.OnDeckSelectedListener getDeckListener() {
-        return mDeckListener;
-    }
-
-    public void setDeckListener(DeckViewHolder.OnDeckSelectedListener deckListener) {
-        this.mDeckListener = deckListener;
+        if (holder instanceof DeckViewHolder) {
+            ((DeckViewHolder) holder).setDeck(mDeckList.get(--position));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 100;
+        return 1 + mDeckList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+    // Methods
+
+    public DeckViewHolder.OnDeckSelectedListener getDeckListener() {
+        return mDeckListener;
+    }
+
+    public void setDeckList(ArrayList<String> mDeckList){
+        this.mDeckList = mDeckList;
+    }
+
+    public void setDeckListener(DeckViewHolder.OnDeckSelectedListener deckListener) {
+        this.mDeckListener = deckListener;
     }
 }

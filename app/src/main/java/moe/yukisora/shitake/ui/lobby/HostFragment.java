@@ -29,7 +29,7 @@ public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelec
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_host, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.deck_category);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.deck_recycler_view);
 
         return rootView;
     }
@@ -44,6 +44,7 @@ public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelec
 
         // Host Recycler Adapter
         HostRecyclerAdapter mHostRecyclerAdapter = new HostRecyclerAdapter();
+        mHostRecyclerAdapter.setDeckList(setDeckList());
         mHostRecyclerAdapter.setDeckListener(this);
 
         mRecyclerView.setAdapter(mHostRecyclerAdapter);
@@ -54,21 +55,22 @@ public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelec
         Snackbar.make(getView(), "Good Mythical Morning", Snackbar.LENGTH_SHORT).show();
     }
 
-    private ArrayList<String> getDeckList() {
-        ArrayList<String> items = new ArrayList<>();
+    private ArrayList<String> setDeckList() {
+        ArrayList<String> mDeckList = new ArrayList<>();
 
-        items.add("Is That A Fact?");
-        items.add("Word Up!");
-        items.add("Movie Bluff!");
-        items.add("It's the Law");
-        items.add("The Plot Thickens");
-        items.add("Name that Show!");
-        items.add("Poetry");
-        items.add("Say My Name");
-        items.add("Proverbs");
-        items.add("Adults Only");
-        items.add("Animals");
+        mDeckList.add("Is That A Fact?");
+        mDeckList.add("Word Up!");
+        mDeckList.add("Movie Bluff!");
+        mDeckList.add("It's the Law");
+        mDeckList.add("The Plot Thickens");
+        mDeckList.add("Name that Show!");
+        mDeckList.add("Poetry");
+        mDeckList.add("Say My Name");
+        mDeckList.add("Proverbs");
+        mDeckList.add("Adults Only");
+        mDeckList.add("Animals");
 
-        return items;
+        return mDeckList;
     }
+
 }

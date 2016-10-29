@@ -3,7 +3,9 @@ package moe.yukisora.shitake.ui.lobby;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
+import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.Deck;
 
 /**
@@ -11,6 +13,9 @@ import moe.yukisora.shitake.model.Deck;
  */
 
 public class DeckViewHolder extends RecyclerView.ViewHolder {
+
+    private TextView mDeckTitle;
+
     public interface OnDeckSelectedListener{
         void onDeckSelected(Deck deck);
     }
@@ -18,21 +23,18 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
     public DeckViewHolder(View itemView, final OnDeckSelectedListener handler) {
         super(itemView);
 
-//        userName = (TextView) itemView.findViewById(R.id.history_username);
-//        locationName = (TextView) itemView.findViewById(R.id.history_location_name);
+        mDeckTitle = (TextView) itemView.findViewById(R.id.deck_title);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // handler.onHistorySelected(mMeetup);
+                handler.onDeckSelected(null);
             }
         });
     }
 
-    public void DeckViewHolder(@NonNull Deck deck){
-//        mMeetup = history;
-//        userName.setText(history.getmUser().toString());
-//        locationName.setText(history.getMyLocation().toString());
+    public void setDeck(@NonNull String name){
+        mDeckTitle.setText(name);
     }
 }
