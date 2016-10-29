@@ -1,9 +1,8 @@
-package moe.yukisora.shitake;
+package moe.yukisora.shitake.ui.lobby;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import moe.yukisora.shitake.model.Deck;
 

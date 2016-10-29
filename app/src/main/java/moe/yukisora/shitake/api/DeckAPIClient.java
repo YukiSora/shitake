@@ -66,7 +66,7 @@ public class DeckAPIClient {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                mDeck.add(new Deck(jsonObject.optString("Question"), jsonObject.optString("Answer")));
+                mDeck.add(new Deck(sCurrentDeck, jsonObject.optString("Question"), jsonObject.optString("Answer")));
             }
 
         } catch (JSONException e) {
@@ -95,7 +95,7 @@ public class DeckAPIClient {
         return buf;
     }
 
-    public Deck getDeck(){
+    public Deck getDeck() {
         return mDeck.get(mCounter++);
     }
 }

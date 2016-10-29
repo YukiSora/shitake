@@ -5,12 +5,22 @@ package moe.yukisora.shitake.model;
  */
 
 public class Deck {
+    private String mName;
     private String mQuestion;
     private String mAnswer;
 
-    public Deck(String mQuestion, String mAnswer) {
+    public Deck(String mName, String mQuestion, String mAnswer) {
+        this.mName = mName;
         this.mQuestion = mQuestion;
         this.mAnswer = mAnswer;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
     }
 
     public String getmQuestion() {

@@ -10,9 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import moe.yukisora.shitake.DeckViewHolder;
+import java.util.ArrayList;
+
 import moe.yukisora.shitake.R;
-import moe.yukisora.shitake.adapter.DeckListAdapter;
+import moe.yukisora.shitake.adapter.HostRecyclerAdapter;
 import moe.yukisora.shitake.model.Deck;
 
 /**
@@ -41,15 +42,33 @@ public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelec
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        // History List Adapter
-        DeckListAdapter mDeckListAdapter = new DeckListAdapter();
-        mDeckListAdapter.setDeckListener(this);
+        // Host Recycler Adapter
+        HostRecyclerAdapter mHostRecyclerAdapter = new HostRecyclerAdapter();
+        mHostRecyclerAdapter.setDeckListener(this);
 
-        mRecyclerView.setAdapter(mDeckListAdapter);
+        mRecyclerView.setAdapter(mHostRecyclerAdapter);
     }
 
     @Override
     public void onDeckSelected(Deck deck) {
         Snackbar.make(getView(), "Good Mythical Morning", Snackbar.LENGTH_SHORT).show();
+    }
+
+    private ArrayList<String> getDeckList() {
+        ArrayList<String> items = new ArrayList<>();
+
+        items.add("Is That A Fact?");
+        items.add("Word Up!");
+        items.add("Movie Bluff!");
+        items.add("It's the Law");
+        items.add("The Plot Thickens");
+        items.add("Name that Show!");
+        items.add("Poetry");
+        items.add("Say My Name");
+        items.add("Proverbs");
+        items.add("Adults Only");
+        items.add("Animals");
+
+        return items;
     }
 }

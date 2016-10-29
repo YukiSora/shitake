@@ -4,13 +4,15 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="20dp"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
     app:cardCornerRadius="@dimen/activity_vertical_margin"
     app:cardElevation="@dimen/activity_vertical_margin">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:background="@color/cardview_shadow_end_color"
         android:padding="16dp">
 
         <ImageView
