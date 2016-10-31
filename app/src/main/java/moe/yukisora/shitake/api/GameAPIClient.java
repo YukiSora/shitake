@@ -24,7 +24,6 @@ import static android.content.ContentValues.TAG;
 
 public class GameAPIClient {
     private static GameAPIClient sSharedInstance;
-    private static String sUserSample;
 
     private ArrayList<User> mUser = new ArrayList<>();
     private int mRoundNumber;
@@ -47,19 +46,17 @@ public class GameAPIClient {
 
     // Constructor
     private GameAPIClient(@NonNull Context context) {
-        sUserSample = "sample_user";
-
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
-        populateUsers(context);
+        populateUsers(context, "sample_user");
     }
 
     // Method - Load Users
 
-    private void populateUsers(Context context) {
+    private void populateUsers(Context context, String userJSON) {
         try {
-            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context)));
-            JSONArray jsonArray = jsonRootObject.optJSONArray(sUserSample);
+            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context, userJSON)));
+            JSONArray jsonArray = jsonRootObject.optJSONArray(userJSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -72,11 +69,11 @@ public class GameAPIClient {
         }
     }
 
-    private StringBuilder loadJSONFromAsset(Context context) {
+    private StringBuilder loadJSONFromAsset(Context context, String userJSON) {
         StringBuilder buf = new StringBuilder();
 
         try {
-            InputStream json = context.getAssets().open(sUserSample + ".json");
+            InputStream json = context.getAssets().open(userJSON + ".json");
             BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
             String str;
 

@@ -1,0 +1,9 @@
+{
+  "sample_answer":
+  [
+    {"Username" : "Aerith Gainsborough", "Answer" : "Your mother"},
+    {"Username" : "Tifa Lockhart", "Answer" : "His mother"},
+    {"Username" : "Yuffie Kisaragi", "Answer" : "Her mother"},
+    {"Username" : "Vincent Valentine", "Answer" : "Everyone's mother"}
+  ]
+}

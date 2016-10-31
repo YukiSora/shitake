@@ -49,24 +49,23 @@ public class DeckAPIClient {
     // Constructor
     private DeckAPIClient(@NonNull Context context, String filename) {
         mCounter = 0;
-        sCurrentDeck = filename;
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
-        populateQuestions(context);
+        populateQuestions(context, filename);
 
         Collections.shuffle(mDeck, new Random(System.nanoTime()));
 
     }
 
-    private void populateQuestions(Context context) {
+    private void populateQuestions(Context context, String deckJSON) {
         try {
-            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context)));
-            JSONArray jsonArray = jsonRootObject.optJSONArray(sCurrentDeck);
+            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context, deckJSON)));
+            JSONArray jsonArray = jsonRootObject.optJSONArray(deckJSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                mDeck.add(new Deck(sCurrentDeck, jsonObject.optString("Question"), jsonObject.optString("Answer")));
+                mDeck.add(new Deck(deckJSON, jsonObject.optString("Question"), jsonObject.optString("Answer")));
             }
 
         } catch (JSONException e) {
@@ -74,11 +73,11 @@ public class DeckAPIClient {
         }
     }
 
-    private StringBuilder loadJSONFromAsset(Context context) {
+    private StringBuilder loadJSONFromAsset(Context context, String deckJSON) {
         StringBuilder buf = new StringBuilder();
 
         try {
-            InputStream json = context.getAssets().open(sCurrentDeck + ".json");
+            InputStream json = context.getAssets().open(deckJSON + ".json");
             BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
             String str;
 
