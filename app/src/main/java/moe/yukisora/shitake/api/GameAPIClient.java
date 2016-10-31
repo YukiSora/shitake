@@ -19,35 +19,39 @@ import moe.yukisora.shitake.model.User;
  * Created by Delacrix on 28/10/2016.
  */
 
-public class UserAPIClient {
-    private static UserAPIClient sSharedInstance;
+public class GameAPIClient {
+    private static GameAPIClient sSharedInstance;
     private static String sUserSample;
 
     private ArrayList<User> mUser = new ArrayList<>();
+    private int mRoundNumber;
+
     private SharedPreferences mSharedPreferences;
 
     // Singleton New Instance
-    public static synchronized UserAPIClient newInstance(@NonNull Context context) {
+    public static synchronized GameAPIClient newInstance(@NonNull Context context) {
         if (sSharedInstance == null) {
-            sSharedInstance = new UserAPIClient(context);
+            sSharedInstance = new GameAPIClient(context);
         }
 
         return sSharedInstance;
     }
 
     // Singleton Get Instance
-    public static synchronized UserAPIClient getInstance() {
+    public static synchronized GameAPIClient getInstance() {
         return sSharedInstance;
     }
 
     // Constructor
-    private UserAPIClient(@NonNull Context context) {
+    private GameAPIClient(@NonNull Context context) {
         sUserSample = "sample_user";
 
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
         populateUsers(context);
     }
+
+    // Method - Load Users
 
     private void populateUsers(Context context) {
         try {
@@ -84,5 +88,28 @@ public class UserAPIClient {
         }
 
         return buf;
+    }
+
+    // Method - Start Game
+    public void startGame(){
+        setmRoundNumber(1);
+    }
+
+    // Getters and Setters
+
+    public ArrayList<User> getmUser() {
+        return mUser;
+    }
+
+    public void setmUser(ArrayList<User> mUser) {
+        this.mUser = mUser;
+    }
+
+    public int getmRoundNumber() {
+        return mRoundNumber;
+    }
+
+    public void setmRoundNumber(int mRoundNumber) {
+        this.mRoundNumber = mRoundNumber;
     }
 }

@@ -7,12 +7,16 @@ package moe.yukisora.shitake.model;
 public class User {
     private String mName;
     private String mProfilePicture;
+    private Boolean mDone;
     private int mGameScore;
     private int mVoteScore;
+
 
     public User(String mName, String mProfilePicture) {
         this.mName = mName;
         this.mProfilePicture = mProfilePicture;
+
+        mDone = false;
 
         mGameScore = 0;
         mVoteScore = 0;
@@ -32,6 +36,14 @@ public class User {
 
     public void setmProfilePicture(String mProfilePicture) {
         this.mProfilePicture = mProfilePicture;
+    }
+
+    public Boolean getmDone() {
+        return mDone;
+    }
+
+    public void setmDone(Boolean mDone) {
+        this.mDone = mDone;
     }
 
     public int getmGameScore() {

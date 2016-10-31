@@ -3,6 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
 
 /**
@@ -16,9 +17,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_generic);
 
+        GameAPIClient.newInstance(this).startGame();
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new QuestionFragment())
                 .commit();
     }
+
 }
