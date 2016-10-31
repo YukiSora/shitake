@@ -32,6 +32,7 @@
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:gravity="top"
+            android:focusable="false"
             android:hint="What's on your mind?"
             android:inputType="textCapSentences" />
 
@@ -50,9 +51,5 @@
                 android:text="Submit" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
-
-
     </LinearLayout>
-
-
 </ScrollView>

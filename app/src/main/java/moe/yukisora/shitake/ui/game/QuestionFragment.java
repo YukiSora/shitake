@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.ui.game;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -58,7 +60,7 @@ public class QuestionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showPendingFragment(){
+    public void showPendingFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new PendingFragment())

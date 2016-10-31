@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import moe.yukisora.shitake.api.DeckAPIClient;
+import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.ui.lobby.HostFragment;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setupDrawerLayout();
 
+        // Singleton
+        GameAPIClient.newInstance(this);
         DeckAPIClient.newInstance(this, "isthatafact");
 
         getSupportFragmentManager()

@@ -17,7 +17,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_generic);
 
-        GameAPIClient.newInstance(this).startGame();
+        GameAPIClient.getInstance().startGame();
 
         getSupportFragmentManager()
                 .beginTransaction()
