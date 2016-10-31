@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Pending Fragment" />
+            android:text="Vote Fragment" />
 
         <com.balysv.materialripple.MaterialRippleLayout
             android:layout_width="match_parent"

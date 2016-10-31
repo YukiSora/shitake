@@ -31,23 +31,22 @@ public class PendingFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendingFragment.this.showAnswerFragment();
+                PendingFragment.this.showVoteFragment();
             }
         });
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showAnswerFragment() {
+    public void showVoteFragment() {
         PendingFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
+                .replace(R.id.activity_main_vg_fragment, new VoteFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack("PendingFragment")
+                .addToBackStack(getClass().getSimpleName())
                 .commit();
     }
 }
