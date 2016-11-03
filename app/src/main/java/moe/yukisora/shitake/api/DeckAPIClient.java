@@ -48,6 +48,7 @@ public class DeckAPIClient {
 
     // Constructor
     private DeckAPIClient(@NonNull Context context, String filename) {
+        sCurrentDeck = filename;
         mCounter = 0;
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
@@ -95,6 +96,10 @@ public class DeckAPIClient {
     }
 
     public Deck getDeck() {
-        return mDeck.get(mCounter++);
+        return mDeck.get(mCounter);
+    }
+
+    public void nextCard(){
+        mCounter++;
     }
 }

@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.ui.game;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.api.DeckAPIClient;
+import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.model.Answer;
+import moe.yukisora.shitake.model.User;
 
 /**
  * Created by Delacrix on 22/09/2016.
@@ -20,13 +27,15 @@ import moe.yukisora.shitake.R;
 public class AnswerFragment extends Fragment {
 
     private LinearLayout mAnswerLayout;
+    private TextView mQuestion;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_answer, container, false);
 
-        mAnswerLayout = (LinearLayout) rootView.findViewById(R.id.fragment_answer_vg);
+        mQuestion = (TextView) rootView.findViewById(R.id.fragment_answer_text_question);
+        mAnswerLayout = (LinearLayout) rootView.findViewById(R.id.fragment_answer_vg_list);
 
         return rootView;
     }
@@ -35,8 +44,34 @@ public class AnswerFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Animation mAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.interpolator_accelerate_decelerate);
-        mAnswerLayout.startAnimation(mAnimation);
+        populateAnswers();
+
+        mQuestion.setText(DeckAPIClient.getInstance().getDeck().getmQuestion());
+        mQuestion.setAlpha(0);
+
+        mAnswerLayout.startAnimation(getAnimation());
+    }
+
+    public Animation getAnimation(){
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.interpolator_accelerate_decelerate);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mQuestion.setAlpha(1);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        return animation;
     }
 
     public void showVoteFragment() {
@@ -47,4 +82,24 @@ public class AnswerFragment extends Fragment {
                 .addToBackStack(getClass().getSimpleName())
                 .commit();
     }
+
+    public void populateAnswers(){
+        for (Answer answer: GameAPIClient.getInstance().getmAnswer()){
+            addPendingViewFromLayoutResource(mAnswerLayout, answer);
+        }
+    }
+
+    public View addPendingViewFromLayoutResource(LinearLayout linearLayout, Answer answer) {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rootView = inflater.inflate(R.layout.view_answer, linearLayout, false);
+
+        Button mAnswer = (Button) rootView.findViewById(R.id.view_btn_answer);
+
+        mAnswer.setText(answer.getmContent());
+
+        linearLayout.addView(rootView);
+
+        return rootView;
+    }
+
 }

@@ -13,16 +13,11 @@
         android:padding="20dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Question Fragment" />
-
-        <TextView
             android:id="@+id/question_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:text="Who's your daddy?"
             android:textSize="25sp" />
 
@@ -31,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
-            android:gravity="top"
             android:focusable="false"
+            android:gravity="top"
             android:hint="What's on your mind?"
             android:inputType="textCapSentences" />
 

@@ -73,6 +73,7 @@ public class PendingFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         populatePendingPlayers();
 
@@ -93,7 +94,7 @@ public class PendingFragment extends Fragment {
             }
         });
 
-        super.onViewCreated(view, savedInstanceState);
+
     }
 
     public void showAnswerFragment() {
@@ -106,9 +107,7 @@ public class PendingFragment extends Fragment {
     }
 
     public void populatePendingPlayers() {
-        ArrayList<User> users = GameAPIClient.getInstance().getmUser();
-
-        for (User user : users) {
+        for (User user : GameAPIClient.getInstance().getmUser()) {
             View view = addPendingViewFromLayoutResource(mPlayersWait, user);
             mArrayPlayers.put(user, view);
         }
@@ -149,17 +148,17 @@ public class PendingFragment extends Fragment {
 
     public View addPendingViewFromLayoutResource(LinearLayout linearLayout, User user) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View pendingView = inflater.inflate(R.layout.view_pending_player, linearLayout, false);
+        View rootView = inflater.inflate(R.layout.view_pending_player, linearLayout, false);
 
-        TextView mTextViewName = (TextView) pendingView.findViewById(R.id.view_name);
-        TextView mTextViewAmount = (TextView) pendingView.findViewById(R.id.view_amount);
+        TextView mTextViewName = (TextView) rootView.findViewById(R.id.view_name);
+        TextView mTextViewAmount = (TextView) rootView.findViewById(R.id.view_amount);
 
         mTextViewName.setText(user.getmName());
         mTextViewAmount.setText("");
 
-        linearLayout.addView(pendingView);
+        linearLayout.addView(rootView);
 
-        return pendingView;
+        return rootView;
     }
 
 }

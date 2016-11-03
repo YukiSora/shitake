@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import moe.yukisora.shitake.model.Answer;
 import moe.yukisora.shitake.model.User;
 
 import static android.content.ContentValues.TAG;
@@ -26,6 +28,8 @@ public class GameAPIClient {
     private static GameAPIClient sSharedInstance;
 
     private ArrayList<User> mUser = new ArrayList<>();
+    private ArrayList<Answer> mAnswer = new ArrayList<>();
+
     private int mRoundNumber;
 
     private SharedPreferences mSharedPreferences;
@@ -49,6 +53,7 @@ public class GameAPIClient {
         mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
 
         populateUsers(context, "sample_user");
+        populateAnswers(context, "sample_answer");
     }
 
     // Method - Load Users
@@ -62,6 +67,22 @@ public class GameAPIClient {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 mUser.add(new User(jsonObject.optString("Username"), jsonObject.optString("Profile Picture")));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void populateAnswers(Context context, String userJSON) {
+        try {
+            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context, userJSON)));
+            JSONArray jsonArray = jsonRootObject.optJSONArray(userJSON);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                mAnswer.add(new Answer(jsonObject.optString("Username"), jsonObject.optString("Answer")));
             }
 
         } catch (JSONException e) {
@@ -103,6 +124,14 @@ public class GameAPIClient {
 
     public void setmUser(ArrayList<User> mUser) {
         this.mUser = mUser;
+    }
+
+    public ArrayList<Answer> getmAnswer() {
+        return mAnswer;
+    }
+
+    public void setmAnswer(ArrayList<Answer> mAnswer) {
+        this.mAnswer = mAnswer;
     }
 
     public int getmRoundNumber() {
