@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,7 +53,22 @@ public class PendingFragment extends Fragment {
         mPlayersDone = (LinearLayout) rootView.findViewById(R.id.fragment_pending_vg_players_done);
         mPlayersWait = (LinearLayout) rootView.findViewById(R.id.fragment_pending_vg_waiting_players);
 
+        mPlayersWait.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+
+        animate(mPlayersWait);
+
         return rootView;
+    }
+
+    public void animate(View view) {
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.layout_expanding);
+
+        view.setVisibility(LinearLayout.VISIBLE);
+        view.setAnimation(animation);
+        view.animate();
+
+        animation.setDuration(500);
+        animation.start();
     }
 
     @Override
@@ -96,7 +114,7 @@ public class PendingFragment extends Fragment {
         }
     }
 
-    public void resetValues(){
+    public void resetValues() {
         for (User user : mArrayPlayers.keySet()) {
             user.setmDone(false);
         }
@@ -123,7 +141,7 @@ public class PendingFragment extends Fragment {
             }
         }
 
-        if (allDone){
+        if (allDone) {
             mTextWaiting.setAlpha(0);
         }
 
