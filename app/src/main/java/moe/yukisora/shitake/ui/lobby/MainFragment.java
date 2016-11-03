@@ -31,10 +31,11 @@ public class MainFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final Bluetooth bluetooth = Bluetooth.getInstance();
         view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Bluetooth.getInstance().isEnabled(getActivity())) {
+                if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.activity_main_vg_fragment, new JoinFragment())
@@ -42,7 +43,16 @@ public class MainFragment extends Fragment {
                             .commit();
                 }
                 else {
-                    new AlertDialog.Builder(getActivity()).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
+                    if (bluetooth.isAvailable()) {
+                        bluetooth.enableBluetooth(getActivity());
+                    }
+                    else {
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
+                                .setMessage(getResources().getString(R.string.bluetooth_requested))
+                                .setPositiveButton("Ok", null)
+                                .show();
+                    }
                 }
             }
         });
@@ -50,7 +60,7 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Bluetooth.getInstance().isEnabled(getActivity())) {
+                if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.activity_main_vg_fragment, new HostFragment())
@@ -58,7 +68,16 @@ public class MainFragment extends Fragment {
                             .commit();
                 }
                 else {
-                    new AlertDialog.Builder(getActivity()).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
+                    if (bluetooth.isAvailable()) {
+                        bluetooth.enableBluetooth(getActivity());
+                    }
+                    else {
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
+                                .setMessage(getResources().getString(R.string.bluetooth_requested))
+                                .setPositiveButton("Ok", null)
+                                .show();
+                    }
                 }
             }
         });

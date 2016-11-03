@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.api.Bluetooth;
 
 public class HostFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_host, container, false);
+
+        //set bluetooth discoverable
+        Bluetooth.getInstance().setDiscoverable(getActivity());
 
         return view;
     }

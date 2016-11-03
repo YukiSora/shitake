@@ -20,20 +20,25 @@ public class Bluetooth {
         return bluetooth;
     }
 
-    public boolean isEnabled(Activity activity) {
-        if (bluetoothAdapter == null)
-            return false;
+    public boolean isAvailable() {
+        return bluetoothAdapter != null;
+    }
 
-        if (!bluetoothAdapter.isEnabled())
+    public boolean isEnabled() {
+        return isAvailable() && bluetoothAdapter.isEnabled();
+    }
+
+    public void enableBluetooth(Activity activity) {
+        if (isAvailable())
             activity.startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), REQUEST_ENABLE_BLUETOOTH);
-
-        return bluetoothAdapter.isEnabled();
     }
 
     public void setDiscoverable(Activity activity) {
-        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-        activity.startActivity(intent);
+        if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+            activity.startActivity(intent);
+        }
     }
 
     public void search() {

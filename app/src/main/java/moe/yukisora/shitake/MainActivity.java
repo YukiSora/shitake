@@ -23,7 +23,7 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  * Created by Delacrix on 22/09/2016.
  */
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView)findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
         setupDrawerLayout();
@@ -44,22 +44,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DeckAPIClient.newInstance(this, "isthatafact");
 
         //Configure bluetooth
-        if (!Bluetooth.getInstance().isEnabled(this)) {
+        Bluetooth bluetooth = Bluetooth.getInstance();
+        if (!bluetooth.isAvailable())
             new AlertDialog.Builder(this).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
-        }
+        if (!bluetooth.isEnabled())
+            bluetooth.enableBluetooth(this);
+
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new MainFragment())
                 .commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
     }
 
     public void setupDrawerLayout() {
@@ -68,6 +63,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             supportActionBar.setDisplayHomeAsUpEnabled(true);
             supportActionBar.setTitle(getResources().getString(R.string.app_name));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStack();
+        else
+            super.onBackPressed();
     }
 
     @Override
