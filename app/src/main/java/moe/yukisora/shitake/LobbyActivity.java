@@ -35,9 +35,9 @@ public class LobbyActivity extends AppCompatActivity {
         };
         registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 
-        Bluetooth.getInstance().isEnabled(this);
-        Bluetooth.getInstance().setDiscoverable(this);
-        Bluetooth.getInstance().search();
+//        Bluetooth.getInstance().isEnabled(this);
+//        Bluetooth.getInstance().setDiscoverable(this);
+//        Bluetooth.getInstance().search();
 
         getSupportFragmentManager()
                 .beginTransaction()

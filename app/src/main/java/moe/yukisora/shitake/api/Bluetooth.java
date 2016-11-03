@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 
 public class Bluetooth {
+    private static final int REQUEST_ENABLE_BLUETOOTH = 1;
     private static Bluetooth bluetooth;
     private BluetoothAdapter bluetoothAdapter;
 
@@ -24,7 +25,7 @@ public class Bluetooth {
             return false;
 
         if (!bluetoothAdapter.isEnabled())
-            activity.startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 1);
+            activity.startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), REQUEST_ENABLE_BLUETOOTH);
 
         return bluetoothAdapter.isEnabled();
     }

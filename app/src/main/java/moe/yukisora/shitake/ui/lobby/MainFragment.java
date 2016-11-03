@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.ui.lobby;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.api.Bluetooth;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -32,22 +34,32 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new JoinFragment())
-                        .addToBackStack("main")
-                        .commit();
+                if (Bluetooth.getInstance().isEnabled(getActivity())) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_main_vg_fragment, new JoinFragment())
+                            .addToBackStack("main")
+                            .commit();
+                }
+                else {
+                    new AlertDialog.Builder(getActivity()).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
+                }
             }
         });
 
         view.findViewById(R.id.main_btn_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new HostFragment())
-                        .addToBackStack("main")
-                        .commit();
+                if (Bluetooth.getInstance().isEnabled(getActivity())) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_main_vg_fragment, new HostFragment())
+                            .addToBackStack("main")
+                            .commit();
+                }
+                else {
+                    new AlertDialog.Builder(getActivity()).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
+                }
             }
         });
 

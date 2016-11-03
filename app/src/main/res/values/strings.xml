@@ -7,4 +7,7 @@
     <string name="main_btn_tutorial">Tutorial</string>
     <string name="main_btn_about">About Us</string>
 
+    <string name="bluetooth_is_not_available">Bluetooth is not available</string>
+    <string name="bluetooth_requested">Require Bluetooth to play.</string>
+
 </resources>
