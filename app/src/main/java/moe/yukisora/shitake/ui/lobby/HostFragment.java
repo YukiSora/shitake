@@ -6,6 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
@@ -25,5 +30,47 @@ public class HostFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ((ListView)view.findViewById(R.id.categoryListView)).setAdapter(new SimpleAdapter(getActivity(), getData(), R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
+    }
+
+    private ArrayList<HashMap<String, String>> getData() {
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        HashMap<String, String> map;
+
+        map = new HashMap<>();
+        map.put("title", "Is That A Fact?");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Word Up!");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Movie Bluff!");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "It's the Law");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "The Plot Thickens");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Name that Show!");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Poetry");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Say My Name");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Proverbs");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Adults Only");
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", "Animals");
+
+        return list;
     }
 }

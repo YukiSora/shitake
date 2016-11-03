@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 
@@ -95,23 +93,5 @@ public class MainFragment extends Fragment {
                 Log.i("poi", "I am going to About Fragment.");
             }
         });
-    }
-
-    private ArrayList<String> setDeckList() {
-        ArrayList<String> mDeckList = new ArrayList<>();
-
-        mDeckList.add("Is That A Fact?");
-        mDeckList.add("Word Up!");
-        mDeckList.add("Movie Bluff!");
-        mDeckList.add("It's the Law");
-        mDeckList.add("The Plot Thickens");
-        mDeckList.add("Name that Show!");
-        mDeckList.add("Poetry");
-        mDeckList.add("Say My Name");
-        mDeckList.add("Proverbs");
-        mDeckList.add("Adults Only");
-        mDeckList.add("Animals");
-
-        return mDeckList;
     }
 }
