@@ -59,13 +59,19 @@ public class JoinFragment extends Fragment {
 
         //ListView
         ListView listView = (ListView)view.findViewById(R.id.bluetoothListView);
-        adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_bluetooth, new String[] {"name"}, new int[] {R.id.bluetoothTextView});
+        adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_bluetooth, new String[]{"name"}, new int[]{R.id.bluetoothTextView});
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("poi", bluetooths.get(i).get("name"));
                 Log.i("poi", bluetooths.get(i).get("address"));
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_main_vg_fragment, new WaitingFragment())
+                        .addToBackStack("join")
+                        .commit();
             }
         });
 

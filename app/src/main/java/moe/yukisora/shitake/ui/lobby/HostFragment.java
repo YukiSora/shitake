@@ -38,12 +38,18 @@ public class HostFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ListView listView = (ListView)view.findViewById(R.id.categoryListView);
-        listView.setAdapter(new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
+        listView.setAdapter(new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[]{R.id.deckTitle}));
 //        listView.setDivider(null);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("poi", decks.get(i).get("title"));
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_main_vg_fragment, new WaitingFragment())
+                        .addToBackStack("host")
+                        .commit();
             }
         });
     }
