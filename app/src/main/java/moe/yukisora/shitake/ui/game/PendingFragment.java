@@ -82,7 +82,7 @@ public class PendingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 resetValues();
-                PendingFragment.this.showVoteFragment();
+                PendingFragment.this.showAnswerFragment();
             }
         });
 
@@ -96,10 +96,10 @@ public class PendingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showVoteFragment() {
+    public void showAnswerFragment() {
         PendingFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new VoteFragment())
+                .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(getClass().getSimpleName())
                 .commit();

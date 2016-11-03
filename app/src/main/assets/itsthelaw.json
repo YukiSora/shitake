@@ -1,0 +1,532 @@
+{
+	'itsthelaw": [
+        {
+            "Question": "All underground coal mines in North Dakota must provide",
+            "Answer": "Sufficient Toilet Paper With Each Toilet",
+        },
+        {
+            "Question": "An ordinance in Nogales, Arizona prohibits the wearing of",
+            "Answer": "Suspenders",
+        },
+        {
+            "Question": "Barbers are forbidden from doing this from 7:00am to noon in Waterloo, Nebraska",
+            "Answer": "Eating Onions",
+        },
+        {
+            "Question": "Before heading outside in Carmel, New York, men must be wearing",
+            "Answer": "A Matching Jacket And Pants",
+        },
+        {
+            "Question": "Before starting your car in Denmark you are require to check the lights, brakes, steering and do this",
+            "Answer": "Honk Your Horn",
+        },
+        {
+            "Question": "Bingo games in North Carolina are probibited from",
+            "Answer": "Being Played For More Than Five Hours",
+        },
+        {
+            "Question": "Cars entering the city of Lawrence, Kansas are required to honk their horns in order to",
+            "Answer": "Warn Horses Of Their Arrival",
+        },
+        {
+            "Question": "Cats and dogs need a permit in Ventura County, California in order to do this",
+            "Answer": "Have Sex",
+        },
+        {
+            "Question": "Citizens in Oklahoma can be sent to jail for doing this harmless act",
+            "Answer": "Making Funny Faces At Dogs",
+        },
+        {
+            "Question": "Doing this in front of two or more people in Mississippi could get you 30 days of jail time",
+            "Answer": "Using Profanity",
+        },
+        {
+            "Question": "In 19th-century England the penalty was seven years in prison for stealing this",
+            "Answer": "A Rabbit",
+        },
+        {
+            "Question": "In Alabama it’s illegal to pick your nose and do this",
+            "Answer": "Flick Your Booger Into The Wind",
+        },
+        {
+            "Question": "In Alabama you may not dress up as this on Halloween",
+            "Answer": "A Priest",
+        },
+        {
+            "Question": "In Alaska it’s prohibited to whisper in someone’s ear while they are",
+            "Answer": "Moose Hunting",
+        },
+        {
+            "Question": "In Alaska, a person may not get drunk in a bar and",
+            "Answer": "Stay There",
+        },
+        {
+            "Question": "In Alaska, there’s a law specifically against throwing this out of an airplane",
+            "Answer": "A Live Moose",
+        },
+        {
+            "Question": "In Alexandria, Minnesota, if your breath smells like onions, sardines, or garlic, it’s illegal to",
+            "Answer": "Have Sex With Your Wife",
+        },
+        {
+            "Question": "In Ames, Iowa, while lying in bed with a woman you may not",
+            "Answer": "Drink Over Three Sips Of Beer",
+        },
+        {
+            "Question": "In Athens, Greece, you can lose your driver’s license for being one of these two things",
+            "Answer": "Poorly Dressed Or Unbathed",
+        },
+        {
+            "Question": "In Atlanta, it’s specifically illegal to tie this to a streetlight or telephone pole",
+            "Answer": "A Giraffe",
+        },
+        {
+            "Question": "In Bromide, Oklahoma, children can get in trouble with the law if they jump off a roof while",
+            "Answer": "Wearing A Towel As A Cape To Be Like Superman",
+        },
+        {
+            "Question": "In Brooklyn, New York, it’s illegal to let this sleep in your bathtub",
+            "Answer": "A Dog",
+        },
+        {
+            "Question": "In California, you may not eat an orange in",
+            "Answer": "The Bathtub",
+        },
+        {
+            "Question": "In Carmel, California, you must have a permit to wear these",
+            "Answer": "Heels Over Two Inches In Height",
+        },
+        {
+            "Question": "In Carrizozo, New Mexico, it is against the law for women to appear in public if they are",
+            "Answer": "Unshaven",
+        },
+        {
+            "Question": "In China, it’s illegal to show TV ads for this at mealtimes",
+            "Answer": "Hemorrhoid Cream",
+        },
+        {
+            "Question": "In Cleveland, Ohio, you must have a hunting license in order to",
+            "Answer": "Catch Mice",
+        },
+        {
+            "Question": "In Colorado you need a permit to modify this",
+            "Answer": "The Weather",
+        },
+        {
+            "Question": "In Colorado, you may not disfigure or injure",
+            "Answer": "Rocks",
+        },
+        {
+            "Question": "In Connecticut, a pickle is not officially a pickle unless it",
+            "Answer": "Bounces",
+        },
+        {
+            "Question": "In Connecticut, it’s illegal to walk across the street like this",
+            "Answer": "On Your Hands",
+        },
+        {
+            "Question": "In Cumberland, Maryland it is prohibited to bring this into your hotel room",
+            "Answer": "A Chicken",
+        },
+        {
+            "Question": "In Detroit, Michigan it is illegal to sleep in",
+            "Answer": "Bathtubs",
+        },
+        {
+            "Question": "In Downey, California, more than two police officers are prohibited from doing this at the same time",
+            "Answer": "Being At The Same Doughnut Shop",
+        },
+        {
+            "Question": "In Equatorial Guinea, it’s illegal to name your child",
+            "Answer": "Monica",
+        },
+        {
+            "Question": "In Finland, taxi drivers must pay extra to",
+            "Answer": "Play Music In Their Cars For Customers",
+        },
+        {
+            "Question": "In Florida, men may not be seen in public wearing any kind of",
+            "Answer": "Strapless Gown",
+        },
+        {
+            "Question": "In Fort Thomas, Kentucky, dogs are not allowed to",
+            "Answer": "Smell Bad",
+        },
+        {
+            "Question": "In Gainesville, Georgia it’s illegal to do this to fried chicken",
+            "Answer": "Eat It With Anything But Your Hands",
+        },
+        {
+            "Question": "In Grand Forks, North Dakota, it is illegal to throw these on public property",
+            "Answer": "Snowballs",
+        },
+        {
+            "Question": "In Harrisburg, Pennsylvania, it’s illegal to have sex in a toll booth with",
+            "Answer": "A Truck Driver",
+        },
+        {
+            "Question": "In Hartford, Conneticut, dogs may not be",
+            "Answer": "Educated",
+        },
+        {
+            "Question": "In Hastings, Nebraska, all hotels must provide their guests with",
+            "Answer": "A Pressed Nightshirt",
+        },
+        {
+            "Question": "In Idaho you may not gift this to your sweetheart",
+            "Answer": "A Box Of Candy Over 50 Pounds",
+        },
+        {
+            "Question": "In Indiana, a monkey was once tried and convicted for doing this",
+            "Answer": "Smoking A Cigarette",
+        },
+        {
+            "Question": "In Joliet, Illinois, it’s illegal to do this to the city’s name",
+            "Answer": "Pronounce It Incorrectly",
+        },
+        {
+            "Question": "In Kennesaw, Georgia, owning this is required by law",
+            "Answer": "A Gun",
+        },
+        {
+            "Question": "In Kentucky, it’s illegal to fish using this",
+            "Answer": "A Bow And Arrow",
+        },
+        {
+            "Question": "In Kentucky, it’s specifically illegal to marry",
+            "Answer": "Your Wife’s Grandmother",
+        },
+        {
+            "Question": "In Kingsville, Texas, pigs are forbidden to",
+            "Answer": "Have Sex On Airport Property",
+        },
+        {
+            "Question": "In Little Rock, Arkansas, it is unlawful for birds to",
+            "Answer": "Make A Lot Of Noise",
+        },
+        {
+            "Question": "In London, it’s specifically illegal to have sex on",
+            "Answer": "A Parked Motorcycle",
+        },
+        {
+            "Question": "In Marietta, Georgia, you can do this from a truck, but not from a car or bus",
+            "Answer": "Spit",
+        },
+        {
+            "Question": "In Maryland citizens aren’t allowed to wear this in a public park",
+            "Answer": "A Tube Top",
+        },
+        {
+            "Question": "In Massachuesetts you must always play this song in its entirety",
+            "Answer": "The Star Spangled Banner",
+        },
+        {
+            "Question": "In Massachusetts it’s only legal to do this when all bedroom windows are closed and locked",
+            "Answer": "Snore",
+        },
+        {
+            "Question": "In Massachusetts, an old law declared these illegal without a paid license",
+            "Answer": "Goatees",
+        },
+        {
+            "Question": "In Minnesota, a persona may not cross state lines with this on their head",
+            "Answer": "A Duck",
+        },
+        {
+            "Question": "In Natchez, Mississippi, elephants must stay off the streets if they are",
+            "Answer": "Drunk",
+        },
+        {
+            "Question": "In Nebraska it is illegal for bar owners to sell beer unless they are simultaneously",
+            "Answer": "Brewing A Kettle Of Soup",
+        },
+        {
+            "Question": "In Nebraska it is illegal to use this to make false teeth",
+            "Answer": "Leather",
+        },
+        {
+            "Question": "In New York it’s against the law to throw a ball at someone’s head for",
+            "Answer": "Fun",
+        },
+        {
+            "Question": "In New York it’s illegal for residents to wear these after 10:00pm",
+            "Answer": "Slippers",
+        },
+        {
+            "Question": "In Newcastle, Wyoming, you may not have sex in",
+            "Answer": "A Freezer",
+        },
+        {
+            "Question": "In North Dakota, no bar or restaurant can serve beer at the same time as serving",
+            "Answer": "Pretzels",
+        },
+        {
+            "Question": "In Ohio you may not do this to a fish",
+            "Answer": "Get Him Drunk",
+        },
+        {
+            "Question": "In Oklahama, it’s illegal to have this sleeping in your bathtub after 7pm",
+            "Answer": "A Donkey",
+        },
+        {
+            "Question": "In Oklahoma it is illegal to bring this into downtown Tulsa",
+            "Answer": "An Elephant",
+        },
+        {
+            "Question": "In Oklahoma, you can be fined for doing this to dogs",
+            "Answer": "Making Funny Faces",
+        },
+        {
+            "Question": "In Paris, it’s forbidden to do this on the sidewalk",
+            "Answer": "Spin Tops",
+        },
+        {
+            "Question": "In Pennsylvania, you may not barter this",
+            "Answer": "A Baby",
+        },
+        {
+            "Question": "In Rhode Island, you face 1-20 years in prison if you bit off someone elses limb, unless",
+            "Answer": "It Was An Accident",
+        },
+        {
+            "Question": "In Russell, Kansas, you may not use your car horn to",
+            "Answer": "Play Music",
+        },
+        {
+            "Question": "In San Antonio, Texas, it is specifically considered illegal to commit this act",
+            "Answer": "Flirting",
+        },
+        {
+            "Question": "In Sarasota, Florida, it’s illegal to wear a swimsuit while",
+            "Answer": "Singing In A Public Place",
+        },
+        {
+            "Question": "In some parts of Iran, wearing this can get you thrown into jail",
+            "Answer": "A Necktie",
+        },
+        {
+            "Question": "In some US states, it’s illegal to dance to this song",
+            "Answer": "The Star Spangled Banner",
+        },
+        {
+            "Question": "In Switzerland, it’s against the law to do this to your car",
+            "Answer": "Slam The Door",
+        },
+        {
+            "Question": "In Tennessee it is illegal to attempt to catch a fish by",
+            "Answer": "Using Dynamite",
+        },
+        {
+            "Question": "In Tennessee, it’s illegal to catch a fish using this",
+            "Answer": "A Lasso",
+        },
+        {
+            "Question": "In Texas, you may not eat this without permission",
+            "Answer": "Your Neighbor’s Trash",
+        },
+        {
+            "Question": "In the 1800’s women in the United States could be arrested for wearing these in public",
+            "Answer": "Trousers",
+        },
+        {
+            "Question": "In the sixth century B.C., Athenian legislator Solon made it mandatory that husbands do this at least 3 times a month",
+            "Answer": "Have Sex With Their Wives",
+        },
+        {
+            "Question": "In the state of Massachusetts, a woman may not do this during sex",
+            "Answer": "Be On Top",
+        },
+        {
+            "Question": "In the town of Quitman, Georgia, chickens may not do this",
+            "Answer": "Cross The Road",
+        },
+        {
+            "Question": "In Topeka, Kansas, it’s illegal to drag this accross Kansas Avenue",
+            "Answer": "A Deer",
+        },
+        {
+            "Question": "In Topeka, Kansas, servers are forbidden to serve wine in",
+            "Answer": "Teacups",
+        },
+        {
+            "Question": "In Utah it is legal to this after the age of 50",
+            "Answer": "Marry Your Cousin",
+        },
+        {
+            "Question": "In Vermont, it is illegal to do this while underwater",
+            "Answer": "Whistle",
+        },
+        {
+            "Question": "In Walnut, California a man needs a sheriff’s permit in order to wear",
+            "Answer": "A Dress",
+        },
+        {
+            "Question": "In Washington you can be arrested if found harassing",
+            "Answer": "Bigfoot",
+        },
+        {
+            "Question": "In Wisconsin, many state-certified cheeses, including Muenster and Monterey Jack, must be",
+            "Answer": "Highly Pleasing",
+        },
+        {
+            "Question": "In Yukon, Oklahoma, it’s illegal for patients to do this to their dentists",
+            "Answer": "Pull Their Teeth",
+        },
+        {
+            "Question": "In Zion, Illinois, it’s illegal to give this to your pet",
+            "Answer": "A Lit Cigar",
+        },
+        {
+            "Question": "It is forbidden in Teruel, Spain, to do this on Sundays",
+            "Answer": "Take Hot Baths",
+        },
+        {
+            "Question": "It is illegal to let your pig run free in Detroit unless it has",
+            "Answer": "A Ring In Its Nose",
+        },
+        {
+            "Question": "It was once illegal to play this in New York City",
+            "Answer": "Pinball",
+        },
+        {
+            "Question": "It’s against the law in England to give your daughter this name without the queen’s permission",
+            "Answer": "Princess",
+        },
+        {
+            "Question": "It’s against the law in England to sue",
+            "Answer": "The Queen",
+        },
+        {
+            "Question": "It’s against the law to do this in front of a corpse in Georgia",
+            "Answer": "Use Profanity",
+        },
+        {
+            "Question": "It’s against the law to do this very specific thing in Boulder, Colorado",
+            "Answer": "Roll Large Boulders On The Street",
+        },
+        {
+            "Question": "It’s against the law to drink beer in Cedar City, Utah, if",
+            "Answer": "Your Shoelaces Are Untied",
+        },
+        {
+            "Question": "It’s illegal for dogs to do this in Delaware",
+            "Answer": "Mate Near A Church, School, Or Bar",
+        },
+        {
+            "Question": "It’s illegal for married women in Florida to do this on Sundays",
+            "Answer": "Parachute",
+        },
+        {
+            "Question": "It’s illegal to do this on the Sabbath in Israel",
+            "Answer": "Pick Your Nose",
+        },
+        {
+            "Question": "It’s illegal to sing like this in North Carolina",
+            "Answer": "Off-key",
+        },
+        {
+            "Question": "It’s okay to duel in Paraguay as long as you’re a",
+            "Answer": "Registered Blood Donor",
+        },
+        {
+            "Question": "It’s prohibited by city ordinance in Rehoboth Beach, Delaware, to leave the beach with",
+            "Answer": "Sand On Your Body Or Clothing",
+        },
+        {
+            "Question": "It’s prohibited to share this in Memphis",
+            "Answer": "Your Pie",
+        },
+        {
+            "Question": "It’s specifically illegal to do this when tired in Clinton, Oklahoma",
+            "Answer": "Lean On A Building",
+        },
+        {
+            "Question": "It’s specifically prohibited in Green, New York to walk like this",
+            "Answer": "Backwards While Eating Peanuts",
+        },
+        {
+            "Question": "It’s the law in Wichita, Kansas to get out of the car and do this at the intersection of Douglas and Broadway",
+            "Answer": "Fire A Shotgun Into The Air",
+        },
+        {
+            "Question": "Kentucky citizens are required by state law to do this at least once a year",
+            "Answer": "Bathe",
+        },
+        {
+            "Question": "Legislators, public officers, and lawyerse must take an oath in Kansas stating that",
+            "Answer": "They Haven’t Fought A Duel With Deadly Weapons",
+        },
+        {
+            "Question": "Liquor stores in Indiana are prohibited from selling milk and",
+            "Answer": "Cold Water Or Soda",
+        },
+        {
+            "Question": "Men in Omaha, Nebraska may not run around shirtless with",
+            "Answer": "A Shaved Chest",
+        },
+        {
+            "Question": "Nineteenth-century Scottish law required brides on their wedding day to",
+            "Answer": "Be Pregnant",
+        },
+        {
+            "Question": "Ohio prohibits the hunting of this animal on Sundays",
+            "Answer": "Whales",
+        },
+        {
+            "Question": "One may not be charged for food at an inn in Denmark unless that person",
+            "Answer": "Feels Full",
+        },
+        {
+            "Question": "Residents of Oklahoma may not do this with their pet goldfish",
+            "Answer": "Carry It In A Bowl On A Bus",
+        },
+        {
+            "Question": "Swedish law prohibits trained seals from",
+            "Answer": "Balancing Balls On Their Noses",
+        },
+        {
+            "Question": "The Arkansas River in Little Rock is prohibited from doing this at the Main Street bridge",
+            "Answer": "Rising Above It",
+        },
+        {
+            "Question": "The law in Egypt says you forfeit two days’ pay if you do this within earshot of a woman",
+            "Answer": "Curse",
+        },
+        {
+            "Question": "When drinking beer in Lefors, Texas, it’s illegal do this",
+            "Answer": "Swallow More Than Three Gulps At A Time",
+        },
+        {
+            "Question": "When the state assembly is in session in Georgia, its members are immune from",
+            "Answer": "Receiving Speeding Tickets",
+        },
+        {
+            "Question": "While at a wake in Masachusetts, mourners may not do this",
+            "Answer": "Eat More Than Three Sandwiches",
+        },
+        {
+            "Question": "While no one enforces this law, women in Memphis, Tennessee aren’t allowed to drive a car unless this happens",
+            "Answer": "A Man Walks In Front Of Them Waving A Red Flag",
+        },
+        {
+            "Question": "Women can be fined in Florida for falling asleep under this",
+            "Answer": "A Hair Dryer",
+        },
+        {
+            "Question": "You can get five years in jail for sending this to a friend as a gift in Kentucky",
+            "Answer": "Alcohol",
+        },
+        {
+            "Question": "You may not do this at the beach in New Hampshire at nighttime",
+            "Answer": "Take The Seaweed",
+        },
+        {
+            "Question": "You may not do this on Main Street in Virginia, Minnesota",
+            "Answer": "Park An Elephant",
+        },
+        {
+            "Question": "You must get a $100 permit from the city to own this in the city of Norco, California",
+            "Answer": "A Rhinoceros",
+        }
+    ]
+}

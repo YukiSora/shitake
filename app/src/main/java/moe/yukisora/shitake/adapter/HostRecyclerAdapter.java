@@ -19,6 +19,8 @@ import moe.yukisora.shitake.ui.lobby.JoinViewHolder;
 public class HostRecyclerAdapter extends RecyclerView.Adapter {
 
     private DeckViewHolder.OnDeckSelectedListener mDeckListener;
+    private JoinViewHolder.OnJoinSelectedListener mJoinListener;
+
     private ArrayList<String> mDeckList = new ArrayList<>();
 
     // Override Methods
@@ -30,7 +32,7 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
 
         switch (viewType) {
             case 0:
-                return new JoinViewHolder(inflater.inflate(R.layout.view_join, parent, false), mDeckListener);
+                return new JoinViewHolder(inflater.inflate(R.layout.view_join, parent, false), mJoinListener);
             default:
                 return new DeckViewHolder(inflater.inflate(R.layout.view_deck, parent, false), mDeckListener);
         }
@@ -59,11 +61,22 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
         return mDeckListener;
     }
 
+    public void setDeckListener(DeckViewHolder.OnDeckSelectedListener deckListener) {
+        this.mDeckListener = deckListener;
+    }
+
+    public JoinViewHolder.OnJoinSelectedListener getJoinListener() {
+        return mJoinListener;
+    }
+
+    public void setJoinListener(JoinViewHolder.OnJoinSelectedListener mJoinListener) {
+        this.mJoinListener = mJoinListener;
+    }
+
     public void setDeckList(ArrayList<String> mDeckList){
         this.mDeckList = mDeckList;
     }
 
-    public void setDeckListener(DeckViewHolder.OnDeckSelectedListener deckListener) {
-        this.mDeckListener = deckListener;
-    }
+
+
 }

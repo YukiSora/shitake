@@ -3,6 +3,7 @@ package moe.yukisora.shitake.ui.game;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,5 +37,14 @@ public class AnswerFragment extends Fragment {
 
         Animation mAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.interpolator_accelerate_decelerate);
         mAnswerLayout.startAnimation(mAnimation);
+    }
+
+    public void showVoteFragment() {
+        AnswerFragment.this.getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new VoteFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack(getClass().getSimpleName())
+                .commit();
     }
 }

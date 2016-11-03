@@ -24,7 +24,7 @@
         app:mrl_rippleRoundedCorners="50dp">
 
         <Button
-            android:id="@+id/submit_button"
+            android:id="@+id/view_btn_join"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_button_green"
