@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -31,7 +32,15 @@ public class HostFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((ListView)view.findViewById(R.id.categoryListView)).setAdapter(new SimpleAdapter(getActivity(), getData(), R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
+        ListView listView = (ListView)view.findViewById(R.id.categoryListView);
+        listView.setAdapter(new SimpleAdapter(getActivity(), getData(), R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
+        listView.setDivider(null);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
     }
 
     private ArrayList<HashMap<String, String>> getData() {
