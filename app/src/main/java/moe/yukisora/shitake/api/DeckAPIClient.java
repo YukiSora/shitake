@@ -28,8 +28,9 @@ public class DeckAPIClient {
     private static DeckAPIClient sSharedInstance;
     private static String sCurrentDeck;
 
-    private int mCounter;
     private ArrayList<Deck> mDeck = new ArrayList<>();
+    private int mCounter;
+
     private SharedPreferences mSharedPreferences;
 
     // Singleton New Instance

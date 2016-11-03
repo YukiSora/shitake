@@ -13,7 +13,7 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/question_title"
+            android:id="@+id/fragment_question_text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -22,11 +22,12 @@
             android:textSize="25sp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/net_salary"
+            android:id="@+id/fragment_question_text_answer"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:focusable="false"
+            android:padding="10dp"
             android:gravity="top"
             android:hint="What's on your mind?"
             android:inputType="textCapSentences" />

@@ -34,7 +34,7 @@ public class VoteFragment extends Fragment{
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoteFragment.this.showAnswerFragment();
+                // VoteFragment.this.showAnswerFragment();
             }
         });
 

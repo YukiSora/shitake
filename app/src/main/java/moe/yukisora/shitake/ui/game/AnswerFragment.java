@@ -52,13 +52,11 @@ public class AnswerFragment extends Fragment {
         mAnswerLayout.startAnimation(getAnimation());
     }
 
-    public Animation getAnimation(){
+    public Animation getAnimation() {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.interpolator_accelerate_decelerate);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
+            public void onAnimationStart(Animation animation) {}
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -66,9 +64,7 @@ public class AnswerFragment extends Fragment {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
+            public void onAnimationRepeat(Animation animation) {}
         });
 
         return animation;
@@ -83,8 +79,12 @@ public class AnswerFragment extends Fragment {
                 .commit();
     }
 
-    public void populateAnswers(){
-        for (Answer answer: GameAPIClient.getInstance().getmAnswer()){
+    public void populateAnswers() {
+        // Shuffle Answers
+        GameAPIClient.getInstance().shuffleAnswer();
+
+        // Populate Answers
+        for (Answer answer : GameAPIClient.getInstance().getmAnswer()) {
             addPendingViewFromLayoutResource(mAnswerLayout, answer);
         }
     }
@@ -92,14 +92,18 @@ public class AnswerFragment extends Fragment {
     public View addPendingViewFromLayoutResource(LinearLayout linearLayout, Answer answer) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = inflater.inflate(R.layout.view_answer, linearLayout, false);
-
         Button mAnswer = (Button) rootView.findViewById(R.id.view_btn_answer);
 
+        mAnswer.setAllCaps(true);
         mAnswer.setText(answer.getmContent());
-
+        mAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AnswerFragment.this.showVoteFragment();
+            }
+        });
         linearLayout.addView(rootView);
 
         return rootView;
     }
-
 }

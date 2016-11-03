@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import moe.yukisora.shitake.model.Answer;
 import moe.yukisora.shitake.model.User;
@@ -27,7 +29,10 @@ import static android.content.ContentValues.TAG;
 public class GameAPIClient {
     private static GameAPIClient sSharedInstance;
 
+    // Users Playing
     private ArrayList<User> mUser = new ArrayList<>();
+
+    // Users Playing Answers
     private ArrayList<Answer> mAnswer = new ArrayList<>();
 
     private int mRoundNumber;
@@ -114,6 +119,18 @@ public class GameAPIClient {
     // Method - Start Game
     public void startGame(){
         setmRoundNumber(1);
+    }
+
+    public void addAnswer(Answer answer){
+        mAnswer.add(answer);
+    }
+
+    public void shuffleAnswer(){
+        Collections.shuffle(mAnswer, new Random(System.nanoTime()));
+    }
+
+    public void resetAnswer(){
+        mAnswer.clear();
     }
 
     // Getters and Setters
