@@ -47,6 +47,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStack();
+        else
+            super.onBackPressed();
+    }
+
     public void setupDrawerLayout() {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
