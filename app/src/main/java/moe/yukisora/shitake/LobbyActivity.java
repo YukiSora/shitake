@@ -37,7 +37,7 @@ public class LobbyActivity extends AppCompatActivity {
 
 //        Bluetooth.getInstance().isEnabled(this);
 //        Bluetooth.getInstance().setDiscoverable(this);
-//        Bluetooth.getInstance().search();
+//        Bluetooth.getInstance().startSearch();
 
         getSupportFragmentManager()
                 .beginTransaction()

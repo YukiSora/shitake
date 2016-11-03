@@ -41,7 +41,11 @@ public class Bluetooth {
         }
     }
 
-    public void search() {
+    public void startDiscovery() {
         bluetoothAdapter.startDiscovery();
+    }
+
+    public void stopDiscovery() {
+        bluetoothAdapter.cancelDiscovery();
     }
 }
