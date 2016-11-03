@@ -3,6 +3,7 @@ package moe.yukisora.shitake.ui.lobby;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,14 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 
 public class HostFragment extends Fragment {
+    private ArrayList<HashMap<String, String>> decks;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_host, container, false);
+
+        initDecks();
 
         //set bluetooth discoverable
         Bluetooth.getInstance().setDiscoverable(getActivity());
@@ -33,53 +38,62 @@ public class HostFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ListView listView = (ListView)view.findViewById(R.id.categoryListView);
-        listView.setAdapter(new SimpleAdapter(getActivity(), getData(), R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
-        listView.setDivider(null);
+        listView.setAdapter(new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[] {R.id.deckTitle}));
+//        listView.setDivider(null);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Log.i("poi", decks.get(i).get("title"));
             }
         });
     }
 
-    private ArrayList<HashMap<String, String>> getData() {
-        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+    private void initDecks() {
+        decks = new ArrayList<>();
         HashMap<String, String> map;
 
         map = new HashMap<>();
         map.put("title", "Is That A Fact?");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Word Up!");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Movie Bluff!");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "It's the Law");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "The Plot Thickens");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Name that Show!");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Poetry");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Say My Name");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Proverbs");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Adults Only");
-        list.add(map);
+        decks.add(map);
+
         map = new HashMap<>();
         map.put("title", "Animals");
-
-        return list;
+        decks.add(map);
     }
 }
