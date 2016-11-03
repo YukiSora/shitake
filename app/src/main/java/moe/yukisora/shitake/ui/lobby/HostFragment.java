@@ -45,6 +45,8 @@ public class HostFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("poi", decks.get(i).get("title"));
 
+                Bluetooth.getInstance().newBluetoothServer();
+
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, new WaitingFragment())

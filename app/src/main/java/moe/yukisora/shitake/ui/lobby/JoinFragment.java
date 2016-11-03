@@ -67,6 +67,8 @@ public class JoinFragment extends Fragment {
                 Log.i("poi", bluetooths.get(i).get("name"));
                 Log.i("poi", bluetooths.get(i).get("address"));
 
+                Bluetooth.getInstance().newBluetoothClient(bluetooths.get(i).get("address"));
+
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, new WaitingFragment())
