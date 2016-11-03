@@ -10,19 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.DeckAPIClient;
-
+import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.model.Answer;
 
 /**
  * Created by Delacrix on 22/09/2016.
@@ -31,6 +22,8 @@ import moe.yukisora.shitake.api.DeckAPIClient;
 public class QuestionFragment extends Fragment {
 
     private TextView mQuestionTitle;
+    private TextView mUserAnswer;
+
     private Button mSubmitButton;
 
     @Nullable
@@ -38,7 +31,9 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_question, container, false);
 
-        mQuestionTitle = (TextView) rootView.findViewById(R.id.question_title);
+        mQuestionTitle = (TextView) rootView.findViewById(R.id.fragment_question_text_title);
+        mUserAnswer = (TextView) rootView.findViewById(R.id.fragment_question_text_answer);
+
         mSubmitButton = (Button) rootView.findViewById(R.id.submit_button);
 
         return rootView;
@@ -47,10 +42,13 @@ public class QuestionFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mQuestionTitle.setText(DeckAPIClient.getInstance().getDeck().getmQuestion());
+        mUserAnswer.setText("Mother");
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameAPIClient.getInstance().addAnswer(new Answer("Real Answer", DeckAPIClient.getInstance().getDeck().getmAnswer()));
+                GameAPIClient.getInstance().addAnswer(new Answer("Username", mUserAnswer.getText().toString()));
                 QuestionFragment.this.showPendingFragment();
             }
         });
@@ -58,12 +56,12 @@ public class QuestionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public void showPendingFragment(){
+    public void showPendingFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new PendingFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack("QuestionFragment")
+                .addToBackStack(getClass().getSimpleName())
                 .commit();
     }
 }

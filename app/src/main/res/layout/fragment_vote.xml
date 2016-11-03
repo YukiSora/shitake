@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/fragment_answer_vg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -13,19 +13,25 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/fragment_answer_text_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:text="Who's your daddy?"
-            android:textSize="25sp" />
+            android:gravity="center"
+            android:text="Vote Fragment" />
 
-        <LinearLayout
-            android:id="@+id/fragment_answer_vg_list"
+        <com.balysv.materialripple.MaterialRippleLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleRoundedCorners="50dp">
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Next" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
 </ScrollView>

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ import moe.yukisora.shitake.model.Deck;
 public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelectedListener{
 
     private RecyclerView mRecyclerView;
+    private Button mJoinButton;
 
     @Nullable
     @Override

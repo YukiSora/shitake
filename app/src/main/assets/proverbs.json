@@ -1,0 +1,768 @@
+{
+	"proverbs": [
+        {
+            "Question": "A Combed Head",
+            "Answer": "Hides Ugly Feet"
+        },
+        {
+            "Question": "A Drowning Man Is Not",
+            "Answer": "Troubled By Rain"
+        },
+        {
+            "Question": "A Dry Bone",
+            "Answer": "Is Never Licked"
+        },
+        {
+            "Question": "A Full Belly Sets A Man",
+            "Answer": "Jigging"
+        },
+        {
+            "Question": "A Hundred Years From Now We Will",
+            "Answer": "All Be Bald"
+        },
+        {
+            "Question": "A Lame Cat Is Better Than A Swift Horse When",
+            "Answer": "Rats Infest The Palace"
+        },
+        {
+            "Question": "A Man That Pets A Live Catfish Ain’t Crowded With",
+            "Answer": "Brains"
+        },
+        {
+            "Question": "A Man’s Own Smell Is",
+            "Answer": "Unknown To Him"
+        },
+        {
+            "Question": "A Pear That’s Not Yellow",
+            "Answer": "With Time Will Mellow"
+        },
+        {
+            "Question": "A Person Who Doesn’t Like Wine",
+            "Answer": "Is Only Punishing Himself"
+        },
+        {
+            "Question": "A Short Nose Is",
+            "Answer": "Soon Picked"
+        },
+        {
+            "Question": "A Sure Sign Of Showers:",
+            "Answer": "Seeing Raindrops Fall"
+        },
+        {
+            "Question": "A Tar Dealer Smells Of",
+            "Answer": "Tar"
+        },
+        {
+            "Question": "A Tiger Does Not Have To Proclaim",
+            "Answer": "Its Tigritude"
+        },
+        {
+            "Question": "A Truthful Courtesan Is As Great A Miracle As",
+            "Answer": "A Square Egg"
+        },
+        {
+            "Question": "A Youth Who’s Lazy",
+            "Answer": "When Old Will Work Like Crazy"
+        },
+        {
+            "Question": "All Things Anger You And The Cat Breaks",
+            "Answer": "Your Heart"
+        },
+        {
+            "Question": "Almonds Come To Those",
+            "Answer": "Who Have No Teeth"
+        },
+        {
+            "Question": "Although We Are Brothers, Our Purses",
+            "Answer": "Are Not Sisters"
+        },
+        {
+            "Question": "Always Put The Stranger Near",
+            "Answer": "The Danger"
+        },
+        {
+            "Question": "An American Will Go To Hell For",
+            "Answer": "A Bag Of Coffee"
+        },
+        {
+            "Question": "Anger, No Matter How Hot It Is,",
+            "Answer": "Can Never Cook Yam"
+        },
+        {
+            "Question": "Anything Can Be Called Dinner, Even",
+            "Answer": "A Taco With Salt"
+        },
+        {
+            "Question": "Anything Goes Well With Tomato, Except",
+            "Answer": "Slouch Hats And Chocolate"
+        },
+        {
+            "Question": "As Soon As A Cow Has An Udder Of Silver",
+            "Answer": "She Will Quickly Get Golden Nipples"
+        },
+        {
+            "Question": "Be A Head, Though Only The Head Of",
+            "Answer": "A Potato"
+        },
+        {
+            "Question": "Before Making Any Important Decision,",
+            "Answer": "Consult Your Pillow"
+        },
+        {
+            "Question": "Better The Gurgling Of A Camel Than",
+            "Answer": "The Prayers Of A Fish"
+        },
+        {
+            "Question": "Cabbage Cooked Twice Is",
+            "Answer": "Death"
+        },
+        {
+            "Question": "Chicken Merry,",
+            "Answer": "Hawk Near"
+        },
+        {
+            "Question": "Chilaquiles Here,",
+            "Answer": "Enchiladas There"
+        },
+        {
+            "Question": "Children And Drunken Men",
+            "Answer": "Speak The Truth"
+        },
+        {
+            "Question": "Copper Money Makes",
+            "Answer": "Rusty Love"
+        },
+        {
+            "Question": "Do Not Blame God For Having Created The Tiger, But Thank Him",
+            "Answer": "For Not Having Given It Wings"
+        },
+        {
+            "Question": "Do Not Blow In",
+            "Answer": "A Bear’s Ear"
+        },
+        {
+            "Question": "Do Not Dress In Leaf-Made Clothes When",
+            "Answer": "Going To Put Out A Fire"
+        },
+        {
+            "Question": "Do Not Remove A Fly From Your Friend’s Forehead With",
+            "Answer": "A Hatchet"
+        },
+        {
+            "Question": "Do Not Trust In",
+            "Answer": "Wine"
+        },
+        {
+            "Question": "Do What You Please, Don’t Head Others’ Pleas —",
+            "Answer": "To Hell With Anyone Who Disagrees"
+        },
+        {
+            "Question": "Dogs And Rude People Have No",
+            "Answer": "Hands"
+        },
+        {
+            "Question": "Don’t Climb A Tree To Look For",
+            "Answer": "Fish"
+        },
+        {
+            "Question": "Don’t Crack Corn In Front Of Me,",
+            "Answer": "I’m Not A Chicken"
+        },
+        {
+            "Question": "Don’t Go To The Sauna If",
+            "Answer": "You’re Not Itching"
+        },
+        {
+            "Question": "Drink Wine And Have The Gout; Drink None And",
+            "Answer": "Have It Anyway"
+        },
+        {
+            "Question": "Dry Pants Catch No",
+            "Answer": "Fish"
+        },
+        {
+            "Question": "Even An Old Goat Likes To",
+            "Answer": "Lick Salt"
+        },
+        {
+            "Question": "Every Little Fish Expects To",
+            "Answer": "Become A Whale"
+        },
+        {
+            "Question": "Every Once In Awhile, Even A Blind Pig Finds",
+            "Answer": "An Acorn"
+        },
+        {
+            "Question": "Every Round Thing Is Not",
+            "Answer": "A Walnut"
+        },
+        {
+            "Question": "Everyone Is Affable Until A Cow Goes",
+            "Answer": "Into His Garden"
+        },
+        {
+            "Question": "Everything Has An End Except",
+            "Answer": "A Sausage, Which Has Two"
+        },
+        {
+            "Question": "Everything That Dives Into The Water Is Not",
+            "Answer": "A Mermaid"
+        },
+        {
+            "Question": "Experience Is The Comb That Nature Gives Us When",
+            "Answer": "We Are Bald"
+        },
+        {
+            "Question": "Finance Will Make",
+            "Answer": "The Dog Dance"
+        },
+        {
+            "Question": "First To Make A Mistake,",
+            "Answer": "First To Be Laughed At"
+        },
+        {
+            "Question": "For A Livelihood, Sycophants Scratch",
+            "Answer": "Pimples"
+        },
+        {
+            "Question": "Frequent Kisses End In",
+            "Answer": "A Baby"
+        },
+        {
+            "Question": "Give A Brahman Clarified Butter And",
+            "Answer": "He Will Wriggle With Delight"
+        },
+        {
+            "Question": "God Does Not Shave,",
+            "Answer": "Why Should I?"
+        },
+        {
+            "Question": "God Made The Earth, But The Dutch",
+            "Answer": "Made Holland"
+        },
+        {
+            "Question": "Green Wood Smokes And",
+            "Answer": "Drives Off Folks"
+        },
+        {
+            "Question": "Hair By Hair, You Must",
+            "Answer": "Pluck Out The Whole Beard"
+        },
+        {
+            "Question": "Hairy Husband,",
+            "Answer": "Smooth Happiness"
+        },
+        {
+            "Question": "Hard Bread,",
+            "Answer": "Sharp Tooth"
+        },
+        {
+            "Question": "He Is Little Suited To Be A Baker, Whose Head",
+            "Answer": "Is Made Of Butter"
+        },
+        {
+            "Question": "He Must Have Clean Fingers Who Would",
+            "Answer": "Blow Another’s Nose"
+        },
+        {
+            "Question": "He Who Can Read And Write Has",
+            "Answer": "Four Eyes"
+        },
+        {
+            "Question": "He Who Does Not Eat Cheese Will",
+            "Answer": "Go Mad"
+        },
+        {
+            "Question": "He Who Doesn’t Eat Garlic Hasn’t",
+            "Answer": "A Stinking Mouth"
+        },
+        {
+            "Question": "He Who Eats Flax Seeds",
+            "Answer": "Eats His Own Shirt"
+        },
+        {
+            "Question": "He Who Enters A Whirlwind Will",
+            "Answer": "Depart As An Ant"
+        },
+        {
+            "Question": "He Who Gives You A Bone Does Not Wish",
+            "Answer": "To See You Dead"
+        },
+        {
+            "Question": "He Who Has Butter On His Head,",
+            "Answer": "Should Not Go In The Sun"
+        },
+        {
+            "Question": "He Who Has Got Luck Need Only Sit At Home With",
+            "Answer": "His Mouth Open"
+        },
+        {
+            "Question": "He Who Invites Storks Must",
+            "Answer": "Have Frogs"
+        },
+        {
+            "Question": "He Who Is Lucky Gets Piglets",
+            "Answer": "From His Dog"
+        },
+        {
+            "Question": "He Who Lives The Longest Has",
+            "Answer": "The Most Old Clothes"
+        },
+        {
+            "Question": "He Who Refuses The Sauce,",
+            "Answer": "Refuses The Bean"
+        },
+        {
+            "Question": "He Who Runs Alone",
+            "Answer": "Celebrates"
+        },
+        {
+            "Question": "He Who Spits Towards The Sky",
+            "Answer": "Gets It Back In His Own Face"
+        },
+        {
+            "Question": "He Will Disappear Like",
+            "Answer": "A Gray Donkey In The Fog"
+        },
+        {
+            "Question": "He Will Not Be Killed In Battle Who",
+            "Answer": "Licks The Saucepans At Home"
+        },
+        {
+            "Question": "He’d Go To Mass Every Morning If",
+            "Answer": "Holy Water Were Whiskey"
+        },
+        {
+            "Question": "I Am Scratching Myself Where",
+            "Answer": "I Am Itching"
+        },
+        {
+            "Question": "I Gave So Much Advice That",
+            "Answer": "Hair Grew On My Tongue"
+        },
+        {
+            "Question": "I May Look Like An Old Clunker,",
+            "Answer": "But I Just Haven’t Been Very Well Maintained"
+        },
+        {
+            "Question": "If An Ass Goes Astray, It May Be Found",
+            "Answer": "Near A Ruinous Wall"
+        },
+        {
+            "Question": "If I Be A Queen And Thou Be A Queen,",
+            "Answer": "Who Will Bang The Butter?"
+        },
+        {
+            "Question": "If One Pierces The Nose,",
+            "Answer": "Tears Come Out Of The Eyes"
+        },
+        {
+            "Question": "If Only I Were A Bird, Ah,",
+            "Answer": "But Eating Caterpillars?"
+        },
+        {
+            "Question": "If The Nose Was Not Between The Eyes,",
+            "Answer": "They Would Eat Each Other"
+        },
+        {
+            "Question": "If The Rubbish Heap Of The Barber Is Stirred, Nothing Turns Up But",
+            "Answer": "Hair"
+        },
+        {
+            "Question": "If There Is No Apple,",
+            "Answer": "One Eats A Little Carrot"
+        },
+        {
+            "Question": "If You Feel The Need To Work,",
+            "Answer": "Take A Nap And The Need Will Pass"
+        },
+        {
+            "Question": "If You Have A Nose You Can",
+            "Answer": "Wear A Nose-ring"
+        },
+        {
+            "Question": "If You Have No Money In Your Pocket,",
+            "Answer": "Have Honey In Your Mouth"
+        },
+        {
+            "Question": "If You Take The Wrong Hat From A Meeting, Make Sure",
+            "Answer": "It Doesn’t Belong To A Big Man"
+        },
+        {
+            "Question": "If You Throw Cakes At A Man, He Will",
+            "Answer": "Throw Cakes At You"
+        },
+        {
+            "Question": "If You Travel By Boat,",
+            "Answer": "Prepare For A Wetting"
+        },
+        {
+            "Question": "If You’re A Parrot,",
+            "Answer": "You’ll Be Green Wherever You Go"
+        },
+        {
+            "Question": "If Your Beard Were On Fire, He Would",
+            "Answer": "Light His Cigarette On It"
+        },
+        {
+            "Question": "In Eating And Scratching,",
+            "Answer": "Beginning’s The Main Thing"
+        },
+        {
+            "Question": "In The Theater, Free Seats",
+            "Answer": "Hiss First"
+        },
+        {
+            "Question": "It Is A Bold Mouse That Makes Her Nest",
+            "Answer": "In The Cat’s Ear"
+        },
+        {
+            "Question": "It Is A Sick Duck That Is Worried By The",
+            "Answer": "Weasel"
+        },
+        {
+            "Question": "It Is Better To Sit With An Owl Than To",
+            "Answer": "Hop With A Blackbird"
+        },
+        {
+            "Question": "It Is Easier To Bear A Child Once A Year Than",
+            "Answer": "To Shave Every Day"
+        },
+        {
+            "Question": "It Is Foolish To Hold A Candle Before The Sun Or Do A Somersault",
+            "Answer": "Before A Monkey"
+        },
+        {
+            "Question": "It Is Not Common For Hens To Have",
+            "Answer": "Pillows"
+        },
+        {
+            "Question": "It Takes More Than A Hood And A Sad Face",
+            "Answer": "To Make A Monk"
+        },
+        {
+            "Question": "Keep Watch For The",
+            "Answer": "Appearing Mushroom"
+        },
+        {
+            "Question": "Kindess To The Starfish Is As",
+            "Answer": "Wind In The Desert"
+        },
+        {
+            "Question": "Kiss The Hand You Cannot",
+            "Answer": "Bite"
+        },
+        {
+            "Question": "Let No One Say,",
+            "Answer": "From This Water I Will Not Drink"
+        },
+        {
+            "Question": "Life Is Uncertain, So",
+            "Answer": "Eat Your Dessert First"
+        },
+        {
+            "Question": "Long Sausage And Short Sermons",
+            "Answer": "Are Good"
+        },
+        {
+            "Question": "Love And Leprosy,",
+            "Answer": "Few Escape"
+        },
+        {
+            "Question": "Love Is A Furnace, But",
+            "Answer": "It Will Not Cook The Stew"
+        },
+        {
+            "Question": "Martha Sings Well When",
+            "Answer": "She’s Full"
+        },
+        {
+            "Question": "Matrimony And Macaroni,",
+            "Answer": "If They’re Not Hot They’re Not Good"
+        },
+        {
+            "Question": "Mistakes Ain’t Haystacks Or There’d Be More",
+            "Answer": "Fat Ponies Than There Is"
+        },
+        {
+            "Question": "Mix Thyself With Bran And Thou Shalt",
+            "Answer": "Be Eaten By Pigs"
+        },
+        {
+            "Question": "Need Will Make The Old Woman",
+            "Answer": "Trot"
+        },
+        {
+            "Question": "Never Bolt Your Door With",
+            "Answer": "A Boiled Carrot"
+        },
+        {
+            "Question": "No One Likes To Be The First To",
+            "Answer": "Step On Ice"
+        },
+        {
+            "Question": "Nothing To Bother You, Eh? Then Go And",
+            "Answer": "Buy A Goat"
+        },
+        {
+            "Question": "Of Ten Bald Men, Nine Are Deceitful And The Tenth",
+            "Answer": "Is Dumb"
+        },
+        {
+            "Question": "One Must Let People Talk Sense, Since",
+            "Answer": "Fish Can’t"
+        },
+        {
+            "Question": "One Shouldn’t Think About It Too Much When Marrying Or",
+            "Answer": "Taking Pills"
+        },
+        {
+            "Question": "Only Your Real Friends Will Tell You",
+            "Answer": "When Your Face Is Dirty"
+        },
+        {
+            "Question": "Other People’s Goats Always Have",
+            "Answer": "The Biggest Udders"
+        },
+        {
+            "Question": "Patience And A Mulberry Leaf Will",
+            "Answer": "Make A Silk Gown"
+        },
+        {
+            "Question": "Pissing Clear And Eating Well,",
+            "Answer": "Tell The Doctor To Go To Hell"
+        },
+        {
+            "Question": "Praise Is Not",
+            "Answer": "Pudding"
+        },
+        {
+            "Question": "Sing The Song Of The Man Whose",
+            "Answer": "Cart You Sit On"
+        },
+        {
+            "Question": "Small Children Eat Porridge; Big Ones",
+            "Answer": "Eat Their Parents’ Hearts"
+        },
+        {
+            "Question": "So Much Dough,",
+            "Answer": "So Many Buns"
+        },
+        {
+            "Question": "Sometimes One Must Let Turnips",
+            "Answer": "Be Pears"
+        },
+        {
+            "Question": "Sparrows Should Not Dance With Cranes,",
+            "Answer": "Their Legs Are Too Short"
+        },
+        {
+            "Question": "Study For A Test With A Pencil,",
+            "Answer": "The Pencil Will Remember"
+        },
+        {
+            "Question": "Swamp There, Water Here,",
+            "Answer": "Not Dry Anywhere"
+        },
+        {
+            "Question": "The Beetle In Its Hole Is",
+            "Answer": "A Sultan"
+        },
+        {
+            "Question": "The Biggest Drops Of Rain Fall",
+            "Answer": "On The Bald Head"
+        },
+        {
+            "Question": "The Crumbs In Thy Neighbour’s Beard",
+            "Answer": "Are His Own"
+        },
+        {
+            "Question": "The Fool In A Hurry Drinks His Tea",
+            "Answer": "With A Fork"
+        },
+        {
+            "Question": "The Frog Wanted To Be As Big As The Elephant",
+            "Answer": "And Burst"
+        },
+        {
+            "Question": "The Headless Army Can Be",
+            "Answer": "In For A Hard Time"
+        },
+        {
+            "Question": "The Lion Thinks Everyone Else",
+            "Answer": "Is The Same As He Is"
+        },
+        {
+            "Question": "The Peacock, Having Danced In Pride, Becomes Crestfallen On",
+            "Answer": "Seeing Its Ugly Legs"
+        },
+        {
+            "Question": "The Pig, Dressed In Sliks, Is",
+            "Answer": "A Pig"
+        },
+        {
+            "Question": "The Rhinoceros Which Has No Calf Takes Itself",
+            "Answer": "To The Muddy Pool"
+        },
+        {
+            "Question": "The Shrimp That Sleeps Is Carried Away By",
+            "Answer": "The Current"
+        },
+        {
+            "Question": "The Three Best Old Things: An Old Lamb, An Old Piglet, And",
+            "Answer": "Old Seaweed"
+        },
+        {
+            "Question": "There Is Medicine In The House, Alas,",
+            "Answer": "We Must Die"
+        },
+        {
+            "Question": "There Is No Such Thing As A Pretty Good",
+            "Answer": "Omelette"
+        },
+        {
+            "Question": "There Will Be Trouble If The Cobbler Starts",
+            "Answer": "Making Pies"
+        },
+        {
+            "Question": "There’s A Man Who Looks Like A Partridge With",
+            "Answer": "Legs Like A Mosquito"
+        },
+        {
+            "Question": "There’s Shelter Beneath An Old Woman’s",
+            "Answer": "Beard"
+        },
+        {
+            "Question": "To Carry A Light When The Moon Shines",
+            "Answer": "Makes Tigers Laugh"
+        },
+        {
+            "Question": "To Every Church There Comes",
+            "Answer": "A Fiesta"
+        },
+        {
+            "Question": "To Stop Drinking,",
+            "Answer": "Study A Drunkard When You Are Sober"
+        },
+        {
+            "Question": "Too Far East Is",
+            "Answer": "West"
+        },
+        {
+            "Question": "Touch Black Paint And You Will",
+            "Answer": "Have Black Fingers"
+        },
+        {
+            "Question": "Water Does Not Help",
+            "Answer": "Dried Fish"
+        },
+        {
+            "Question": "What A Pleasure To Sit In The Fire Having On",
+            "Answer": "Strange Trousers"
+        },
+        {
+            "Question": "What I See With My Eyes",
+            "Answer": "I Point To With My Finger"
+        },
+        {
+            "Question": "When A Calabash Breaks, A Bowl",
+            "Answer": "Should Not Laugh"
+        },
+        {
+            "Question": "When A Donkey Is Well Off,",
+            "Answer": "He Goes Dancing On Ice"
+        },
+        {
+            "Question": "When Spiders Appear On The Ground,",
+            "Answer": "Rain Clouds Will Soon Come Around"
+        },
+        {
+            "Question": "When The Deaf Man Gives The Blind Man A Lamp, He Receives",
+            "Answer": "Bagpipes"
+        },
+        {
+            "Question": "When The Fox Preaches,",
+            "Answer": "Look To Your Geese"
+        },
+        {
+            "Question": "When The Shepherds Quarrel,",
+            "Answer": "The Cheese Shows It"
+        },
+        {
+            "Question": "When There’s No Bread:",
+            "Answer": "Tortillas"
+        },
+        {
+            "Question": "When They Asked The Fish, “Have You News From The Sea?” She Answered, I Have Much To Say But",
+            "Answer": "My Mouth Is Full Of Water"
+        },
+        {
+            "Question": "When You Go To A Donkey’s House, Don’t",
+            "Answer": "Talk About Ears"
+        },
+        {
+            "Question": "When You Turn The Soup Kettle Upside Down,",
+            "Answer": "Your Friends Leave You"
+        },
+        {
+            "Question": "When Your Wife Tells You To Jump Off A Roof,",
+            "Answer": "Pray To God That It Is A Low One"
+        },
+        {
+            "Question": "Who Eats And Sings A Tune",
+            "Answer": "Wakes Up Crazy As A Loon"
+        },
+        {
+            "Question": "Who Loves Romero,",
+            "Answer": "Loves His Dog"
+        },
+        {
+            "Question": "Who Turns Into Honey Will",
+            "Answer": "Be Eaten By Bees"
+        },
+        {
+            "Question": "Why Should A Man Without A Head Want",
+            "Answer": "A Hat"
+        },
+        {
+            "Question": "With Patience And Saliva The Ant",
+            "Answer": "Swallows An Elephant"
+        },
+        {
+            "Question": "You Cannot Break Through A Wall With",
+            "Answer": "Your Forehead"
+        },
+        {
+            "Question": "You Cannot Drink Water, It Is Not",
+            "Answer": "Vodka"
+        },
+        {
+            "Question": "You Cannot Handle Honey Without",
+            "Answer": "Licking Your Fingers"
+        },
+        {
+            "Question": "You Cannot Prevent The Birds Of Sadness From Flying Over Your Head, But You Can Prevent Them From",
+            "Answer": "Nesting In Your Hair"
+        },
+        {
+            "Question": "You Cannot Sew Buttons On",
+            "Answer": "Your Neighbor’s Mouth"
+        },
+        {
+            "Question": "You May Not Be Made Out Of Flour, But",
+            "Answer": "You Smell Like A Biscuit"
+        },
+        {
+            "Question": "You May Ride A Horse Well, But Don’t",
+            "Answer": "Try To Sit On Its Nose"
+        },
+        {
+            "Question": "You May Serve A Hundred Years, But You Will Not Earn",
+            "Answer": "A Hundred Turnips"
+        },
+        {
+            "Question": "You Must Walk A Long While Behind A Wild Goose Before You Find",
+            "Answer": "An Ostrich Feather"
+        }
+    ]
+}

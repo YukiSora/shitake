@@ -1,40 +1,932 @@
 {
-  "isthatafact":
-  [
-    {"Question" : "A prostitute in 18th-century France could avoid punishment by", "Answer" : "Joining the opera"},
-    {"Question" : "According to the Scottish Protection of Animals Act of 1912, this is a protected species", "Answer" : "The Loch Ness Monster"},
-    {"Question" : "Ancient Romans paid their taxes with", "Answer" : "Honey"},
-    {"Question" : "World second highest mountain is", "Answer" : "K2"},
-    {"Question" : "Cloacina was the Roman goddess of", "Answer" : "Sewers"},
-    {"Question" : "Beethoven did this every time he made a cup of coffee", "Answer" : "Counted out exactly 60 beans"},
-    {"Question" : "Ernest Hemingway once wrote a six-word short story that reads", "Answer" : "For Sale: Baby Shoes, Never Worn"},
-    {"Question" : "During the first Crusade, English knights spent their entire campaign fund on", "Answer" : "Prostitutes"},
-    {"Question" : "During hot weather, the Eiffel Tower", "Answer" : "Grows around 6 inches"},
-    {"Question" : "Edward Elgar is the only major composer who mastered", "Answer" : "The Bassoon"},
-    {"Question" : "Hans Christian Anderson was terrified of", "Answer" : "Naked women"},
-    {"Question" : "Humphrey Bogart’s last words were", "Answer" : "I should never have switched from scotch to martinis"},
-    {"Question" : "Found in Mesopotamia, the world’s first written recipe was for", "Answer" : "Beer"},
-    {"Question" : "In 1535, Henry VIII put a tax on", "Answer" : "Beards"},
-    {"Question" : "The ancient Chinese believed that the thicker your earlobe,", "Answer" : "The more wealth you have"},
-    {"Question" : "The ancient Greeks used to do this to the inside of wine glasses", "Answer" : "Paint obscene pictures"},
-    {"Question" : "The Aztecs of Mexico wore this food item as jewelry", "Answer" : "Popcorn"},
-    {"Question" : "The inventor of the trampoline showed off his creation by jumping on it with", "Answer" : "Kangaroo"},
-    {"Question" : "The inventors of bubble wrap were trying to make", "Answer" : "Easy-wipe textured wallpaper"},
-    {"Question" : "The National Anthem of Bangladesh includes the line: The fragrance from your mango groves…", "Answer" : "Makes me wild with joy"},
-    {"Question" : "The number 88 is Morse code shorthand for", "Answer" : "Love and kisses"},
-    {"Question" : "The only female pharaoh of Egypt wore", "Answer" : "A fake beard"},
-    {"Question" : "The soil on Mars is good for growing", "Answer" : "Asparagus"},
-    {"Question" : "The work originated in the Bronze Age and was used by Mongolians as", "Answer" : "A helmet that doubled as a cooking pan"},
-    {"Question" : "This book has inspired more pop songs than any other", "Answer" : "The King James Bible"},
-    {"Question" : "When in need for inspiration, Ludwig van Beethoven would", "Answer" : "Pour water on himself"},
-    {"Question" : "When giving speeches, Sarkozy made himself look taller by", "Answer" : "Hiring short people to stand behind him"},
-    {"Question" : "When George Washington campaigned in Virginia in 1758, he bough this for every eligible voter", "Answer" : "Three pints of alcohol"},
-    {"Question" : "When a cat died in ancient Egypt, its owners did this as a sign of mourning", "Answer" : "Shaved their eyebrows"},
-    {"Question" : "Walt Disney intended for the EPCOT center to serve as", "Answer" : "An experimental model utopian society"},
-    {"Question" : "Visitors to Alcatraz report hearing this from inside Al Capone’s old jail cell", "Answer" : "Banjo music"},
-    {"Question" : "Typewriters used to be known as", "Answer" : "Literary pianos"},
-    {"Question" : "Tobacco companies use cat litter to", "Answer" : "Make their cigars bigger"},
-    {"Question" : "William A. Calderwood patented furniture that was", "Answer" : "Filled with helium so that it could float to the ceiling when not in use"},
-    {"Question" : "Wrigley’s was originally a producer of this product", "Answer" : "Soap"}
+  "isthatafact": [
+    {
+      "Question": "“Hapax Legomenon” describes",
+      "Answer": "A Word Or Phrase That Has Been Used Only Once In A Document"
+    },
+    {
+      "Question": "Psych! Outwit Your Friends Deck List",
+      "Answer": "A Word Or Phrase That Has Been Used Only Once In A Document"
+    },
+    {
+      "Question": "2.5 million of these were added to the tarmac of the UK’s M6 highway to make it more absorbent",
+      "Answer": "Romance Novels"
+    },
+    {
+      "Question": "A “temherte slaq” is an Ethiopian punctuation mark used to denote",
+      "Answer": "Sarcasm"
+    },
+    {
+      "Question": "A 19-year-old man in Virginia ended up in a three-day coma from drinking a quart of",
+      "Answer": "Soy Sauce"
+    },
+    {
+      "Question": "A British man changed his name to Tim Ppppppppprice because",
+      "Answer": "He Wanted To Make It Harder For Telemarketers To Pronounce"
+    },
+    {
+      "Question": "A cat-pee aroma is a compliment when",
+      "Answer": "Wine Tasting"
+    },
+    {
+      "Question": "A male that follows rugby culture is called",
+      "Answer": "A Rugger Bugger"
+    },
+    {
+      "Question": "A prostitute in 18th-century France could avoid punishment by",
+      "Answer": "Joining The Opera"
+    },
+    {
+      "Question": "A radio station contest awarded the Schachners, an Austrian couple, a free wedding as long as they agreed to",
+      "Answer": "Get Married Naked"
+    },
+    {
+      "Question": "A September 2011 football game in South Carolina was postponed due to",
+      "Answer": "Fire Ants"
+    },
+    {
+      "Question": "A spermologer is someone who",
+      "Answer": "Collects Trivia"
+    },
+    {
+      "Question": "A train passenger in Dusseldorf reported spotting a seemingly dead bearded man in a blue coat and red pants near the tracks, but when authorities arrived it was actually",
+      "Answer": "A Partially Deflated Papa Smurf Balloon"
+    },
+    {
+      "Question": "A water tower in Collinsville, Illinois, doubles as the world’s largest",
+      "Answer": "Catsup Bottle"
+    },
+    {
+      "Question": "A woman in Jasper, Georgia was charged with felony theft for stealing this from Walmart",
+      "Answer": "131 Pairs Of Underwear"
+    },
+    {
+      "Question": "According to the Scottish Protection of Animals Act of 1912, this is a protected species",
+      "Answer": "The Loch Ness Monster"
+    },
+    {
+      "Question": "According to the US government, the US flag is considered to be",
+      "Answer": "A Living Thing"
+    },
+    {
+      "Question": "According to the Vatican, you can reduce the time you spend in purgatory by",
+      "Answer": "Following The Pope On Twitter"
+    },
+    {
+      "Question": "Adam Hirtle of Colorado was arrested after he shot himself twice in the foot because",
+      "Answer": "He Wanted To Know How It Felt"
+    },
+    {
+      "Question": "Al Capone’s business card described him as",
+      "Answer": "A Used Furniture Dealer"
+    },
+    {
+      "Question": "Alan Turing did this to his coffee mug to prevent anyone else at work from using it",
+      "Answer": "Chained It To A Radiator"
+    },
+    {
+      "Question": "Alleged robber D. Pinkard was caught doing this in a house that he and a friend were robbing",
+      "Answer": "Napping On The Couch"
+    },
+    {
+      "Question": "Although there is no evidence that it was successful, Thomas Edison developed and tested a device to do this",
+      "Answer": "Communicate With The Dead"
+    },
+    {
+      "Question": "Americans were so certain crime was caused by alcohol that, on the eve of Prohibition, some towns in Iowa did this",
+      "Answer": "Sold Their Jails"
+    },
+    {
+      "Question": "Ancient Romans paid their taxes with",
+      "Answer": "Honey"
+    },
+    {
+      "Question": "Ann Hodges of Sylacauga, Alabama is the only person who has ever",
+      "Answer": "Been Directly Hit By A Meteorite"
+    },
+    {
+      "Question": "Around 10,000 Confederate soldiers made history during the Civil War by having",
+      "Answer": "One Of The World’s Largest Snowball Fights"
+    },
+    {
+      "Question": "Around 7,000 deaths a year can be attributed to doctors with",
+      "Answer": "Sloppy Handwriting"
+    },
+    {
+      "Question": "As a way of measuring distance, the Sami people of Northern Finland use “Poronkusema,” which is the distance that",
+      "Answer": "A Reindeer Can Walk Before It Needs To Urinate"
+    },
+    {
+      "Question": "At a traditional Belarusian wedding, the bride walks to the church dragging",
+      "Answer": "A Towel"
+    },
+    {
+      "Question": "At the Marshall, Texas chili cook-off, each chili submission must contain at least one",
+      "Answer": "Fire Ant"
+    },
+    {
+      "Question": "Avon, Ohio hosts an annual festival of",
+      "Answer": "Duct Tape"
+    },
+    {
+      "Question": "Because he reportedly enjoyed scaring his guests, John Quincy Adams kept this in one of the White House bathrooms",
+      "Answer": "A Pet Alligator"
+    },
+    {
+      "Question": "Because they didn’t have pockets, ancient Greeks commonly carried coins in",
+      "Answer": "Their Mouths"
+    },
+    {
+      "Question": "Beethoven did this every time he made a cup of coffee",
+      "Answer": "Counted Out Exactly 60 Beans"
+    },
+    {
+      "Question": "Before “The Exorcist,” Linda Blair was seen on TV in",
+      "Answer": "A Mustard Commercial"
+    },
+    {
+      "Question": "Before 2013, the biggest buyer of kale was",
+      "Answer": "Pizza Hut"
+    },
+    {
+      "Question": "Benjamin Franklin once wrote an essay on the possibility of",
+      "Answer": "Waterskiing"
+    },
+    {
+      "Question": "Between 1917 and 1940, the cure for patients with syphilis was to",
+      "Answer": "Give Them Malaria"
+    },
+    {
+      "Question": "Boring, Oregon has become a “sister community” of",
+      "Answer": "Dull, Scotland"
+    },
+    {
+      "Question": "Building managers install mirrors in lobbies because",
+      "Answer": "People Complain Less About Slow Elevators When They’re Busy Looking At Themselves"
+    },
+    {
+      "Question": "By viewing only the opening shots, Michelle Obama can identify every episode of",
+      "Answer": "The Brady Bunch”"
+    },
+    {
+      "Question": "Christopher Columbus suffered from athritis in his wrist because of",
+      "Answer": "A Bacterial Infection He Got From A Parrot"
+    },
+    {
+      "Question": "Clay Henry, former mayor of Lijitas, Texas, is a",
+      "Answer": "Goat"
+    },
+    {
+      "Question": "Cloacina was the Roman goddess of",
+      "Answer": "Sewers"
+    },
+    {
+      "Question": "Darwin’s best-selling book while he was alive was a 40-year study of",
+      "Answer": "Worm Poo"
+    },
+    {
+      "Question": "Denys Tucker was fired from the Natural History Museum in 1960 because",
+      "Answer": "He Claimed He Saw The Loch Ness Monster"
+    },
+    {
+      "Question": "Descartes believed that monkeys and apes could talk but kept quiet because",
+      "Answer": "They Didn’t Want To Be Asked To Do Any Work"
+    },
+    {
+      "Question": "Donald Duck’s voice started out as an attempt to",
+      "Answer": "Do An Impression Of A Lamb"
+    },
+    {
+      "Question": "During a competition to design the Canadian National flag, over 10% of entries featured",
+      "Answer": "A Beaver"
+    },
+    {
+      "Question": "During hot weather, the Eiffel Tower",
+      "Answer": "Grows About 6 Inches"
+    },
+    {
+      "Question": "During the first Crusade, English knights spent their entire campaign fund on",
+      "Answer": "Prostitutes"
+    },
+    {
+      "Question": "Edward Elgar is the only major composer who mastered",
+      "Answer": "The Bassoon"
+    },
+    {
+      "Question": "Emperor Caligula declared war on",
+      "Answer": "The Sea"
+    },
+    {
+      "Question": "Engineers from the University of Sheffield in England check for pollution in rivers and streams using",
+      "Answer": "Tampons"
+    },
+    {
+      "Question": "Ernest Hemingway once wrote a six-word short story that reads",
+      "Answer": "For Sale: Baby Shoes, Never Worn"
+    },
+    {
+      "Question": "Ethel Hidalgo patented a scented doll that looks like",
+      "Answer": "An Old Person"
+    },
+    {
+      "Question": "Female koalas in captivity often reject male koalas and",
+      "Answer": "Mate With Other Females"
+    },
+    {
+      "Question": "Flamin’ Hot Cheetos were invented in 1976 by",
+      "Answer": "A Janitor At The Frito-lay Plant"
+    },
+    {
+      "Question": "For Christmas in 1936, Salvador Dal gave Harpo Marx",
+      "Answer": "A Harp With Barbed-wire Strings"
+    },
+    {
+      "Question": "For suspicion of tampering with the Presidential election, in 2013 police in the Maldives arrested",
+      "Answer": "A Coconut"
+    },
+    {
+      "Question": "Found in Mesopotamia, the world’s first written recipe was for",
+      "Answer": "Beer"
+    },
+    {
+      "Question": "Friends and family cover a woman with spoiled eggs, molasses, and other items during a Scottish ritual called",
+      "Answer": "Blackening The Bride"
+    },
+    {
+      "Question": "Geniophobia is",
+      "Answer": "The Fear Of Chins"
+    },
+    {
+      "Question": "Graham crackers were invented to",
+      "Answer": "Help Suppress Sexual Desire"
+    },
+    {
+      "Question": "Hans Christian Anderson was terrified of",
+      "Answer": "Naked Women"
+    },
+    {
+      "Question": "Heroin was originally marketed as",
+      "Answer": "Cough Medicine"
+    },
+    {
+      "Question": "Humphrey Bogart’s last words were",
+      "Answer": "I Should Never Have Switched From Scotch To Martinis"
+    },
+    {
+      "Question": "If you suffer from cold urticaria you are",
+      "Answer": "Allergic To Cold Air"
+    },
+    {
+      "Question": "In 1518, around 400 people began doing this for days on end, and some ended up dying as a result",
+      "Answer": "Dancing"
+    },
+    {
+      "Question": "In 1535, Henry VIII put a tax on",
+      "Answer": "Beards"
+    },
+    {
+      "Question": "In 1823, Lord Byron was the first man to use this word",
+      "Answer": "Bored"
+    },
+    {
+      "Question": "In 1876, the Munich Health Department ruled that breastfeeding women only needed to drink",
+      "Answer": "Two Pints Of Beer A Day"
+    },
+    {
+      "Question": "In 1878, the formal telephone greeting was to answer with",
+      "Answer": "Ahoy"
+    },
+    {
+      "Question": "In 1879, to deliver mail to nearby villages, the Belgian city of Lige commissioned 37",
+      "Answer": "Cats"
+    },
+    {
+      "Question": "In 1948, Martin Luther King, Jr. received a C+ in these two subjects",
+      "Answer": "Church Music And Public Speaking"
+    },
+    {
+      "Question": "In 1979, the Uruguayan soccer player Daniel Allende transferred teams for a fee of",
+      "Answer": "550 Beefsteaks"
+    },
+    {
+      "Question": "In 1897, Felix Hoffmann invented aspirin and",
+      "Answer": "Heroin"
+    },
+    {
+      "Question": "In 1990, Alfred Wolfram set a world record by doing this in eight hours",
+      "Answer": "Kissing Over 8,000 Women"
+    },
+    {
+      "Question": "In 1992 there were 5,840 people checked into emergency rooms with injuries having to do with",
+      "Answer": "Pillows"
+    },
+    {
+      "Question": "In 1993, the United States government spent $277,000 on",
+      "Answer": "Pickle Research"
+    },
+    {
+      "Question": "In 1999 a 4-year-old girl turned yellow after consuming too much",
+      "Answer": "Sunny Delight"
+    },
+    {
+      "Question": "In 2004, Ecuador launched a national campaign against",
+      "Answer": "Being Late"
+    },
+    {
+      "Question": "In 2006, to raise money for Habitat for Humanity, William Shatner put this up for auction",
+      "Answer": "His Kidney Stone"
+    },
+    {
+      "Question": "In 2008, a penguin in Norway named Nils Olav was",
+      "Answer": "Knighted"
+    },
+    {
+      "Question": "In 2008, on an Italian mountainside, an Austrian art group constructed a 200-foot long",
+      "Answer": "Pink Knit Bunny"
+    },
+    {
+      "Question": "In 2009 Jo Eglan asked her community to help her knit 1,500 homemade sweaters for",
+      "Answer": "Bald Chickens"
+    },
+    {
+      "Question": "In 2009, a man dressed like Santa robbed a Tennessee bank claiming he needed the money to",
+      "Answer": "Pay His Elves"
+    },
+    {
+      "Question": "In 2010, McDonald’s mistakenly put these in 5,000 Happy Meals",
+      "Answer": "Condoms"
+    },
+    {
+      "Question": "In 2011, this was the most stolen food in the world",
+      "Answer": "Cheese"
+    },
+    {
+      "Question": "In Alamogordo, New Mexico, you can find the world’s largest",
+      "Answer": "Pistachio Nut"
+    },
+    {
+      "Question": "In ancient Greek, the definition of the word “idiot” was",
+      "Answer": "Anyone Who Wasn’t A Politician"
+    },
+    {
+      "Question": "In ancient Japan, prizes were awarded both loudness and duration in",
+      "Answer": "Farting Contests"
+    },
+    {
+      "Question": "In Aztec culture, this activity was restricted to the upper class",
+      "Answer": "The Smelling Of Certain Flowers"
+    },
+    {
+      "Question": "In Canada, HOH OHO is",
+      "Answer": "Santa’s Postal Code"
+    },
+    {
+      "Question": "In Hong Kong in1958, Bruce Lee was the champion of",
+      "Answer": "Cha-cha Dancing"
+    },
+    {
+      "Question": "In Inuktitut, “iminngernaveersaartunngortussaavunga” means",
+      "Answer": "I Should Try Not To Become An Alcoholic"
+    },
+    {
+      "Question": "In January 2002, the United States dropped 2.4 million of these on Afghanistan",
+      "Answer": "Pop-tarts"
+    },
+    {
+      "Question": "In May of 2015, the US army announced that it wanted to begin testing this not yet available technology for its soldiers",
+      "Answer": "Invisibility Cloaks"
+    },
+    {
+      "Question": "In Norway, if you want to change your last name to one that 200 or fewer people have, you must",
+      "Answer": "Ask Permission From Everyone With That Last Name"
+    },
+    {
+      "Question": "In Roman law, balnearii were criminals who",
+      "Answer": "Stole Clothes From Public Baths"
+    },
+    {
+      "Question": "In the 13th century, Europeans baptized children with",
+      "Answer": "Beer"
+    },
+    {
+      "Question": "In the 17th century, the salary of the Governor of Barbados was paid in",
+      "Answer": "Sugar"
+    },
+    {
+      "Question": "In the 1800s, popular British princess Alexandra made this trendy",
+      "Answer": "Limping"
+    },
+    {
+      "Question": "In the 18th Century, King George I declared this to be property of the crown",
+      "Answer": "All Pigeon Droppings"
+    },
+    {
+      "Question": "In the 1940s, the USSR requested a version of Coca-Cola that was",
+      "Answer": "Clear"
+    },
+    {
+      "Question": "In the 19th and early 20th centuries, it was a popular 21st birthday present to have",
+      "Answer": "Your Teeth Removed"
+    },
+    {
+      "Question": "In the 19th-century, “Alaska strawberries” was slang for",
+      "Answer": "Dried Beans"
+    },
+    {
+      "Question": "In the book “If I Ran the Zoo,” Dr. Seuss coined this word",
+      "Answer": "Nerd"
+    },
+    {
+      "Question": "In the First World War, British soldiers had a daily ration of 6 pints of",
+      "Answer": "Tea"
+    },
+    {
+      "Question": "In the Middle Ages, chicken soup was considered to be",
+      "Answer": "An Aphrodisiac"
+    },
+    {
+      "Question": "In the U.S., October 9th is celebrated as",
+      "Answer": "Moldy Cheese Day"
+    },
+    {
+      "Question": "In the U.S., September 27th is national",
+      "Answer": "Crush A Can Day"
+    },
+    {
+      "Question": "In their first film together, Minnie Mouse escapes Mickey Mouse’s kiss by",
+      "Answer": "Parachuting Out Of An Airplane"
+    },
+    {
+      "Question": "Irving Berlin composed 3,000, songs, but could not do this",
+      "Answer": "Read Music"
+    },
+    {
+      "Question": "It took Goldie Hawn and Kurt Russell three days to notice that this had been stolen",
+      "Answer": "Their Car"
+    },
+    {
+      "Question": "It was admitted by George R.R. Martin that “Game of Thrones” began as stories about",
+      "Answer": "His Pet Turtles"
+    },
+    {
+      "Question": "It was once considered bad luck in France to do this on a Friday",
+      "Answer": "Cut Your Fingernails"
+    },
+    {
+      "Question": "It’s a custom in Turkey for the bride to ask her unmarried bridesmaids and relatives to do this",
+      "Answer": "Sign The Soles Of Her Shoes"
+    },
+    {
+      "Question": "Jack Kerouac’s favorite pasttime late in life was to get drunk and",
+      "Answer": "Watch The Beverly Hillbillies"
+    },
+    {
+      "Question": "Jarvis Sutton was arrested after he called 911 eighty times asking for a delivery of",
+      "Answer": "Burgers, Kool-aid, And Pot"
+    },
+    {
+      "Question": "Judi Dench first appeared on stage playing",
+      "Answer": "A Snail In A School Play"
+    },
+    {
+      "Question": "Kali is the Hindu goddess of death, violence, sexuality, and",
+      "Answer": "Motherly Love"
+    },
+    {
+      "Question": "Kim Il-Sung’s grandson was fired as heir after trying to enter Japan on a false passport in order to",
+      "Answer": "Visit Disneyland"
+    },
+    {
+      "Question": "King Charles XIV of Sweden had a tattoo that read…",
+      "Answer": "Death To Kings"
+    },
+    {
+      "Question": "King George III’s urine was",
+      "Answer": "Blue"
+    },
+    {
+      "Question": "Lord Thankerton was known to, during court sessions, take a nap and",
+      "Answer": "Knit"
+    },
+    {
+      "Question": "Louis XIV seasoned all of his food with this",
+      "Answer": "Soy Sauce"
+    },
+    {
+      "Question": "Mick Jagger replaced the emerald filling on his front tooth with a diamond because",
+      "Answer": "People Kept Telling Him He Had Spinach In His Teeth"
+    },
+    {
+      "Question": "Moon dust smells like",
+      "Answer": "Gunpowder"
+    },
+    {
+      "Question": "More than any other nationality, Canadians use this emoji the most",
+      "Answer": "The Poo Emoji"
+    },
+    {
+      "Question": "Most firehouses were built with spiral staircases in order to",
+      "Answer": "Prevent Horses From Climbing The Stairs"
+    },
+    {
+      "Question": "Mozart composed a piano piece that required a player to use this to hit all the correct notes",
+      "Answer": "Their Nose"
+    },
+    {
+      "Question": "Nantaimori is the practice of serving sushi on",
+      "Answer": "A Naked Male Body"
+    },
+    {
+      "Question": "Oklahoma’s state vegetable is",
+      "Answer": "The Watermelon"
+    },
+    {
+      "Question": "On average, countries that eat the most chocolate have the most",
+      "Answer": "Nobel Prize Winners"
+    },
+    {
+      "Question": "On Saturn and Jupiter, these fall from the sky when it rains",
+      "Answer": "Diamonds"
+    },
+    {
+      "Question": "On Saturn’s moon, Titan, all of the mountains are named after peaks in",
+      "Answer": "The Lord Of The Rings"
+    },
+    {
+      "Question": "One Christmas Eve during WWI, British and German soldiers",
+      "Answer": "Sang Carols Together"
+    },
+    {
+      "Question": "One of the original owners of Domino’s Pizza sold his share of the company for",
+      "Answer": "A Used Volkswagen Beetle"
+    },
+    {
+      "Question": "One of the words added to oxforddictionaries.com in 2014 was “MAMIL”, which stands for",
+      "Answer": "Middle-aged Man In Lycra"
+    },
+    {
+      "Question": "Plato thought that the smallest particles of matter were",
+      "Answer": "Tiny Right-angled Triangles"
+    },
+    {
+      "Question": "Play-Doh was originally used to",
+      "Answer": "Remove Stains From Walls"
+    },
+    {
+      "Question": "Poison oak and poison ivy are members of",
+      "Answer": "The Cashew Family"
+    },
+    {
+      "Question": "Polterabend is a German custom in which guests do this the night before a wedding for good luck",
+      "Answer": "Break Porcelain Dishes"
+    },
+    {
+      "Question": "Queen Elizabeth I often drank this for breakfast",
+      "Answer": "Two Pints Of Strong Beer"
+    },
+    {
+      "Question": "Rhinotillexomania is the scientific term for being unable to",
+      "Answer": "Stop Picking Your Nose"
+    },
+    {
+      "Question": "Ruth Graves Wakefield sold her recipe for the chocolate chip cookie to Nestle in exchange for",
+      "Answer": "A Lifetime Supply Of Chocolate"
+    },
+    {
+      "Question": "Sailors in South America won a naval battle in 1841 by firing this out of a cannon",
+      "Answer": "Cheese"
+    },
+    {
+      "Question": "Samsung’s first product was",
+      "Answer": "Dried Fish"
+    },
+    {
+      "Question": "Samurai warriors were paid with",
+      "Answer": "Rice"
+    },
+    {
+      "Question": "Shane Lindsey was arrested for robbing a Pennsylvania bank when he stopped to",
+      "Answer": "Eat Biscuits At A Nearby Restaurant"
+    },
+    {
+      "Question": "Siblings Erik and Josephine found one another again after 16 years of being estranged by",
+      "Answer": "Matching On Tinder"
+    },
+    {
+      "Question": "Since smoking was banned in 2004, the main currency in US prisons is",
+      "Answer": "Canned Mackerel"
+    },
+    {
+      "Question": "Some ancient Romans gargled with this to freshen their breath",
+      "Answer": "Urine"
+    },
+    {
+      "Question": "The acronym “lol” was used in the 1960s to mean",
+      "Answer": "Little Old Lady"
+    },
+    {
+      "Question": "The Afrikaans word for astrology is",
+      "Answer": "Sterrewiggelary"
+    },
+    {
+      "Question": "The American secret service tried to spike Hitler’s carrots with",
+      "Answer": "Female Hormones"
+    },
+    {
+      "Question": "The ancient Chinese believed that the thicker your earlobe,",
+      "Answer": "The More Wealth You Would Have"
+    },
+    {
+      "Question": "The ancient Greeks used to do this to the inside of wine glasses",
+      "Answer": "Paint Obscene Pictures"
+    },
+    {
+      "Question": "The award for first prize at the 2010 Karaoke World Championships in Moscow was",
+      "Answer": "One Million Dumplings"
+    },
+    {
+      "Question": "The Aztecs of Mexico wore this food item as jewelry",
+      "Answer": "Popcorn"
+    },
+    {
+      "Question": "The Chinese used to put these around the house as fire alarms",
+      "Answer": "Firecrackers"
+    },
+    {
+      "Question": "The Confused, the Drinker, the Dark Dagger, the Lettuce Shark, and the Mother Shipton are all names of",
+      "Answer": "British Moths"
+    },
+    {
+      "Question": "The Dart Kitten, English Electric Wren, and Watkinson Dingbat are all names of",
+      "Answer": "Early British Airplanes"
+    },
+    {
+      "Question": "The first credit card was made out of",
+      "Answer": "Cardboard"
+    },
+    {
+      "Question": "The first Saturday in August each year is",
+      "Answer": "National Mustard Day"
+    },
+    {
+      "Question": "The first violence of the French Revolution took place at",
+      "Answer": "A Luxury Wallpaper Factory"
+    },
+    {
+      "Question": "The five golden rings in “The Twelve Days of Christmas” were originally",
+      "Answer": "Ring-necked Pheasants"
+    },
+    {
+      "Question": "The flower of the Alzheimer’s Society of Canada is the",
+      "Answer": "Forget-me-not"
+    },
+    {
+      "Question": "The presence of this in Brussels sprouts gives it a bitter taste",
+      "Answer": "Cyanide"
+    },
+    {
+      "Question": "The inventor of the trampoline showed off his creation by jumping on it with",
+      "Answer": "A Kangaroo"
+    },
+    {
+      "Question": "The inventors of bubble wrap were trying to make",
+      "Answer": "Easy-wipe Textured Wallpaper"
+    },
+    {
+      "Question": "The Japanese word “kareishu” describes the smell of",
+      "Answer": "Old People"
+    },
+    {
+      "Question": "The Japanese word for “handbag” is",
+      "Answer": "Handubagu"
+    },
+    {
+      "Question": "The last Monday of January is National",
+      "Answer": "Bubble Wrap Appreciation Day"
+    },
+    {
+      "Question": "The lighting and sound cables under the stage for a concert in Greenwich Park in London were laid by",
+      "Answer": "A Team Of Ferrets"
+    },
+    {
+      "Question": "The longest name of any place in the United States is a lake called",
+      "Answer": "Chargoggagoggmanchauggagoggchaubunagungamaugg"
+    },
+    {
+      "Question": "The magic word “abracadabra” was first used to ward off",
+      "Answer": "Malaria"
+    },
+    {
+      "Question": "The medical condition known as a stroke is short for this phrase",
+      "Answer": "A Stroke Of God’s Hand"
+    },
+    {
+      "Question": "The most shoplifted book in the USA is",
+      "Answer": "The Bible"
+    },
+    {
+      "Question": "The NASA Vehicle Assembly Building is so large it has its own",
+      "Answer": "Rainclouds"
+    },
+    {
+      "Question": "The National Anthem of Bangladesh includes the line: The fragrance from your mango groves…",
+      "Answer": "Makes Me Wild With Joy"
+    },
+    {
+      "Question": "The Nigerian navy has four warships whose names all mean this in different languages",
+      "Answer": "Hippopotamus"
+    },
+    {
+      "Question": "The number 88 is Morse code shorthand for",
+      "Answer": "Love And Kisses"
+    },
+    {
+      "Question": "The official state dance of North Carolina is",
+      "Answer": "The Shag"
+    },
+    {
+      "Question": "The official state sport of Maryland is",
+      "Answer": "Jousting"
+    },
+    {
+      "Question": "The only female pharaoh of Egypt wore",
+      "Answer": "A Fake Beard"
+    },
+    {
+      "Question": "The second man to go over Niagara Falls in a barrel and survive later died by",
+      "Answer": "Slipping On An Orange Peel"
+    },
+    {
+      "Question": "The second most dangerous item found in a garden is",
+      "Answer": "A Flowerpot"
+    },
+    {
+      "Question": "The soil on Mars is particularly good for growing",
+      "Answer": "Asparagus"
+    },
+    {
+      "Question": "The Swedish word for “speed bump” is",
+      "Answer": "Farthinder"
+    },
+    {
+      "Question": "The tall chef’s hat, or toque blanche, traditionally had a hundred pleats to represent",
+      "Answer": "The Number Of Ways To Cook An Egg"
+    },
+    {
+      "Question": "The three most highlighted Kindle books according to Amazon are: the Bible, the Steve Jobs biography, and",
+      "Answer": "The Hunger Games"
+    },
+    {
+      "Question": "In 1816, The Times of London warned its readers that the waltz was",
+      "Answer": "Fatally Contagious"
+    },
+    {
+      "Question": "The Victorian slang for “sausages” was",
+      "Answer": "Bags Omystery"
+    },
+    {
+      "Question": "The Village People recruited members with a poster that read: “Macho types wanted, must have",
+      "Answer": "Mustache"
+    },
+    {
+      "Question": "The wok originated in the Bronze Age and was used by Mongolians as",
+      "Answer": "A Helmet That Doubled As A Cooking Pan"
+    },
+    {
+      "Question": "The word “korea” is Finnish for",
+      "Answer": "Gorgeous"
+    },
+    {
+      "Question": "The word “korea” is Finnish for",
+      "Answer": "Gorgeous"
+    },
+    {
+      "Question": "The zip code 20252 belongs to",
+      "Answer": "Smokey Bear"
+    },
+    {
+      "Question": "These were first used by sacrificial dancers in Borneo",
+      "Answer": "Pogo Sticks"
+    },
+    {
+      "Question": "This book has inspired more pop songs than any other",
+      "Answer": "The King James Bible"
+    },
+    {
+      "Question": "This is an old Irish term for the time of day when a person can no longer be distinguished from a bush",
+      "Answer": "Day Dapple"
+    },
+    {
+      "Question": "This is the full name of Jamie Oliver and Juliette Norton’s third child",
+      "Answer": "Petal Blossom Rainbow Oliver"
+    },
+    {
+      "Question": "This is what John Tyler was doing when he was informed that he was President",
+      "Answer": "Playing Marbles"
+    },
+    {
+      "Question": "This person first used the letter “u” as an abbreviation for “you”",
+      "Answer": "William Shakespeare"
+    },
+    {
+      "Question": "This was invented at a London club called the Cat Whiskers",
+      "Answer": "The Hand Jive"
+    },
+    {
+      "Question": "Thomas Edison proposed to his second wife with",
+      "Answer": "Morse Code"
+    },
+    {
+      "Question": "Tobacco companies use cat litter to",
+      "Answer": "Make Their Cigars Bigger"
+    },
+    {
+      "Question": "Typewriters used to be known as",
+      "Answer": "Literary Pianos"
+    },
+    {
+      "Question": "Until the 10th century, this was the English word for “actors”",
+      "Answer": "Hypocrites"
+    },
+    {
+      "Question": "Until the early 20th century, it was grounds for divorce in Japan if a wife was",
+      "Answer": "Left-handed"
+    },
+    {
+      "Question": "Urea, the main ingredient in urine, is added to these to enhance the flavor of",
+      "Answer": "Cigarettes"
+    },
+    {
+      "Question": "US patent no. 3,234,948 is for cheese-flavored",
+      "Answer": "Cigarettes"
+    },
+    {
+      "Question": "Victorian guidebooks advised women to put pins in their mouths on trains to",
+      "Answer": "Avoid Being Kissed When The Train Went Through Tunnels"
+    },
+    {
+      "Question": "Visitors to Alcatraz report hearing this from inside Al Capone’s old jail cell",
+      "Answer": "Banjo Music"
+    },
+    {
+      "Question": "Walt Disney intended for the EPCOT center to serve as",
+      "Answer": "An Experimental Model Utopian Society"
+    },
+    {
+      "Question": "When a cat died in ancient Egypt, its owners did this as a sign of mourning",
+      "Answer": "Shaved Their Eyebrows"
+    },
+    {
+      "Question": "When a Navajo baby laughs aloud for the first time, his or her family",
+      "Answer": "Throws A Party"
+    },
+    {
+      "Question": "When Danes pose for photos, they say",
+      "Answer": "Orange"
+    },
+    {
+      "Question": "When George Washington campaigned in Virginia in 1758, he bought this for every eligible voter",
+      "Answer": "Three Pints Of Alcohol"
+    },
+    {
+      "Question": "When giving speeches, Sarkozy made himself look taller by",
+      "Answer": "Hiring Short People To Stand Behind Him"
+    },
+    {
+      "Question": "When in need of inspiration, Ludwig van Beethoven would",
+      "Answer": "Pour Water On Himself"
+    },
+    {
+      "Question": "When Johnny Depp broke up with Winona Ryder, he had his tattoo altered to read",
+      "Answer": "Wino Forever"
+    },
+    {
+      "Question": "When Michael Foot was appointed Chair of the Disarmament Committee, the headline of the London Times announcement was",
+      "Answer": "Foot Heads Arms Body"
+    },
+    {
+      "Question": "When the Emperor of Ethiopia Menelik II felt unwell, he would",
+      "Answer": "Eat A Few Pages Out Of The Bible"
+    },
+    {
+      "Question": "When you are afraid, your ears do this",
+      "Answer": "Secrete More Earwax"
+    },
+    {
+      "Question": "Whenever the king of Swaziland rises from his seat he must be greeted with",
+      "Answer": "Cheers And Gasps Of Admiration"
+    },
+    {
+      "Question": "While giving a speech in Milwaukee, President Theodore Roosevelt was shot in the chest, but insisted on finishing his speech, declaring that",
+      "Answer": "It Takes More Than One Bullet To Kill A Bull Moose"
+    },
+    {
+      "Question": "William A. Calderwood patented furniture that was",
+      "Answer": "Filled With Helium So That It Could Float To The Ceiling When Not In Use"
+    },
+    {
+      "Question": "Wrigley’s was originally a producer of this product",
+      "Answer": "Soap"
+    }
   ]
 }
