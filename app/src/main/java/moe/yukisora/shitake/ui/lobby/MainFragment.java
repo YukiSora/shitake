@@ -15,11 +15,11 @@ import moe.yukisora.shitake.R;
  * Created by Delacrix on 10/10/2016.
  */
 
-public class HostFragment extends Fragment {
+public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_host, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         return view;
     }

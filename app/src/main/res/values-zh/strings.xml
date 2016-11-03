@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="host_btn_join">加入游戏</string>
-    <string name="host_btn_create">创建游戏</string>
-    <string name="host_btn_tutorial">游戏教程</string>
-    <string name="host_btn_about">关于我们</string>
+    <string name="main_btn_join">加入游戏</string>
+    <string name="main_btn_create">创建游戏</string>
+    <string name="main_btn_tutorial">游戏教程</string>
+    <string name="main_btn_about">关于我们</string>
 
 </resources>

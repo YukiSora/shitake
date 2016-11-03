@@ -2,9 +2,9 @@
 
     <string name="app_name">"Shitake"</string>
 
-    <string name="host_btn_join">Join Game</string>
-    <string name="host_btn_create">Create Game</string>
-    <string name="host_btn_tutorial">Tutorial</string>
-    <string name="host_btn_about">About Us</string>
+    <string name="main_btn_join">Join Game</string>
+    <string name="main_btn_create">Create Game</string>
+    <string name="main_btn_tutorial">Tutorial</string>
+    <string name="main_btn_about">About Us</string>
 
 </resources>

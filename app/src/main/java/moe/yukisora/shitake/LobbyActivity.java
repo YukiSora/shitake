@@ -3,7 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import moe.yukisora.shitake.ui.lobby.HostFragment;
+import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -17,7 +17,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new HostFragment())
+                .replace(R.id.activity_main_vg_fragment, new MainFragment())
                 .commit();
     }
 }

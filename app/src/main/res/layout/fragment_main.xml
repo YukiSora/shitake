@@ -31,12 +31,12 @@
             app:mrl_rippleRoundedCorners="50dp">
 
             <Button
-                android:id="@+id/host_btn_join"
+                android:id="@+id/main_btn_join"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_button_green"
                 android:gravity="center"
-                android:text="@string/host_btn_join"
+                android:text="@string/main_btn_join"
                 android:textColor="@color/colorWhite" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
@@ -49,12 +49,12 @@
             app:mrl_rippleRoundedCorners="50dp">
 
             <Button
-                android:id="@+id/host_btn_create"
+                android:id="@+id/main_btn_create"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_button_green"
                 android:gravity="center"
-                android:text="@string/host_btn_create"
+                android:text="@string/main_btn_create"
                 android:textColor="@color/colorWhite" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
@@ -67,12 +67,12 @@
             app:mrl_rippleRoundedCorners="50dp">
 
             <Button
-                android:id="@+id/host_btn_tutorial"
+                android:id="@+id/main_btn_tutorial"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_button_green"
                 android:gravity="center"
-                android:text="@string/host_btn_tutorial"
+                android:text="@string/main_btn_tutorial"
                 android:textColor="@color/colorWhite" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
@@ -85,12 +85,12 @@
             app:mrl_rippleRoundedCorners="50dp">
 
             <Button
-                android:id="@+id/host_btn_about"
+                android:id="@+id/main_btn_about"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_button_green"
                 android:gravity="center"
-                android:text="@string/host_btn_about"
+                android:text="@string/main_btn_about"
                 android:textColor="@color/colorWhite" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
