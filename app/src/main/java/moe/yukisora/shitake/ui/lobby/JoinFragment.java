@@ -18,6 +18,7 @@ import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
@@ -58,7 +59,7 @@ public class JoinFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //ListView
-        ListView listView = (ListView)view.findViewById(R.id.bluetoothListView);
+        ListView listView = (ListView)view.findViewById(R.id.hostListView);
         adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_host, new String[]{"name"}, new int[]{R.id.bluetoothTextView});
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,6 +75,9 @@ public class JoinFragment extends Fragment {
                         .commit();
             }
         });
+
+        //calculate list view height inside scroll view
+        MainActivity.setListViewHeightBasedOnChildren(listView);
 
         //Bluetooth discovery
         Bluetooth.getInstance().startDiscovery();
