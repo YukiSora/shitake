@@ -81,6 +81,11 @@ public class Bluetooth {
         return client;
     }
 
+    public void closeClient() {
+        client.close();
+        client = null;
+    }
+
     public BluetoothServer getServer() {
         return server;
     }
@@ -138,9 +143,19 @@ public class Bluetooth {
                                 Log.i("poi", "read: " + message);
                             }
                         } catch (IOException ignore) {
+                            close();
                         }
                     }
                 }).start();
+            }
+
+            public void close() {
+                try {
+                    clients.remove(this);
+                    PlayerAPIClient.getInstance().removePlayer(client.getRemoteDevice().getAddress());
+                    client.close();
+                } catch (IOException ignore) {
+                }
             }
         }
     }
@@ -175,6 +190,7 @@ public class Bluetooth {
                                 Log.i("poi", "read: " + in.readLine());
                             }
                         } catch (IOException ignore) {
+                            Log.i("poi", ignore.getMessage());
                         }
                     }
                 }).start();
@@ -190,6 +206,15 @@ public class Bluetooth {
                 } catch (IOException ignore) {
                 }
             }
+        }
+
+        public void close() {
+            try {
+                server.close();
+            } catch (IOException ignore) {
+                Log.i("poi", ignore.getMessage());
+            }
+
         }
     }
 }

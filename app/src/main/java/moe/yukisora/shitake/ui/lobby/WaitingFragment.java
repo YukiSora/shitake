@@ -47,10 +47,21 @@ public class WaitingFragment extends Fragment {
     public void addPlayerView(PlayerAPIClient.Player player) {
         View view = ((LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_player, waitingLinearLayout, false);
 
+        view.setTag(player.address);
+
         ((ImageView)view.findViewById(R.id.playerPicture)).setImageResource(R.mipmap.ic_launcher);
         ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
 
         waitingLinearLayout.addView(view);
+    }
+
+    public void removePlayerView(PlayerAPIClient.Player player) {
+        for (int i = 0; i < waitingLinearLayout.getChildCount(); i++) {
+            LinearLayout view = (LinearLayout)waitingLinearLayout.getChildAt(i);
+            if (view.getTag().equals(player.address)) {
+                waitingLinearLayout.removeView(view);
+            }
+        }
     }
 
     @Override
@@ -68,6 +79,13 @@ public class WaitingFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        Bluetooth.getInstance().closeClient();
+    }
+
     public static class UpdateListHandler extends Handler {
         private WaitingFragment fragment;
 
@@ -77,11 +95,20 @@ public class WaitingFragment extends Fragment {
             this.fragment = fragment;
         }
 
-        public void updateList(final PlayerAPIClient.Player player) {
+        public void addToList(final PlayerAPIClient.Player player) {
             post(new Runnable() {
                 @Override
                 public void run() {
                     fragment.addPlayerView(player);
+                }
+            });
+        }
+
+        public void removeFromList(final PlayerAPIClient.Player player) {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    fragment.removePlayerView(player);
                 }
             });
         }

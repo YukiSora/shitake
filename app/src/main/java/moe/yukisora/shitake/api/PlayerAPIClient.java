@@ -28,12 +28,12 @@ public class PlayerAPIClient {
     public void addPlayer(String address, String name, Bitmap picture) {
         Player player = new Player(address, name, picture);
         players.put(address, player);
-        WaitingFragment.getUpdateListHandler().updateList(player);
+        WaitingFragment.getUpdateListHandler().addToList(player);
     }
 
-    public void addPlayer(Player player) {
-        players.put(player.address, player);
-        WaitingFragment.getUpdateListHandler().updateList(player);
+    public void removePlayer(String address) {
+        WaitingFragment.getUpdateListHandler().removeFromList(players.get(address));
+        players.remove(address);
     }
 
     public void clearPlayer() {
