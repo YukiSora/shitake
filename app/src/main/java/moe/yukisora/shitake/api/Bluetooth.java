@@ -147,6 +147,7 @@ public class Bluetooth {
         private BluetoothSocket server;
         private BufferedReader in;
         private OutputStreamWriter out;
+        private boolean isConnected;
 
         BluetoothClient(String address) {
             BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
@@ -162,6 +163,7 @@ public class Bluetooth {
                 server.connect();
                 in = new BufferedReader(new InputStreamReader(server.getInputStream()));
                 out = new OutputStreamWriter(server.getOutputStream());
+                isConnected = true;
 
                 new Thread(new Runnable() {
                     @Override
@@ -179,10 +181,12 @@ public class Bluetooth {
         }
 
         public void write(String s) {
-            try {
-                out.write(s + "\n");
-                out.flush();
-            } catch (IOException ignore) {
+            if (isConnected) {
+                try {
+                    out.write(s + "\n");
+                    out.flush();
+                } catch (IOException ignore) {
+                }
             }
         }
     }
