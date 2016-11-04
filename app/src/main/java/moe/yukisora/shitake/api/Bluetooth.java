@@ -100,8 +100,8 @@ public class Bluetooth {
     }
 
     public class BluetoothServer extends Thread {
+        private BluetoothServerSocket server;
         private ArrayList<Client> clients;
-        private boolean isClose;
 
         BluetoothServer() {
             clients = new ArrayList<>();
@@ -110,15 +110,14 @@ public class Bluetooth {
         public void run() {
             while (true) {
                 try (BluetoothServerSocket server = bluetoothAdapter.listenUsingRfcommWithServiceRecord("shitake", UUID.fromString(UUID_VALUE))) {
-                    BluetoothSocket client = null;
-                    while (!isClose && (client = server.accept()) == null)
+                    this.server = server;
+                    BluetoothSocket client;
+                    while ((client = server.accept()) == null)
                         ;
-                    if (isClose)
-                        break;
                     clients.add(new Client(client));
                     PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
-                } catch (IOException ignore) {
-                    close();
+                } catch (IOException e) {
+                    break;
                 }
             }
         }
@@ -128,14 +127,18 @@ public class Bluetooth {
                 try {
                     client.out.write(s + "\n");
                     client.out.flush();
-                } catch (IOException ignore) {
+                } catch (IOException e) {
                     close();
                 }
             }
         }
 
         public void close() {
-            isClose = true;
+            try {
+                server.close();
+            } catch (IOException ignore) {
+            }
+
             for (Client client : clients) {
                 client.close();
             }
@@ -152,7 +155,7 @@ public class Bluetooth {
                 try {
                     in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     out = new OutputStreamWriter(client.getOutputStream());
-                } catch (IOException ignore) {
+                } catch (IOException e) {
                     close();
                 }
 
@@ -164,7 +167,7 @@ public class Bluetooth {
                                 String message = in.readLine();
                                 Log.i("poi", "read: " + message);
                             }
-                        } catch (IOException ignore) {
+                        } catch (IOException e) {
                             close();
                         }
                     }
