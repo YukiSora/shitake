@@ -99,6 +99,7 @@ public class Bluetooth {
                     while ((client = server.accept()) == null)
                         ;
                     clients.add(new Client(client));
+                    PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
                 } catch (IOException ignore) {
                 }
             }
@@ -135,7 +136,6 @@ public class Bluetooth {
                             while (true) {
                                 String message = in.readLine();
                                 Log.i("poi", "read: " + message);
-                                PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
                             }
                         } catch (IOException ignore) {
                         }
