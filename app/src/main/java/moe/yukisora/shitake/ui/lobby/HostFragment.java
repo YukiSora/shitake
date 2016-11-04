@@ -39,8 +39,9 @@ public class HostFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView listView = (ListView)view.findViewById(R.id.categoryListView);
-        listView.setAdapter(new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[]{R.id.deckTitle}));
+        ListView listView = (ListView)view.findViewById(R.id.deckListView);
+        SimpleAdapter adapter = new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[]{R.id.deckTitle});
+        listView.setAdapter(adapter);
         listView.setDivider(null);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -58,6 +59,9 @@ public class HostFragment extends Fragment {
                         .commit();
             }
         });
+
+        //calculate list view height inside scroll view
+        MainActivity.setListViewHeightBasedOnChildren(listView);
     }
 
     private void initDecks() {
