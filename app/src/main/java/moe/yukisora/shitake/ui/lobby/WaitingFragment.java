@@ -69,7 +69,7 @@ public class WaitingFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.waitingStart).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bluetooth.BluetoothClient client = Bluetooth.getInstance().getClient();
