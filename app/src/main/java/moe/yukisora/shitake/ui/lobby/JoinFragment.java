@@ -21,6 +21,7 @@ import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class JoinFragment extends Fragment {
     private BroadcastReceiver receiver;
@@ -87,5 +88,6 @@ public class JoinFragment extends Fragment {
 
         Bluetooth.getInstance().stopDiscovery();
         getActivity().unregisterReceiver(receiver);
+        PlayerAPIClient.getInstance().clearPlayer();
     }
 }

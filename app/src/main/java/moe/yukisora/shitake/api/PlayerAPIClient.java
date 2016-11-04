@@ -36,6 +36,10 @@ public class PlayerAPIClient {
         WaitingFragment.getUpdateListHandler().updateList(player);
     }
 
+    public void clearPlayer() {
+        players.clear();
+    }
+
     public HashMap<String, Player> getPlayers() {
         return players;
     }

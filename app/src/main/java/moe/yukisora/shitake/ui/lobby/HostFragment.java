@@ -108,4 +108,11 @@ public class HostFragment extends Fragment {
         map.put("title", "Animals");
         decks.add(map);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        PlayerAPIClient.getInstance().clearPlayer();
+    }
 }
