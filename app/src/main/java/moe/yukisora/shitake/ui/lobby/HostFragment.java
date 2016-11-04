@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class HostFragment extends Fragment {
     private ArrayList<HashMap<String, String>> decks;
@@ -39,13 +40,15 @@ public class HostFragment extends Fragment {
 
         ListView listView = (ListView)view.findViewById(R.id.categoryListView);
         listView.setAdapter(new SimpleAdapter(getActivity(), decks, R.layout.view_deck, new String[]{"title"}, new int[]{R.id.deckTitle}));
-//        listView.setDivider(null);
+        listView.setDivider(null);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("poi", decks.get(i).get("title"));
 
                 Bluetooth.getInstance().newBluetoothServer();
+
+                PlayerAPIClient.getInstance().addPlayer("0", "Yuki Sora", null);
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
