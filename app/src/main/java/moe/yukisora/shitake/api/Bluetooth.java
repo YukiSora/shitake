@@ -17,6 +17,7 @@ import java.util.UUID;
 
 public class Bluetooth {
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
+    private static final String UUID_VALUE = "859f02dd-e6f5-4d56-826c-40f1e1bceea8";
     private static Bluetooth bluetooth;
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothClient client;
@@ -76,19 +77,38 @@ public class Bluetooth {
         return client;
     }
 
+    public BluetoothClient getClient() {
+        return client;
+    }
+
+    public BluetoothServer getServer() {
+        return server;
+    }
+
     public class BluetoothServer extends Thread {
         private ArrayList<Client> clients;
 
         BluetoothServer() {
             clients = new ArrayList<>();
         }
+
         public void run() {
             while (true) {
-                try (BluetoothServerSocket server = bluetoothAdapter.listenUsingRfcommWithServiceRecord("shitake", UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d"))) {
+                try (BluetoothServerSocket server = bluetoothAdapter.listenUsingRfcommWithServiceRecord("shitake", UUID.fromString(UUID_VALUE))) {
                     BluetoothSocket client;
                     while ((client = server.accept()) == null)
                         ;
                     clients.add(new Client(client));
+                } catch (IOException ignore) {
+                }
+            }
+        }
+
+        public void write(String s) {
+            for (Client client : clients) {
+                try {
+                    client.out.write(s + "\n");
+                    client.out.flush();
                 } catch (IOException ignore) {
                 }
             }
@@ -111,11 +131,11 @@ public class Bluetooth {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        while (true) {
-                            try {
-                                Log.i("poi", in.readLine());
-                            } catch (IOException ignore) {
+                        try {
+                            while (true) {
+                                Log.i("poi", "read: " + in.readLine());
                             }
+                        } catch (IOException ignore) {
                         }
                     }
                 }).start();
@@ -125,21 +145,43 @@ public class Bluetooth {
 
     public class BluetoothClient extends Thread {
         private BluetoothSocket server;
+        private BufferedReader in;
+        private OutputStreamWriter out;
 
-        public BluetoothClient(String address) {
+        BluetoothClient(String address) {
             BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
 
             try {
-                server = device.createRfcommSocketToServiceRecord(UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d"));
-            } catch (IOException e) {
+                server = device.createRfcommSocketToServiceRecord(UUID.fromString(UUID_VALUE));
+            } catch (IOException ignore) {
             }
         }
 
         public void run() {
             try {
                 server.connect();
-                Log.i("poi", "success");
-                new OutputStreamWriter(server.getOutputStream()).write("Poiiiii");
+                in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                out = new OutputStreamWriter(server.getOutputStream());
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            while (true) {
+                                Log.i("poi", "read: " + in.readLine());
+                            }
+                        } catch (IOException ignore) {
+                        }
+                    }
+                }).start();
+            } catch (IOException ignore) {
+            }
+        }
+
+        public void write(String s) {
+            try {
+                out.write(s + "\n");
+                out.flush();
             } catch (IOException ignore) {
             }
         }

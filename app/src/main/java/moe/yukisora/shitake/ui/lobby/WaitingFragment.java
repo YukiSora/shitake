@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.api.Bluetooth;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -25,5 +26,15 @@ public class WaitingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        view.findViewById(R.id.testPoi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bluetooth.BluetoothClient client = Bluetooth.getInstance().getClient();
+                if (client != null) {
+                    client.write("poiiiii");
+                }
+            }
+        });
     }
 }
