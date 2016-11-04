@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
@@ -21,11 +22,11 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
  */
 
 public class WaitingFragment extends Fragment {
-    private static UpdateListHandler updateListHandler;
+    private static FragmentHandler fragmentHandler;
     private LinearLayout waitingLinearLayout;
 
-    public static UpdateListHandler getUpdateListHandler() {
-        return updateListHandler;
+    public static FragmentHandler getFragmentHandler() {
+        return fragmentHandler;
     }
 
     @Nullable
@@ -33,7 +34,7 @@ public class WaitingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
 
-        updateListHandler = new UpdateListHandler(this);
+        fragmentHandler = new FragmentHandler(this);
 
         waitingLinearLayout = (LinearLayout)view.findViewById(R.id.waitingLinearLayout);
 
@@ -55,10 +56,10 @@ public class WaitingFragment extends Fragment {
         waitingLinearLayout.addView(view);
     }
 
-    public void removePlayerView(PlayerAPIClient.Player player) {
+    public void removePlayerView(String address) {
         for (int i = 0; i < waitingLinearLayout.getChildCount(); i++) {
             LinearLayout view = (LinearLayout)waitingLinearLayout.getChildAt(i);
-            if (view.getTag().equals(player.address)) {
+            if (view.getTag().equals(address)) {
                 waitingLinearLayout.removeView(view);
             }
         }
@@ -84,12 +85,13 @@ public class WaitingFragment extends Fragment {
         super.onDestroy();
 
         Bluetooth.getInstance().closeClient();
+        Bluetooth.getInstance().closeServer();
     }
 
-    public static class UpdateListHandler extends Handler {
+    public static class FragmentHandler extends Handler {
         private WaitingFragment fragment;
 
-        UpdateListHandler(WaitingFragment fragment) {
+        FragmentHandler(WaitingFragment fragment) {
             super();
 
             this.fragment = fragment;
@@ -104,11 +106,20 @@ public class WaitingFragment extends Fragment {
             });
         }
 
-        public void removeFromList(final PlayerAPIClient.Player player) {
+        public void removeFromList(final String address) {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    fragment.removePlayerView(player);
+                    fragment.removePlayerView(address);
+                }
+            });
+        }
+
+        public void back() {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.getActivity().onBackPressed();
                 }
             });
         }

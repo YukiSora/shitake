@@ -15,6 +15,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import moe.yukisora.shitake.ui.lobby.WaitingFragment;
+
 public class Bluetooth {
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
     private static final String UUID_VALUE = "859f02dd-e6f5-4d56-826c-40f1e1bceea8";
@@ -82,16 +84,24 @@ public class Bluetooth {
     }
 
     public void closeClient() {
-        client.close();
-        client = null;
+        if (client != null) {
+            client.close();
+        }
     }
 
     public BluetoothServer getServer() {
         return server;
     }
 
+    public void closeServer() {
+        if (server != null) {
+            server.close();
+        }
+    }
+
     public class BluetoothServer extends Thread {
         private ArrayList<Client> clients;
+        private boolean isClose;
 
         BluetoothServer() {
             clients = new ArrayList<>();
@@ -100,12 +110,15 @@ public class Bluetooth {
         public void run() {
             while (true) {
                 try (BluetoothServerSocket server = bluetoothAdapter.listenUsingRfcommWithServiceRecord("shitake", UUID.fromString(UUID_VALUE))) {
-                    BluetoothSocket client;
-                    while ((client = server.accept()) == null)
+                    BluetoothSocket client = null;
+                    while (!isClose && (client = server.accept()) == null)
                         ;
+                    if (isClose)
+                        break;
                     clients.add(new Client(client));
                     PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
                 } catch (IOException ignore) {
+                    close();
                 }
             }
         }
@@ -116,12 +129,20 @@ public class Bluetooth {
                     client.out.write(s + "\n");
                     client.out.flush();
                 } catch (IOException ignore) {
+                    close();
                 }
             }
         }
 
+        public void close() {
+            isClose = true;
+            for (Client client : clients) {
+                client.close();
+            }
+        }
+
         private class Client {
-            private BluetoothSocket client;
+            public BluetoothSocket client;
             private BufferedReader in;
             private OutputStreamWriter out;
 
@@ -132,6 +153,7 @@ public class Bluetooth {
                     in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     out = new OutputStreamWriter(client.getOutputStream());
                 } catch (IOException ignore) {
+                    close();
                 }
 
                 new Thread(new Runnable() {
@@ -171,7 +193,8 @@ public class Bluetooth {
 
             try {
                 server = device.createRfcommSocketToServiceRecord(UUID.fromString(UUID_VALUE));
-            } catch (IOException ignore) {
+            } catch (IOException e) {
+                close();
             }
         }
 
@@ -189,12 +212,13 @@ public class Bluetooth {
                             while (true) {
                                 Log.i("poi", "read: " + in.readLine());
                             }
-                        } catch (IOException ignore) {
-                            Log.i("poi", ignore.getMessage());
+                        } catch (IOException e) {
+                            close();
                         }
                     }
                 }).start();
-            } catch (IOException ignore) {
+            } catch (IOException e) {
+                close();
             }
         }
 
@@ -203,7 +227,8 @@ public class Bluetooth {
                 try {
                     out.write(s + "\n");
                     out.flush();
-                } catch (IOException ignore) {
+                } catch (IOException e) {
+                    close();
                 }
             }
         }
@@ -211,10 +236,9 @@ public class Bluetooth {
         public void close() {
             try {
                 server.close();
+                WaitingFragment.getFragmentHandler().back();
             } catch (IOException ignore) {
-                Log.i("poi", ignore.getMessage());
             }
-
         }
     }
 }

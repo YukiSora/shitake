@@ -1,5 +1,6 @@
 package moe.yukisora.shitake;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static Activity activity;
     private static String bluetoothAddress;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -33,10 +35,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return bluetoothAddress;
     }
 
+    public static Activity getActivity() {
+        return activity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activity = this;
 
         //get own Bluetooth address
         bluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
