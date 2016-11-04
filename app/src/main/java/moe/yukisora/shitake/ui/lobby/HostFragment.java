@@ -16,7 +16,6 @@ import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class HostFragment extends Fragment {
     private ArrayList<HashMap<String, String>> decks;
@@ -47,8 +46,6 @@ public class HostFragment extends Fragment {
                 Log.i("poi", decks.get(i).get("title"));
 
                 Bluetooth.getInstance().newBluetoothServer();
-
-                PlayerAPIClient.getInstance().addPlayer("0", "Yuki Sora", null);
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()

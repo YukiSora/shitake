@@ -2,6 +2,7 @@ package moe.yukisora.shitake.ui.lobby;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,27 +21,36 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
  */
 
 public class WaitingFragment extends Fragment {
+    private static UpdateListHandler updateListHandler;
     private LinearLayout waitingLinearLayout;
+
+    public static UpdateListHandler getUpdateListHandler() {
+        return updateListHandler;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
 
+        updateListHandler = new UpdateListHandler(this);
+
         waitingLinearLayout = (LinearLayout)view.findViewById(R.id.waitingLinearLayout);
-        addPlayerView();
+
+        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
+            addPlayerView(player);
+        }
+
         return view;
     }
 
-    public void addPlayerView() {
-        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
-            View view = ((LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_player, waitingLinearLayout, false);
+    public void addPlayerView(PlayerAPIClient.Player player) {
+        View view = ((LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_player, waitingLinearLayout, false);
 
-            ((ImageView)view.findViewById(R.id.playerPicture)).setImageResource(R.mipmap.ic_launcher);
-            ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
+        ((ImageView)view.findViewById(R.id.playerPicture)).setImageResource(R.mipmap.ic_launcher);
+        ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
 
-            waitingLinearLayout.addView(view);
-        }
+        waitingLinearLayout.addView(view);
     }
 
     @Override
@@ -56,5 +66,24 @@ public class WaitingFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public static class UpdateListHandler extends Handler {
+        private WaitingFragment fragment;
+
+        UpdateListHandler(WaitingFragment fragment) {
+            super();
+
+            this.fragment = fragment;
+        }
+
+        public void updateList(final PlayerAPIClient.Player player) {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    fragment.addPlayerView(player);
+                }
+            });
+        }
     }
 }

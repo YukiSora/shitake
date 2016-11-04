@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 
 import java.util.HashMap;
 
+import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.ui.lobby.WaitingFragment;
+
 /**
  * Created by yukisora on 11/4/16.
  */
@@ -14,6 +17,8 @@ public class PlayerAPIClient {
 
     private PlayerAPIClient() {
         players = new HashMap<>();
+
+        players.put("own", new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", null));
     }
 
     public static PlayerAPIClient getInstance() {
@@ -24,11 +29,14 @@ public class PlayerAPIClient {
     }
 
     public void addPlayer(String address, String name, Bitmap picture) {
-        players.put(address, new Player(address, name, picture));
+        Player player = new Player(address, name, picture);
+        players.put(address, player);
+        WaitingFragment.getUpdateListHandler().updateList(player);
     }
 
     public void addPlayer(Player player) {
         players.put(player.address, player);
+        WaitingFragment.getUpdateListHandler().updateList(player);
     }
 
     public HashMap<String, Player> getPlayers() {

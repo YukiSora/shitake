@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
@@ -24,14 +25,21 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    private static String bluetoothAddress;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+
+    public static String getBluetoothAddress() {
+        return bluetoothAddress;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //get own Bluetooth address
+        bluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView)findViewById(R.id.nav_view);
@@ -42,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Singleton
         GameAPIClient.newInstance(this);
         DeckAPIClient.newInstance(this, "isthatafact");
+        PlayerAPIClient.getInstance();
 
         //Configure bluetooth
         Bluetooth bluetooth = Bluetooth.getInstance();

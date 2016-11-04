@@ -119,7 +119,7 @@ public class Bluetooth {
             private BufferedReader in;
             private OutputStreamWriter out;
 
-            Client(BluetoothSocket client) {
+            Client(final BluetoothSocket client) {
                 this.client = client;
 
                 try {
@@ -133,7 +133,9 @@ public class Bluetooth {
                     public void run() {
                         try {
                             while (true) {
-                                Log.i("poi", "read: " + in.readLine());
+                                String message = in.readLine();
+                                Log.i("poi", "read: " + message);
+                                PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
                             }
                         } catch (IOException ignore) {
                         }
@@ -164,6 +166,7 @@ public class Bluetooth {
                 in = new BufferedReader(new InputStreamReader(server.getInputStream()));
                 out = new OutputStreamWriter(server.getOutputStream());
                 isConnected = true;
+                Log.i("poi", "true");
 
                 new Thread(new Runnable() {
                     @Override
