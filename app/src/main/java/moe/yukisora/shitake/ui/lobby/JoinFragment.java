@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -67,6 +68,8 @@ public class JoinFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //try to connect to server
                 Bluetooth.getInstance().newBluetoothClient(bluetooths.get(i).get("address"));
+
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(getResources(), R.drawable.picture)));
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
