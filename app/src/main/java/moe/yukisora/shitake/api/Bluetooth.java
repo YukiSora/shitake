@@ -83,14 +83,14 @@ public class Bluetooth {
         return client;
     }
 
+    public BluetoothServer getServer() {
+        return server;
+    }
+
     public void closeClient() {
         if (client != null) {
             client.close();
         }
-    }
-
-    public BluetoothServer getServer() {
-        return server;
     }
 
     public void closeServer() {
@@ -133,7 +133,7 @@ public class Bluetooth {
             }
         }
 
-        public void close() {
+        private void close() {
             try {
                 server.close();
             } catch (IOException ignore) {
@@ -145,7 +145,7 @@ public class Bluetooth {
         }
 
         private class Client {
-            public BluetoothSocket client;
+            private BluetoothSocket client;
             private BufferedReader in;
             private OutputStreamWriter out;
 
@@ -174,7 +174,7 @@ public class Bluetooth {
                 }).start();
             }
 
-            public void close() {
+            private void close() {
                 try {
                     clients.remove(this);
                     PlayerAPIClient.getInstance().removePlayer(client.getRemoteDevice().getAddress());
@@ -236,7 +236,7 @@ public class Bluetooth {
             }
         }
 
-        public void close() {
+        private void close() {
             try {
                 server.close();
                 WaitingFragment.getFragmentHandler().back();

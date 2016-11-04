@@ -91,6 +91,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Bluetooth.getInstance().closeClient();
+        Bluetooth.getInstance().closeServer();
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
 
