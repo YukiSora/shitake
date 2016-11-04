@@ -22,7 +22,7 @@ public class JoinViewHolder extends RecyclerView.ViewHolder {
     private Button mJoinButton;
 
     public interface OnJoinSelectedListener {
-        void onJoinSelected(Deck deck);
+        void onJoinSelected();
     }
 
     public JoinViewHolder(View itemView, final JoinViewHolder.OnJoinSelectedListener handler) {
@@ -33,7 +33,7 @@ public class JoinViewHolder extends RecyclerView.ViewHolder {
         mJoinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler.onJoinSelected(null);
+                handler.onJoinSelected();
             }
         });
     }

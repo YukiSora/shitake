@@ -2,12 +2,11 @@ package moe.yukisora.shitake.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import moe.yukisora.shitake.model.Deck;
 import moe.yukisora.shitake.ui.lobby.DeckViewHolder;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.ui.lobby.JoinViewHolder;
@@ -21,7 +20,8 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
     private DeckViewHolder.OnDeckSelectedListener mDeckListener;
     private JoinViewHolder.OnJoinSelectedListener mJoinListener;
 
-    private ArrayList<String> mDeckList = new ArrayList<>();
+    private ArrayList<String> mDeckDisplayTitle = new ArrayList<>();
+    private ArrayList<String> mDeckJSON = new ArrayList<>();
 
     // Override Methods
 
@@ -41,13 +41,14 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof DeckViewHolder) {
-            ((DeckViewHolder) holder).setDeck(mDeckList.get(--position));
+            position--;
+            ((DeckViewHolder) holder).setDeckTitle(mDeckDisplayTitle.get(position), mDeckJSON.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return 1 + mDeckList.size();
+        return 1 + mDeckDisplayTitle.size();
     }
 
     @Override
@@ -73,10 +74,13 @@ public class HostRecyclerAdapter extends RecyclerView.Adapter {
         this.mJoinListener = mJoinListener;
     }
 
-    public void setDeckList(ArrayList<String> mDeckList){
-        this.mDeckList = mDeckList;
+    public void setDeckList(HashMap<String, String> mDeckDisplayName){
+        for(String displayTitle: mDeckDisplayName.values()){
+            mDeckDisplayTitle.add(displayTitle);
+        }
+
+        for(String deckJSON: mDeckDisplayName.keySet()){
+            mDeckJSON.add(deckJSON);
+        }
     }
-
-
-
 }

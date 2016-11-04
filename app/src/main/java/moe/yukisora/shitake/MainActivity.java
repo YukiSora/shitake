@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Singleton
         GameAPIClient.newInstance(this);
-        DeckAPIClient.newInstance(this, "isthatafact");
 
         getSupportFragmentManager()
                 .beginTransaction()

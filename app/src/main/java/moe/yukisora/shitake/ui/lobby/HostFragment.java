@@ -1,9 +1,11 @@
 package moe.yukisora.shitake.ui.lobby;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,16 +14,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import moe.yukisora.shitake.GameActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.HostRecyclerAdapter;
+import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.model.Deck;
+import moe.yukisora.shitake.ui.game.PendingFragment;
+
+import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 /**
  * Created by Delacrix on 10/10/2016.
  */
 
-public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelectedListener{
+public class HostFragment extends Fragment implements JoinViewHolder.OnJoinSelectedListener, DeckViewHolder.OnDeckSelectedListener {
 
     private RecyclerView mRecyclerView;
     private Button mJoinButton;
@@ -46,33 +55,55 @@ public class HostFragment extends Fragment implements DeckViewHolder.OnDeckSelec
 
         // Host Recycler Adapter
         HostRecyclerAdapter mHostRecyclerAdapter = new HostRecyclerAdapter();
-        mHostRecyclerAdapter.setDeckList(setDeckList());
+
+        mHostRecyclerAdapter.setDeckList(getDeckDisplayName());
+
+        mHostRecyclerAdapter.setJoinListener(this);
         mHostRecyclerAdapter.setDeckListener(this);
 
         mRecyclerView.setAdapter(mHostRecyclerAdapter);
     }
 
     @Override
-    public void onDeckSelected(Deck deck) {
-        Snackbar.make(getView(), "Good Mythical Morning", Snackbar.LENGTH_SHORT).show();
+    public void onJoinSelected() {
+        showJoinFragment();
     }
 
-    private ArrayList<String> setDeckList() {
-        ArrayList<String> mDeckList = new ArrayList<>();
+    @Override
+    public void onDeckSelected(String deckName) {
+        Intent intent = new Intent(getContext(), GameActivity.class);
+        intent.setFlags(FLAG_ACTIVITY_BROUGHT_TO_FRONT | FLAG_ACTIVITY_CLEAR_TOP);
 
-        mDeckList.add("Is That A Fact?");
-        mDeckList.add("Word Up!");
-        mDeckList.add("Movie Bluff!");
-        mDeckList.add("It's the Law");
-        mDeckList.add("The Plot Thickens");
-        mDeckList.add("Name that Show!");
-        mDeckList.add("Poetry");
-        mDeckList.add("Say My Name");
-        mDeckList.add("Proverbs");
-        mDeckList.add("Adults Only");
-        mDeckList.add("Animals");
-
-        return mDeckList;
+        DeckAPIClient.newInstance(getContext(), deckName);
+        startActivity(intent);
     }
+
+    public void showJoinFragment() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new JoinFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack(getClass().getSimpleName())
+                .commit();
+    }
+
+    private HashMap<String, String> getDeckDisplayName() {
+        HashMap<String, String> mDeckDisplayName = new HashMap<>();
+
+        mDeckDisplayName.put("isthatafact", "Is That A Fact?");
+        mDeckDisplayName.put("wordup", "Word Up!");
+        mDeckDisplayName.put("moviebluff", "Movie Bluff!");
+        mDeckDisplayName.put("itsthelaw", "It's the Law");
+        mDeckDisplayName.put("theplotthickens", "The Plot Thickens");
+        mDeckDisplayName.put("namethatshow", "Name that Show!");
+        mDeckDisplayName.put("poetry", "Poetry");
+        mDeckDisplayName.put("saymyname", "Say My Name");
+        mDeckDisplayName.put("proverbs", "Proverbs");
+        mDeckDisplayName.put("adultsonly", "Adults Only");
+        mDeckDisplayName.put("animals", "Animals");
+
+        return mDeckDisplayName;
+    }
+
 
 }

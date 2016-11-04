@@ -14,10 +14,11 @@ import moe.yukisora.shitake.model.Deck;
 
 public class DeckViewHolder extends RecyclerView.ViewHolder {
 
+    private String deckJSON;
     private TextView mDeckTitle;
 
     public interface OnDeckSelectedListener{
-        void onDeckSelected(Deck deck);
+        void onDeckSelected(String deckJSON);
     }
 
     public DeckViewHolder(View itemView, final OnDeckSelectedListener handler) {
@@ -28,12 +29,15 @@ public class DeckViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler.onDeckSelected(null);
+                handler.onDeckSelected(deckJSON);
             }
         });
     }
 
-    public void setDeck(@NonNull String name){
-        mDeckTitle.setText(name);
+    public void setDeckTitle(@NonNull String deckDisplayTitle, @NonNull String deckJSON){
+        mDeckTitle.setText(deckDisplayTitle);
+        this.deckJSON = deckJSON;
+
     }
+
 }

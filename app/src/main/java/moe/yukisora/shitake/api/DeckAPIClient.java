@@ -26,7 +26,7 @@ import moe.yukisora.shitake.model.Deck;
 public class DeckAPIClient {
 
     private static DeckAPIClient sSharedInstance;
-    private static String sCurrentDeck;
+    private static String sCurrentDeck = "";
 
     private ArrayList<Deck> mDeck = new ArrayList<>();
     private int mCounter;
@@ -35,7 +35,7 @@ public class DeckAPIClient {
 
     // Singleton New Instance
     public static synchronized DeckAPIClient newInstance(@NonNull Context context, String filename) {
-        if (sSharedInstance == null && sCurrentDeck != filename) {
+        if (sSharedInstance == null || !sCurrentDeck.equals(filename)) {
             sSharedInstance = new DeckAPIClient(context, filename);
         }
 

@@ -94,7 +94,6 @@ public class PendingFragment extends Fragment {
             }
         });
 
-
     }
 
     public void showAnswerFragment() {
