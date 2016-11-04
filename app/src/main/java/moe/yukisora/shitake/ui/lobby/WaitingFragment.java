@@ -50,7 +50,7 @@ public class WaitingFragment extends Fragment {
 
         view.setTag(player.address);
 
-        ((ImageView)view.findViewById(R.id.playerPicture)).setImageResource(R.mipmap.ic_launcher);
+        ((ImageView)view.findViewById(R.id.playerPicture)).setImageBitmap(player.picture);
         ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
 
         waitingLinearLayout.addView(view);

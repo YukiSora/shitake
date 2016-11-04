@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.ui.lobby;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -50,7 +51,7 @@ public class HostFragment extends Fragment {
 
                 Bluetooth.getInstance().newBluetoothServer();
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", null));
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(getResources(), R.drawable.picture)));
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
