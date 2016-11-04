@@ -12,5 +12,6 @@
 
     <string name="start_game">Start Game</string>
     <string name="player_list">Player List</string>
+    <string name="host_list">Host List</string>
 
 </resources>

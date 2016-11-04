@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,14 +59,12 @@ public class JoinFragment extends Fragment {
 
         //ListView
         ListView listView = (ListView)view.findViewById(R.id.bluetoothListView);
-        adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_bluetooth, new String[]{"name"}, new int[]{R.id.bluetoothTextView});
+        adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_host, new String[]{"name"}, new int[]{R.id.bluetoothTextView});
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("poi", bluetooths.get(i).get("name"));
-                Log.i("poi", bluetooths.get(i).get("address"));
-
+                //try to connect to server
                 Bluetooth.getInstance().newBluetoothClient(bluetooths.get(i).get("address"));
 
                 getActivity().getSupportFragmentManager()
