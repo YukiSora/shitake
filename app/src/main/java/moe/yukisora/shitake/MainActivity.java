@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Singleton
         GameAPIClient.newInstance(this);
-        DeckAPIClient.newInstance(this, "isthatafact");
         PlayerAPIClient.getInstance();
 
         //Configure bluetooth
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             new AlertDialog.Builder(this).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
         if (!bluetooth.isEnabled())
             bluetooth.enableBluetooth(this);
-
 
         getSupportFragmentManager()
                 .beginTransaction()
