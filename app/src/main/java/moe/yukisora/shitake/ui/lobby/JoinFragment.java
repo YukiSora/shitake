@@ -69,7 +69,7 @@ public class JoinFragment extends Fragment {
                 //try to connect to server
                 Bluetooth.getInstance().newBluetoothClient(bluetooths.get(i).get("address"));
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(getResources(), R.drawable.picture)));
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher)));
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()

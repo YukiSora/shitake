@@ -1,7 +1,12 @@
 package moe.yukisora.shitake.api;
 
 import android.graphics.Bitmap;
+import android.util.Base64;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
@@ -31,6 +36,11 @@ public class PlayerAPIClient {
         WaitingFragment.getFragmentHandler().addToList(player);
     }
 
+    public void addPlayer(Player player) {
+        players.put(player.address, player);
+        WaitingFragment.getFragmentHandler().addToList(player);
+    }
+
     public void removePlayer(String address) {
         WaitingFragment.getFragmentHandler().removeFromList(address);
         players.remove(address);
@@ -53,6 +63,26 @@ public class PlayerAPIClient {
             this.address = address;
             this.name = name;
             this.picture = picture;
+        }
+
+        @Override
+        public String toString() {
+            JSONObject json = new JSONObject();
+            try {
+                json.put("dataType", Bluetooth.DATA_TYPE_PLAYER_INFORMATION);
+
+                JSONObject data = new JSONObject();
+                data.put("address", address);
+                data.put("name", name);
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                picture.compress(Bitmap.CompressFormat.PNG, 100, out);
+                byte[] byteArray = out.toByteArray();
+                data.put("picture", Base64.encodeToString(byteArray, Base64.DEFAULT));
+                json.put("data", data);
+            } catch (JSONException ignore) {
+            }
+
+            return json.toString();
         }
     }
 }

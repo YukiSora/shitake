@@ -6,7 +6,12 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,10 +20,12 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class Bluetooth {
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
+    public static final int DATA_TYPE_PLAYER_INFORMATION = 0;
     private static final String UUID_VALUE = "859f02dd-e6f5-4d56-826c-40f1e1bceea8";
     private static Bluetooth bluetooth;
     private BluetoothAdapter bluetoothAdapter;
@@ -115,10 +122,40 @@ public class Bluetooth {
                     while ((client = server.accept()) == null)
                         ;
                     clients.add(new Client(client));
-                    PlayerAPIClient.getInstance().addPlayer(client.getRemoteDevice().getAddress(), "Poi", null);
                 } catch (IOException e) {
                     break;
                 }
+            }
+        }
+
+        private void parseMessage(String message, Client thisClient) {
+            try {
+                JSONObject json = new JSONObject(message);
+                switch (json.getInt("dataType")) {
+                    case DATA_TYPE_PLAYER_INFORMATION:
+                        //get new player info
+                        JSONObject data = json.getJSONObject("data");
+                        String address = data.getString("address");
+                        String name = data.getString("name");
+                        byte[] byteArray = Base64.decode(data.getString("picture"), Base64.DEFAULT);
+                        Bitmap picture = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().new Player(address, name, picture);
+                        PlayerAPIClient.getInstance().addPlayer(player);
+
+                        //send other player info to new player
+                        for (Client client : clients)
+                            if (client != thisClient)
+                                write(thisClient, PlayerAPIClient.getInstance().getPlayers().get(client.getClient().getRemoteDevice().getAddress()).toString());
+                        write(thisClient, PlayerAPIClient.getInstance().getPlayers().get(MainActivity.getBluetoothAddress()).toString());
+
+                        //send new player to other player
+                        for (Client client : clients)
+                            if (client != thisClient)
+                                write(client, player.toString());
+
+                        break;
+                }
+            } catch (JSONException ignore) {
             }
         }
 
@@ -130,6 +167,15 @@ public class Bluetooth {
                 } catch (IOException e) {
                     close();
                 }
+            }
+        }
+
+        public void write(Client client, String s) {
+            try {
+                client.out.write(s + "\n");
+                client.out.flush();
+            } catch (IOException e) {
+                close();
             }
         }
 
@@ -165,7 +211,7 @@ public class Bluetooth {
                         try {
                             while (true) {
                                 String message = in.readLine();
-                                Log.i("poi", "read: " + message);
+                                parseMessage(message, Client.this);
                             }
                         } catch (IOException e) {
                             close();
@@ -181,6 +227,10 @@ public class Bluetooth {
                     client.close();
                 } catch (IOException ignore) {
                 }
+            }
+
+            public BluetoothSocket getClient() {
+                return client;
             }
         }
     }
@@ -207,13 +257,15 @@ public class Bluetooth {
                 in = new BufferedReader(new InputStreamReader(server.getInputStream()));
                 out = new OutputStreamWriter(server.getOutputStream());
                 isConnected = true;
+                write(PlayerAPIClient.getInstance().getPlayers().get(MainActivity.getBluetoothAddress()).toString());
 
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             while (true) {
-                                Log.i("poi", "read: " + in.readLine());
+                                String message = in.readLine();
+                                parseMessage(message);
                             }
                         } catch (IOException e) {
                             close();
@@ -222,6 +274,24 @@ public class Bluetooth {
                 }).start();
             } catch (IOException e) {
                 close();
+            }
+        }
+
+        private void parseMessage(String message) {
+            try {
+                JSONObject json = new JSONObject(message);
+                switch (json.getInt("dataType")) {
+                    case DATA_TYPE_PLAYER_INFORMATION:
+                        JSONObject data = json.getJSONObject("data");
+                        String address = data.getString("address");
+                        String name = data.getString("name");
+                        byte[] byteArray = Base64.decode(data.getString("picture"), Base64.DEFAULT);
+                        Bitmap picture = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                        PlayerAPIClient.getInstance().addPlayer(PlayerAPIClient.getInstance().new Player(address, name, picture));
+
+                        break;
+                }
+            } catch (JSONException ignore) {
             }
         }
 
