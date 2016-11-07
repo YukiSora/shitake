@@ -5,29 +5,28 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.adapter.HostRecyclerViewAdapter;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class JoinFragment extends Fragment {
     private BroadcastReceiver receiver;
-    private ArrayList<HashMap<String, String>> bluetooths;
-    private SimpleAdapter adapter;
+    private ArrayList<HostRecyclerViewAdapter.ViewData> bluetooths;
+    private HostRecyclerViewAdapter adapter;
 
     @Nullable
     @Override
@@ -42,11 +41,18 @@ public class JoinFragment extends Fragment {
             public void onReceive(Context context, Intent intent) {
                 if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put("name", device.getName());
-                    map.put("address", device.getAddress());
-                    bluetooths.add(map);
-                    adapter.notifyDataSetChanged();
+                    String name = device.getName();
+                    if (name == null)
+                        name = "Unknown";
+                    String address = device.getAddress();
+
+                    bluetooths.add(adapter.new ViewData(name, address));
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyItemInserted(bluetooths.size() - 1);
+                        }
+                    });
                 }
             }
         };
@@ -59,28 +65,18 @@ public class JoinFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //ListView
-        ListView listView = (ListView)view.findViewById(R.id.hostListView);
-        adapter = new SimpleAdapter(getActivity(), bluetooths, R.layout.view_host, new String[]{"name"}, new int[]{R.id.bluetoothTextView});
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //try to connect to server
-                Bluetooth.getInstance().newBluetoothClient(bluetooths.get(i).get("address"));
+        //Recycler View
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.hostRecyclerView);
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher)));
+        //Layout
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new WaitingFragment())
-                        .addToBackStack("join")
-                        .commit();
-            }
-        });
+        //Adapter
+        adapter = new HostRecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
 
-        //calculate list view height inside scroll view
-        MainActivity.setListViewHeightBasedOnChildren(listView);
+        //Divider
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
         //Bluetooth discovery
         Bluetooth.getInstance().startDiscovery();
@@ -93,5 +89,9 @@ public class JoinFragment extends Fragment {
         Bluetooth.getInstance().stopDiscovery();
         getActivity().unregisterReceiver(receiver);
         PlayerAPIClient.getInstance().clearPlayer();
+    }
+
+    public ArrayList<HostRecyclerViewAdapter.ViewData> getBluetooths() {
+        return bluetooths;
     }
 }
