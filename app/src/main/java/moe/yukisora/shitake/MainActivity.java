@@ -1,6 +1,5 @@
 package moe.yukisora.shitake;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.ui.lobby.MainFragment;
@@ -30,17 +24,11 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static Activity activity;
     private static String bluetoothAddress;
     private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
 
     public static String getBluetoothAddress() {
         return bluetoothAddress;
-    }
-
-    public static Activity getActivity() {
-        return activity;
     }
 
     @Override
@@ -48,16 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        activity = this;
-
         //get own Bluetooth address
         bluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
-
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView)findViewById(R.id.nav_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
-
-        setupDrawerLayout();
 
         // Singleton
         GameAPIClient.newInstance(this);
@@ -74,14 +54,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new MainFragment())
                 .commit();
-    }
 
-    public void setupDrawerLayout() {
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
-            supportActionBar.setTitle(getResources().getString(R.string.app_name));
-        }
+        //below this are temporary things
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        NavigationView mNavigationView = (NavigationView)findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
+        setupDrawerLayout();
     }
 
     @Override
@@ -98,6 +77,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Bluetooth.getInstance().closeClient();
         Bluetooth.getInstance().closeServer();
+    }
+
+    //below this are temporary methods
+    public void setupDrawerLayout() {
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+            supportActionBar.setTitle(getResources().getString(R.string.app_name));
+        }
     }
 
     @Override
@@ -154,26 +142,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mDrawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null)
-            return;
-
-        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
-        int totalHeight = 0;
-        View view = null;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            view = listAdapter.getView(i, view, listView);
-            if (i == 0)
-                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-            totalHeight += view.getMeasuredHeight();
-        }
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
     }
 }

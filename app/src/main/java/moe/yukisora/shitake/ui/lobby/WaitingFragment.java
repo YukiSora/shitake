@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.ui.lobby;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
@@ -22,6 +22,7 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
  */
 
 public class WaitingFragment extends Fragment {
+    private Activity activity;
     private static FragmentHandler fragmentHandler;
     private LinearLayout waitingLinearLayout;
 
@@ -34,6 +35,8 @@ public class WaitingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
 
+        activity = getActivity();
+
         fragmentHandler = new FragmentHandler(this);
 
         waitingLinearLayout = (LinearLayout)view.findViewById(R.id.waitingLinearLayout);
@@ -43,26 +46,6 @@ public class WaitingFragment extends Fragment {
         }
 
         return view;
-    }
-
-    public void addPlayerView(PlayerAPIClient.Player player) {
-        View view = ((LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_player, waitingLinearLayout, false);
-
-        view.setTag(player.address);
-
-        ((ImageView)view.findViewById(R.id.playerPicture)).setImageBitmap(player.picture);
-        ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
-
-        waitingLinearLayout.addView(view);
-    }
-
-    public void removePlayerView(String address) {
-        for (int i = 0; i < waitingLinearLayout.getChildCount(); i++) {
-            LinearLayout view = (LinearLayout)waitingLinearLayout.getChildAt(i);
-            if (view.getTag().equals(address)) {
-                waitingLinearLayout.removeView(view);
-            }
-        }
     }
 
     @Override
@@ -86,6 +69,26 @@ public class WaitingFragment extends Fragment {
 
         Bluetooth.getInstance().closeClient();
         Bluetooth.getInstance().closeServer();
+    }
+
+    public void addPlayerView(PlayerAPIClient.Player player) {
+        View view = ((LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_player, waitingLinearLayout, false);
+
+        view.setTag(player.address);
+
+        ((ImageView)view.findViewById(R.id.playerPicture)).setImageBitmap(player.picture);
+        ((TextView)view.findViewById(R.id.playerName)).setText(player.name);
+
+        waitingLinearLayout.addView(view);
+    }
+
+    public void removePlayerView(String address) {
+        for (int i = 0; i < waitingLinearLayout.getChildCount(); i++) {
+            LinearLayout view = (LinearLayout)waitingLinearLayout.getChildAt(i);
+            if (view.getTag().equals(address)) {
+                waitingLinearLayout.removeView(view);
+            }
+        }
     }
 
     public static class FragmentHandler extends Handler {
@@ -119,7 +122,7 @@ public class WaitingFragment extends Fragment {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    MainActivity.getActivity().onBackPressed();
+                    fragment.activity.onBackPressed();
                 }
             });
         }
