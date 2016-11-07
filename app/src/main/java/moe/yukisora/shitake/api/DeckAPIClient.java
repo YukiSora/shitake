@@ -1,21 +1,18 @@
 package moe.yukisora.shitake.api;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 
 import moe.yukisora.shitake.model.Deck;
 
@@ -24,20 +21,22 @@ import moe.yukisora.shitake.model.Deck;
  */
 
 public class DeckAPIClient {
-
+    private static final String FILENAME = "question_answer.json";
     private static DeckAPIClient sSharedInstance;
-    private static String sCurrentDeck = "";
-
-    private ArrayList<Deck> mDeck = new ArrayList<>();
+    private ArrayList<Deck> mDeck;
+    private HashMap<String, ArrayList<Deck>> decks;
+    private String currentDeck;
     private int mCounter;
 
-    private SharedPreferences mSharedPreferences;
+    private DeckAPIClient(@NonNull Context context) {
+        decks = new HashMap<>();
+        populateQuestions(context);
+    }
 
     // Singleton New Instance
-    public static synchronized DeckAPIClient newInstance(@NonNull Context context, String filename) {
-        if (sSharedInstance == null || !sCurrentDeck.equals(filename)) {
-            sSharedInstance = new DeckAPIClient(context, filename);
-        }
+    public static synchronized DeckAPIClient newInstance(@NonNull Context context) {
+        if (sSharedInstance == null)
+            sSharedInstance = new DeckAPIClient(context);
 
         return sSharedInstance;
     }
@@ -47,60 +46,47 @@ public class DeckAPIClient {
         return sSharedInstance;
     }
 
-    // Constructor
-    private DeckAPIClient(@NonNull Context context, String filename) {
-        sCurrentDeck = filename;
-        mCounter = 0;
-        mSharedPreferences = context.getSharedPreferences("preference-key", Context.MODE_PRIVATE);
-
-        populateQuestions(context, filename);
-
-        Collections.shuffle(mDeck, new Random(System.nanoTime()));
-
-    }
-
-    private void populateQuestions(Context context, String deckJSON) {
+    private void populateQuestions(Context context) {
         try {
-            JSONObject jsonRootObject = new JSONObject(String.valueOf(loadJSONFromAsset(context, deckJSON)));
-            JSONArray jsonArray = jsonRootObject.optJSONArray(deckJSON);
+            JSONArray root = new JSONArray(loadJSONFromAsset(context));
 
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
+            for (int i = 0; i < root.length(); i++) {
+                JSONObject deck = root.getJSONObject(i);
+                String title = deck.getString("title");
+                JSONArray data = deck.getJSONArray("data");
 
-                mDeck.add(new Deck(deckJSON, jsonObject.optString("Question"), jsonObject.optString("Answer")));
+                ArrayList<Deck> list = new ArrayList<>();
+                decks.put(title, list);
+
+                for (int j = 0; j < data.length(); j++) {
+                    JSONObject questionAnswerSet = data.getJSONObject(j);
+                    String question = questionAnswerSet.getString("question");
+                    String answer = questionAnswerSet.getString("answer");
+                    list.add(new Deck(question, answer));
+                }
             }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (JSONException ignore) {
         }
     }
 
-    private StringBuilder loadJSONFromAsset(Context context, String deckJSON) {
-        StringBuilder buf = new StringBuilder();
-
-        try {
-            InputStream json = context.getAssets().open(deckJSON + ".json");
-            BufferedReader in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
-            String str;
-
-            while ((str = in.readLine()) != null) {
-                buf.append(str);
-            }
-
-            in.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    private String loadJSONFromAsset(Context context) {
+        try (Scanner in = new Scanner(context.getAssets().open(FILENAME))) {
+            return in.useDelimiter("\\A").next();
+        } catch (IOException ignore) {
         }
 
-        return buf;
+        return null;
     }
 
     public Deck getDeck() {
-        return mDeck.get(mCounter);
+        return mDeck.get(mCounter++);
     }
 
-    public void nextCard(){
-        mCounter++;
+    public void setCurrentDeck(String currentDeck) {
+        this.currentDeck = currentDeck;
+        mCounter = 0;
+        mDeck = decks.get(currentDeck);
+
+        Collections.shuffle(mDeck, new Random(System.nanoTime()));
     }
 }

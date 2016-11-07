@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.ui.lobby.MainFragment;
@@ -40,8 +41,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
 
         // Singleton
+        DeckAPIClient.newInstance(this);
         GameAPIClient.newInstance(this);
         PlayerAPIClient.getInstance();
+
+        //for temporary testing
+        DeckAPIClient.getInstance().setCurrentDeck("Word Up!");
 
         //Configure bluetooth
         Bluetooth bluetooth = Bluetooth.getInstance();

@@ -18,7 +18,6 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.model.Answer;
-import moe.yukisora.shitake.model.User;
 
 /**
  * Created by Delacrix on 22/09/2016.
@@ -46,7 +45,7 @@ public class AnswerFragment extends Fragment {
 
         populateAnswers();
 
-        mQuestion.setText(DeckAPIClient.getInstance().getDeck().getmQuestion());
+        mQuestion.setText(DeckAPIClient.getInstance().getDeck().getQuestion());
         mQuestion.setAlpha(0);
 
         mAnswerLayout.startAnimation(getAnimation());

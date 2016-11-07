@@ -41,13 +41,13 @@ public class QuestionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mQuestionTitle.setText(DeckAPIClient.getInstance().getDeck().getmQuestion());
+        mQuestionTitle.setText(DeckAPIClient.getInstance().getDeck().getQuestion());
         mUserAnswer.setText("Mother");
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameAPIClient.getInstance().addAnswer(new Answer("Real Answer", DeckAPIClient.getInstance().getDeck().getmAnswer()));
+                GameAPIClient.getInstance().addAnswer(new Answer("Real Answer", DeckAPIClient.getInstance().getDeck().getAnswer()));
                 GameAPIClient.getInstance().addAnswer(new Answer("Username", mUserAnswer.getText().toString()));
                 QuestionFragment.this.showPendingFragment();
             }

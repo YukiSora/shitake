@@ -59,11 +59,12 @@ public class HostFragment extends Fragment {
     }
 
     private void initDecks() {
+        decks.add(adapter.new ViewData("Word Up!"));
         decks.add(adapter.new ViewData("Is That A Fact?"));
         decks.add(adapter.new ViewData("Movie Bluff!"));
-        decks.add(adapter.new ViewData("It's the Law"));
+        decks.add(adapter.new ViewData("It's The Law"));
         decks.add(adapter.new ViewData("The Plot Thickens"));
-        decks.add(adapter.new ViewData("Name that Show!"));
+        decks.add(adapter.new ViewData("Name That Show!"));
         decks.add(adapter.new ViewData("Poetry"));
         decks.add(adapter.new ViewData("Say My Name"));
         decks.add(adapter.new ViewData("Proverbs"));
