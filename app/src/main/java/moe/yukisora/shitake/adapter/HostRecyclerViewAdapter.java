@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.adapter;
 
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,9 +41,13 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
 
                 PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(fragment.getResources(), R.mipmap.ic_launcher)));
 
+                Fragment newFragment = new WaitingFragment();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isHost", false);
+                newFragment.setArguments(bundle);
                 fragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new WaitingFragment())
+                        .replace(R.id.activity_main_vg_fragment, newFragment)
                         .addToBackStack("join")
                         .commit();
             }

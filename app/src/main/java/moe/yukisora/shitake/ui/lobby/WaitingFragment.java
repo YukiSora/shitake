@@ -16,6 +16,7 @@ import android.widget.TextView;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.ui.game.QuestionFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -25,6 +26,7 @@ public class WaitingFragment extends Fragment {
     private Activity activity;
     private static FragmentHandler fragmentHandler;
     private LinearLayout waitingLinearLayout;
+    private boolean isHost;
 
     public static FragmentHandler getFragmentHandler() {
         return fragmentHandler;
@@ -34,6 +36,7 @@ public class WaitingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
+        isHost = getArguments().getBoolean("isHost");
 
         activity = getActivity();
         fragmentHandler = new FragmentHandler(this);
@@ -50,16 +53,20 @@ public class WaitingFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bluetooth.BluetoothClient client = Bluetooth.getInstance().getClient();
-
-                if (client != null) {
-                    client.write("poi");
+        if (isHost) {
+            view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_main_vg_fragment, new QuestionFragment())
+                            .commit();
                 }
-            }
-        });
+            });
+        }
+        else {
+            view.findViewById(R.id.startGame).setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
