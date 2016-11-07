@@ -12,6 +12,7 @@ import android.widget.TextView;
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.ui.lobby.HostFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
@@ -37,6 +38,8 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
             @Override
             public void onClick(View view) {
                 Bluetooth.getInstance().newBluetoothServer();
+
+                DeckAPIClient.getInstance().setCurrentDeck(deck.title);
 
                 PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(fragment.getResources(), R.mipmap.ic_launcher)));
 
