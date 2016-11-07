@@ -30,6 +30,7 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ViewData bluetooth = fragment.getBluetooths().get(position);
+
         holder.hostNameTextView.setText(bluetooth.name);
         holder.hostNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override

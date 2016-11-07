@@ -30,14 +30,15 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final ViewData bluetooth = fragment.getDecks().get(position);
-        holder.deckTitleTextView.setText(bluetooth.title);
+        final ViewData deck = fragment.getDecks().get(position);
+
+        holder.deckTitleTextView.setText(deck.title);
         holder.deckCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bluetooth.getInstance().newBluetoothServer();
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(fragment.getResources(), R.drawable.picture)));
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(fragment.getResources(), R.mipmap.ic_launcher)));
 
                 fragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()

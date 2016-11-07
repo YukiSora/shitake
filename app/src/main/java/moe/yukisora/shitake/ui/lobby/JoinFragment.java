@@ -24,8 +24,8 @@ import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class JoinFragment extends Fragment {
-    private BroadcastReceiver receiver;
     private ArrayList<HostRecyclerViewAdapter.ViewData> bluetooths;
+    private BroadcastReceiver receiver;
     private HostRecyclerViewAdapter adapter;
 
     @Nullable
@@ -41,12 +41,13 @@ public class JoinFragment extends Fragment {
             public void onReceive(Context context, Intent intent) {
                 if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
                     String name = device.getName();
                     if (name == null)
                         name = "Unknown";
                     String address = device.getAddress();
-
                     bluetooths.add(adapter.new ViewData(name, address));
+
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {

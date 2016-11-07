@@ -36,14 +36,12 @@ public class WaitingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
 
         activity = getActivity();
-
         fragmentHandler = new FragmentHandler(this);
-
         waitingLinearLayout = (LinearLayout)view.findViewById(R.id.waitingLinearLayout);
 
-        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
+        //init list with default player
+        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values())
             addPlayerView(player);
-        }
 
         return view;
     }
@@ -56,8 +54,9 @@ public class WaitingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bluetooth.BluetoothClient client = Bluetooth.getInstance().getClient();
+
                 if (client != null) {
-                    client.write("poiiiii");
+                    client.write("poi");
                 }
             }
         });
@@ -87,6 +86,7 @@ public class WaitingFragment extends Fragment {
             LinearLayout view = (LinearLayout)waitingLinearLayout.getChildAt(i);
             if (view.getTag().equals(address)) {
                 waitingLinearLayout.removeView(view);
+                break;
             }
         }
     }

@@ -51,6 +51,13 @@ public class HostFragment extends Fragment {
         initDecks();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        PlayerAPIClient.getInstance().clearPlayer();
+    }
+
     private void initDecks() {
         decks.add(adapter.new ViewData("Is That A Fact?"));
         decks.add(adapter.new ViewData("Movie Bluff!"));
@@ -62,13 +69,6 @@ public class HostFragment extends Fragment {
         decks.add(adapter.new ViewData("Proverbs"));
         decks.add(adapter.new ViewData("Adults Only"));
         decks.add(adapter.new ViewData("Animals"));
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        PlayerAPIClient.getInstance().clearPlayer();
     }
 
     public ArrayList<DeckRecyclerViewAdapter.ViewData> getDecks() {

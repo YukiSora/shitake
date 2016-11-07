@@ -30,6 +30,8 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Bluetooth bluetooth = Bluetooth.getInstance();
+
+        //Join Game
         view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,20 +43,12 @@ public class MainFragment extends Fragment {
                             .commit();
                 }
                 else {
-                    if (bluetooth.isAvailable()) {
-                        bluetooth.enableBluetooth(getActivity());
-                    }
-                    else {
-                        new AlertDialog.Builder(getActivity())
-                                .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
-                                .setMessage(getResources().getString(R.string.bluetooth_requested))
-                                .setPositiveButton("Ok", null)
-                                .show();
-                    }
+                    enableBluetooth();
                 }
             }
         });
 
+        //Create Game
         view.findViewById(R.id.main_btn_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,20 +60,12 @@ public class MainFragment extends Fragment {
                             .commit();
                 }
                 else {
-                    if (bluetooth.isAvailable()) {
-                        bluetooth.enableBluetooth(getActivity());
-                    }
-                    else {
-                        new AlertDialog.Builder(getActivity())
-                                .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
-                                .setMessage(getResources().getString(R.string.bluetooth_requested))
-                                .setPositiveButton("Ok", null)
-                                .show();
-                    }
+                    enableBluetooth();
                 }
             }
         });
 
+        //Tutorial
         view.findViewById(R.id.main_btn_tutorial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,11 +73,27 @@ public class MainFragment extends Fragment {
             }
         });
 
+        //About Us
         view.findViewById(R.id.main_btn_about).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("poi", "I am going to About Fragment.");
             }
         });
+    }
+
+    public void enableBluetooth() {
+        Bluetooth bluetooth = Bluetooth.getInstance();
+
+        if (bluetooth.isAvailable()) {
+            bluetooth.enableBluetooth(getActivity());
+        }
+        else {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
+                    .setMessage(getResources().getString(R.string.bluetooth_requested))
+                    .setPositiveButton("Ok", null)
+                    .show();
+        }
     }
 }
