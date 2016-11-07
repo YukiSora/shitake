@@ -11,10 +11,6 @@ import java.util.HashMap;
 
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
-/**
- * Created by yukisora on 11/4/16.
- */
-
 public class PlayerAPIClient {
     private static PlayerAPIClient playerAPIClient;
     private HashMap<String, Player> players;
@@ -65,6 +61,14 @@ public class PlayerAPIClient {
             this.picture = picture;
         }
 
+        private String bitmapToString() {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, out);
+            byte[] byteArray = out.toByteArray();
+
+            return Base64.encodeToString(byteArray, Base64.DEFAULT);
+        }
+
         @Override
         public String toString() {
             JSONObject json = new JSONObject();
@@ -74,10 +78,8 @@ public class PlayerAPIClient {
                 JSONObject data = new JSONObject();
                 data.put("address", address);
                 data.put("name", name);
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                picture.compress(Bitmap.CompressFormat.PNG, 100, out);
-                byte[] byteArray = out.toByteArray();
-                data.put("picture", Base64.encodeToString(byteArray, Base64.DEFAULT));
+                data.put("picture", bitmapToString());
+
                 json.put("data", data);
             } catch (JSONException ignore) {
             }
