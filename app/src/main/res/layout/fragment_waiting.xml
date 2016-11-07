@@ -51,7 +51,7 @@
                     android:background="@drawable/rounded_button_green"
                     android:gravity="center"
                     android:text="@string/start_game"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/white" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
 
