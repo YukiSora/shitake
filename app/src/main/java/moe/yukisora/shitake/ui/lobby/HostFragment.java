@@ -39,6 +39,7 @@ public class HostFragment extends Fragment {
 
         //Recycler View
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.deckRecyclerView);
+        recyclerView.setNestedScrollingEnabled(false);
 
         //Layout
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

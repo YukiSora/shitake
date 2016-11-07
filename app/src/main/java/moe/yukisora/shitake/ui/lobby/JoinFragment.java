@@ -67,6 +67,7 @@ public class JoinFragment extends Fragment {
 
         //Recycler View
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.hostRecyclerView);
+        recyclerView.setNestedScrollingEnabled(false);
 
         //Layout
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
