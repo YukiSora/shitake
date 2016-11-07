@@ -2,6 +2,7 @@ package moe.yukisora.shitake.ui.lobby;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -13,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import moe.yukisora.shitake.GameActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
-import moe.yukisora.shitake.ui.game.QuestionFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -27,6 +28,7 @@ public class WaitingFragment extends Fragment {
     private static FragmentHandler fragmentHandler;
     private LinearLayout waitingLinearLayout;
     private boolean isHost;
+    private boolean isStartGame;
 
     public static FragmentHandler getFragmentHandler() {
         return fragmentHandler;
@@ -57,10 +59,10 @@ public class WaitingFragment extends Fragment {
             view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.activity_main_vg_fragment, new QuestionFragment())
-                            .commit();
+                    isStartGame = true;
+
+                    Intent intent =new Intent(WaitingFragment.this.getActivity(), GameActivity.class);
+                    startActivity(intent);
                 }
             });
         }
@@ -73,8 +75,10 @@ public class WaitingFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
 
-        Bluetooth.getInstance().closeClient();
-        Bluetooth.getInstance().closeServer();
+        if (!isStartGame) {
+            Bluetooth.getInstance().closeClient();
+            Bluetooth.getInstance().closeServer();
+        }
     }
 
     public void addPlayerView(PlayerAPIClient.Player player) {
