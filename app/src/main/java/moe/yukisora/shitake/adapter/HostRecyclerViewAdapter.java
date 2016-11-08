@@ -48,7 +48,6 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
                 fragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, newFragment)
-                        .addToBackStack("join")
                         .commit();
             }
         });

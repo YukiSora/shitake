@@ -1,6 +1,5 @@
 package moe.yukisora.shitake.ui.lobby;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
  */
 
 public class WaitingFragment extends Fragment {
-    private Activity activity;
     private static FragmentHandler fragmentHandler;
     private LinearLayout waitingLinearLayout;
     private boolean isHost;
@@ -40,7 +38,6 @@ public class WaitingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
         isHost = getArguments().getBoolean("isHost");
 
-        activity = getActivity();
         fragmentHandler = new FragmentHandler(this);
         waitingLinearLayout = (LinearLayout)view.findViewById(R.id.waitingLinearLayout);
 
@@ -125,15 +122,6 @@ public class WaitingFragment extends Fragment {
                 @Override
                 public void run() {
                     fragment.removePlayerView(address);
-                }
-            });
-        }
-
-        public void back() {
-            post(new Runnable() {
-                @Override
-                public void run() {
-                    fragment.activity.onBackPressed();
                 }
             });
         }

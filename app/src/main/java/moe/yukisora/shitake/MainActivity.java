@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new MainFragment())
+                .replace(R.id.activity_main_vg_fragment, new MainFragment(), "main")
                 .commit();
 
         //below this are temporary things
@@ -70,10 +70,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
+        String tag = getSupportFragmentManager().findFragmentById(R.id.activity_main_vg_fragment).getTag();
+        if (tag != null && tag.equals("main")) {
             super.onBackPressed();
+        }
+        else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.activity_main_vg_fragment, new MainFragment(), "main")
+                    .commit();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new MainFragment(), "main")
+                .commit();
     }
 
     @Override

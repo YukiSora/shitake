@@ -39,7 +39,6 @@ public class MainFragment extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.activity_main_vg_fragment, new JoinFragment())
-                            .addToBackStack("main")
                             .commit();
                 }
                 else {
@@ -56,7 +55,6 @@ public class MainFragment extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.activity_main_vg_fragment, new HostFragment())
-                            .addToBackStack("main")
                             .commit();
                 }
                 else {

@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
-import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class Bluetooth {
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
@@ -309,7 +308,6 @@ public class Bluetooth {
         private void close() {
             try {
                 server.close();
-                WaitingFragment.getFragmentHandler().back();
             } catch (IOException ignore) {
             }
         }

@@ -51,7 +51,6 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
                 fragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, newFragment)
-                        .addToBackStack("host")
                         .commit();
             }
         });
