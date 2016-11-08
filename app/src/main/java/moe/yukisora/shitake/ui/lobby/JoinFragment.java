@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.HostRecyclerViewAdapter;
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class JoinFragment extends Fragment {
     private ArrayList<HostRecyclerViewAdapter.ViewData> bluetooths;
@@ -90,7 +89,6 @@ public class JoinFragment extends Fragment {
 
         Bluetooth.getInstance().stopDiscovery();
         getActivity().unregisterReceiver(receiver);
-        PlayerAPIClient.getInstance().clearPlayer();
     }
 
     public ArrayList<HostRecyclerViewAdapter.ViewData> getBluetooths() {

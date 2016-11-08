@@ -18,7 +18,8 @@ public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerRecycl
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(position);
+        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(position);
+
         holder.playerName.setText(player.name);
         holder.playerPicture.setImageBitmap(player.picture);
     }

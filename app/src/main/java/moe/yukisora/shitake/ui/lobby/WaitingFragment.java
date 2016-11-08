@@ -84,5 +84,6 @@ public class WaitingFragment extends Fragment {
             Bluetooth.getInstance().closeClient();
             Bluetooth.getInstance().closeServer();
         }
+        PlayerAPIClient.getInstance().clearPlayer();
     }
 }
