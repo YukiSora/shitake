@@ -3,7 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import moe.yukisora.shitake.ui.account.TauntFragment;
+import moe.yukisora.shitake.ui.account.ProfileFragment;
 
 public class AccountActivity extends AppCompatActivity {
     @Override
@@ -13,7 +13,7 @@ public class AccountActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new TauntFragment())
+                .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
                 .commit();
     }
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.ui.account.ProfileFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -30,6 +31,17 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Bluetooth bluetooth = Bluetooth.getInstance();
+
+        view.findViewById(R.id.main_btn_account).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
+                        .commit();
+
+            }
+        });
 
         //Join Game
         view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {

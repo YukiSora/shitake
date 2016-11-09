@@ -1,5 +1,6 @@
 <resources>
 
+    <string name="main_btn_account">My account</string>
     <string name="main_btn_join">加入游戏</string>
     <string name="main_btn_create">创建游戏</string>
     <string name="main_btn_tutorial">游戏教程</string>
@@ -12,5 +13,8 @@
     <string name="player_list">玩家列表</string>
     <string name="host_list">主机列表</string>
     <string name="deck_list">题集列表</string>
+    <string name="profile_nickname">Nickname</string>
+    <string name="save">Save</string>
+    <string name="profile_change_picture">Change picture</string>
 
 </resources>
