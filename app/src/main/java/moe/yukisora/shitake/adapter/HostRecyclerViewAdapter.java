@@ -17,10 +17,10 @@ import moe.yukisora.shitake.ui.lobby.JoinFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerViewAdapter.ViewHolder> {
-    private JoinFragment fragment;
+    private JoinFragment mFragment;
 
     public HostRecyclerViewAdapter(Fragment fragment) {
-        this.fragment = (JoinFragment)fragment;
+        this.mFragment = (JoinFragment) fragment;
     }
 
     @Override
@@ -30,22 +30,22 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final ViewData bluetooth = fragment.getBluetooths().get(position);
+        final ViewData bluetooth = mFragment.getBluetooths().get(position);
 
         holder.hostNameTextView.setText(bluetooth.name);
         holder.hostNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //try to connect to server
+                // Attempt to Connect to Server
                 Bluetooth.getInstance().newBluetoothClient(bluetooth.address);
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(fragment.getResources(), R.mipmap.ic_launcher)));
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(mFragment.getResources(), R.mipmap.ic_launcher)));
 
                 Fragment newFragment = new WaitingFragment();
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("isHost", false);
                 newFragment.setArguments(bundle);
-                fragment.getActivity().getSupportFragmentManager()
+                mFragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, newFragment)
                         .commit();
@@ -55,7 +55,7 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
 
     @Override
     public int getItemCount() {
-        return fragment.getBluetooths().size();
+        return mFragment.getBluetooths().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,7 +64,7 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
         public ViewHolder(View view) {
             super(view);
 
-            hostNameTextView = (TextView)view.findViewById(R.id.hostNameTextView);
+            hostNameTextView = (TextView) view.findViewById(R.id.hostNameTextView);
         }
     }
 

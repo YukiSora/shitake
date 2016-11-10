@@ -19,10 +19,10 @@ import moe.yukisora.shitake.ui.lobby.HostFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerViewAdapter.ViewHolder> {
-    private HostFragment fragment;
+    private HostFragment mFragment;
 
     public DeckRecyclerViewAdapter(Fragment fragment) {
-        this.fragment = (HostFragment)fragment;
+        this.mFragment = (HostFragment)fragment;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final ViewData deck = fragment.getDecks().get(position);
+        final ViewData deck = mFragment.getDecks().get(position);
 
         holder.deckTitleTextView.setText(deck.title);
         holder.deckCardView.setOnClickListener(new View.OnClickListener() {
@@ -42,13 +42,13 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
 
                 DeckAPIClient.getInstance().setCurrentDeck(deck.title);
 
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(fragment.getResources(), R.mipmap.ic_launcher)));
+                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(mFragment.getResources(), R.mipmap.ic_launcher)));
 
                 Fragment newFragment = new WaitingFragment();
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("isHost", true);
                 newFragment.setArguments(bundle);
-                fragment.getActivity().getSupportFragmentManager()
+                mFragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, newFragment)
                         .commit();
@@ -58,7 +58,7 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
 
     @Override
     public int getItemCount() {
-        return fragment.getDecks().size();
+        return mFragment.getDecks().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

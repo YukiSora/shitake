@@ -25,11 +25,11 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static String bluetoothAddress;
+    private static String sBluetoothAddress;
     private DrawerLayout mDrawerLayout;
 
     public static String getBluetoothAddress() {
-        return bluetoothAddress;
+        return sBluetoothAddress;
     }
 
     @Override
@@ -37,18 +37,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get own Bluetooth address
-        bluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
+        // Get Own Bluetooth Address
+        sBluetoothAddress = android.provider.Settings.Secure.getString(getContentResolver(), "bluetooth_address");
 
         // Singleton
         DeckAPIClient.newInstance(this);
         GameAPIClient.newInstance(this);
         PlayerAPIClient.getInstance();
 
-        //for temporary testing
+        // Temporary Testing
         DeckAPIClient.getInstance().setCurrentDeck("Word Up!");
 
-        //Configure bluetooth
+        // Configure Bluetooth
         Bluetooth bluetooth = Bluetooth.getInstance();
         if (!bluetooth.isAvailable())
             new AlertDialog.Builder(this).setTitle(getResources().getString(R.string.bluetooth_is_not_available)).setMessage(getResources().getString(R.string.bluetooth_requested)).setPositiveButton("Ok", null).show();
@@ -60,12 +60,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.activity_main_vg_fragment, new MainFragment(), "main")
                 .commit();
 
-        //below this are temporary things
+        // Temporary - Drawer Layout
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         NavigationView mNavigationView = (NavigationView)findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
-
-        setupDrawerLayout();
+        
     }
 
     @Override
@@ -98,15 +97,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Bluetooth.getInstance().closeClient();
         Bluetooth.getInstance().closeServer();
-    }
-
-    //below this are temporary methods
-    public void setupDrawerLayout() {
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
-            supportActionBar.setTitle(getResources().getString(R.string.app_name));
-        }
     }
 
     @Override
