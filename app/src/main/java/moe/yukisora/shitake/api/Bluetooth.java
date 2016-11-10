@@ -10,6 +10,7 @@ import org.json.JSONObject;
 public class Bluetooth {
     private static final int REQUEST_ENABLE_BLUETOOTH = 1;
     public static final int DATA_TYPE_PLAYER_INFORMATION = 0;
+    public static final int DATA_TYPE_START_GAME = 1;
     public static final String UUID_VALUE = "859f02dd-e6f5-4d56-826c-40f1e1bceea8";
     private static Bluetooth bluetooth;
     private BluetoothAdapter bluetoothAdapter;

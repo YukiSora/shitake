@@ -16,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class BluetoothClient extends Thread {
     private BluetoothSocket server;
@@ -56,6 +57,9 @@ public class BluetoothClient extends Thread {
                 case Bluetooth.DATA_TYPE_PLAYER_INFORMATION:
                     playerInformationProcess(json.getJSONObject("data"));
                     break;
+                case Bluetooth.DATA_TYPE_START_GAME:
+                    startGame();
+                    break;
             }
         } catch (JSONException ignore) {
         }
@@ -68,6 +72,10 @@ public class BluetoothClient extends Thread {
         Bitmap picture = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         PlayerAPIClient.getInstance().addPlayer(PlayerAPIClient.getInstance().new Player(address, name, picture));
+    }
+
+    private void startGame() {
+        WaitingFragment.getFragmentTask().startGame();
     }
 
     private void read() {

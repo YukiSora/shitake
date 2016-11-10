@@ -3,6 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
 
@@ -25,4 +26,11 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Bluetooth.getInstance().closeClient();
+        Bluetooth.getInstance().closeServer();
+    }
 }

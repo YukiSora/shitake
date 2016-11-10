@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import moe.yukisora.shitake.GameActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.PlayerRecyclerViewAdapter;
@@ -23,6 +26,7 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class WaitingFragment extends Fragment {
     private static PlayerRecyclerViewAdapter adapter;
+    private static FragmentTask fragmentTask;
     private boolean isHost;
     private boolean isStartGame;
 
@@ -39,10 +43,16 @@ public class WaitingFragment extends Fragment {
         return adapter;
     }
 
+    public static FragmentTask getFragmentTask() {
+        return fragmentTask;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_waiting, container, false);
+
+        fragmentTask = new FragmentTask(this);
         isHost = getArguments().getBoolean("isHost");
 
         return view;
@@ -70,10 +80,13 @@ public class WaitingFragment extends Fragment {
             view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    isStartGame = true;
+                    //send to other players game started
+                    try {
+                        Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_GAME, new JSONObject()));
+                    } catch (JSONException ignore) {
+                    }
 
-                    Intent intent =new Intent(WaitingFragment.this.getActivity(), GameActivity.class);
-                    startActivity(intent);
+                    startGame();
                 }
             });
         }
@@ -91,5 +104,24 @@ public class WaitingFragment extends Fragment {
             Bluetooth.getInstance().closeServer();
         }
         PlayerAPIClient.getInstance().clearPlayer();
+    }
+
+    public void startGame() {
+        isStartGame = true;
+
+        Intent intent =new Intent(WaitingFragment.this.getActivity(), GameActivity.class);
+        startActivity(intent);
+    }
+
+    public static class FragmentTask {
+        private  WaitingFragment fragment;
+
+        FragmentTask(Fragment fragment) {
+            this.fragment = (WaitingFragment)fragment;
+        }
+
+        public void startGame() {
+            fragment.startGame();
+        }
     }
 }
