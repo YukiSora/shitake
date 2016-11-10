@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothSocket;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -82,13 +81,10 @@ public class BluetoothServer extends Thread {
     }
 
     public void sendExclude(Client thisClient, String s) {
-        Log.i("poi", clients.size() + "before");
         for (Client client : clients) {
-            Log.i("poi", s);
             if (client != thisClient)
                 client.write(s);
         }
-        Log.i("poi", clients.size() + "after");
     }
 
     public void close() {

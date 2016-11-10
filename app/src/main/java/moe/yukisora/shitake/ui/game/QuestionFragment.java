@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,10 +45,10 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_question, container, false);
 
-        mQuestionTitle = (TextView) rootView.findViewById(R.id.fragment_question_text_title);
-        mUserAnswer = (TextView) rootView.findViewById(R.id.fragment_question_text_answer);
+        mQuestionTitle = (TextView)rootView.findViewById(R.id.fragment_question_text_title);
+        mUserAnswer = (TextView)rootView.findViewById(R.id.fragment_question_text_answer);
 
-        mSubmitButton = (Button) rootView.findViewById(R.id.submit_button);
+        mSubmitButton = (Button)rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
         handler = new Handler();
@@ -111,14 +110,13 @@ public class QuestionFragment extends Fragment {
     }
 
     public static class FragmentTask {
-        private  QuestionFragment fragment;
+        private QuestionFragment fragment;
 
         FragmentTask(Fragment fragment) {
             this.fragment = (QuestionFragment)fragment;
         }
 
         public void updateQuestion(String question) {
-            Log.i("poi", question);
             fragment.updateQuestion(question);
         }
     }
