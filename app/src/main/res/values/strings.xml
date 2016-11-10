@@ -1,7 +1,8 @@
 <resources>
 
-    <string name="app_name">"Shitake"</string>
+    <string name="app_name" translatable="false">"Shitake"</string>
 
+    <string name="main_btn_account">My Account</string>
     <string name="main_btn_join">Join Game</string>
     <string name="main_btn_create">Create Game</string>
     <string name="main_btn_tutorial">Tutorial</string>
@@ -14,5 +15,8 @@
     <string name="player_list">Player List</string>
     <string name="host_list">Host List</string>
     <string name="deck_list">Deck List</string>
+
+    <string name="profile_nickname">Nickname</string>
+    <string name="profile_change_picture">Change picture</string>
 
 </resources>

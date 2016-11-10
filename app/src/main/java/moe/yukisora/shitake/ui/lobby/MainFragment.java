@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.ui.lobby;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import moe.yukisora.shitake.AccountActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 
@@ -30,6 +32,14 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Bluetooth bluetooth = Bluetooth.getInstance();
+
+        view.findViewById(R.id.main_btn_account).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AccountActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Join Game
         view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {

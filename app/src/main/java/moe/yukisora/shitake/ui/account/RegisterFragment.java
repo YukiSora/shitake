@@ -24,10 +24,10 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getView().findViewById(R.id.btRegister).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.btRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText etNickname = (EditText) getView().findViewById(R.id.etNickname);
+                EditText etNickname = (EditText) getView().findViewById(R.id.et_register_nickname);
                 String nickname = etNickname.getText().toString();
                 System.out.println(nickname);
                 etNickname.setText("");
