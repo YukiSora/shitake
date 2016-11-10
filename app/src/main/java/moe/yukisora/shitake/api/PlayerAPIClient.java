@@ -100,6 +100,10 @@ public class PlayerAPIClient {
         return players.get(playersInOrder.get(position));
     }
 
+    public Player get(String address) {
+        return players.get(address);
+    }
+
     public class Player {
         public String address;
         public String name;
@@ -119,22 +123,16 @@ public class PlayerAPIClient {
             return Base64.encodeToString(byteArray, Base64.DEFAULT);
         }
 
-        @Override
-        public String toString() {
+        public JSONObject toJSON() {
             JSONObject json = new JSONObject();
             try {
-                json.put("dataType", Bluetooth.DATA_TYPE_PLAYER_INFORMATION);
-
-                JSONObject data = new JSONObject();
-                data.put("address", address);
-                data.put("name", name);
-                data.put("picture", bitmapToString());
-
-                json.put("data", data);
+                json.put("address", address);
+                json.put("name", name);
+                json.put("picture", bitmapToString());
             } catch (JSONException ignore) {
             }
 
-            return json.toString();
+            return json;
         }
     }
 }

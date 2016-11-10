@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.DeckRecyclerViewAdapter;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class HostFragment extends Fragment {
     private ArrayList<DeckRecyclerViewAdapter.ViewData> decks;
@@ -48,6 +49,9 @@ public class HostFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         initDecks();
+
+        //init self information
+        PlayerAPIClient.getInstance().addSelf(getResources());
     }
 
     private void initDecks() {

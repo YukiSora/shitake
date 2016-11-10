@@ -57,9 +57,6 @@ public class WaitingFragment extends Fragment {
         //Divider
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-        //init self information
-        PlayerAPIClient.getInstance().addSelf(getResources());
-
         if (isHost) {
             view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
                 @Override
