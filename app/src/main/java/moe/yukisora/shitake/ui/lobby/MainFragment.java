@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.ui.lobby;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import moe.yukisora.shitake.AccountActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.ui.account.ProfileFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -35,11 +36,12 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager()
+                /*getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
-                        .commit();
-
+                        .commit();*/
+                Intent intent = new Intent(getActivity(), AccountActivity.class);
+                startActivity(intent);
             }
         });
 

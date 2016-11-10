@@ -2,8 +2,6 @@
 
     <string name="app_name" translatable="false">"Shitake"</string>
 
-    <string name="save">Save</string>
-
     <string name="main_btn_account">My Account</string>
     <string name="main_btn_join">Join Game</string>
     <string name="main_btn_create">Create Game</string>

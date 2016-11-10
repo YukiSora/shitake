@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import moe.yukisora.shitake.ui.account.ProfileFragment;
+import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 public class AccountActivity extends AppCompatActivity {
     @Override
@@ -18,7 +19,16 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onBackPressed() {
+        String tag = getSupportFragmentManager().findFragmentById(R.id.activity_main_vg_fragment).getTag();
+
+        if (tag != null && tag.equals("taunt")) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
+                    .commit();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

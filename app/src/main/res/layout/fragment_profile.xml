@@ -32,11 +32,4 @@
         android:layout_gravity="center"
         android:text="@string/profile_change_picture" />
 
-    <Button
-        android:id="@+id/bt_profile_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/save" />
-
 </LinearLayout>

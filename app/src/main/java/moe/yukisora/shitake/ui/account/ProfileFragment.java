@@ -37,6 +37,15 @@ public class ProfileFragment extends Fragment {
         etNickname = ((EditText) view.findViewById(R.id.et_profile_nickname));
         etNickname.setText(userManager.getName());
 
+        etNickname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (!hasFocus) {
+                    userManager.setName(etNickname.getText().toString());
+                }
+            }
+        });
+
         String picturePath = userManager.getProfilePicture();
         if (!picturePath.equals("")) {
             ivProfilePicture = (ImageView) getView().findViewById(R.id.iv_profile_picture);
@@ -45,20 +54,12 @@ public class ProfileFragment extends Fragment {
             // TODO no picture, encourage to choose one
         }
 
-        view.findViewById(R.id.bt_profile_save).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userManager.setName(etNickname.getText().toString());
-                getActivity().onBackPressed();
-            }
-        });
-
         view.findViewById(R.id.bt_profile_change_picture).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new TauntFragment())
+                        .replace(R.id.activity_main_vg_fragment, new TauntFragment(), "taunt")
                         .commit();
             }
         });

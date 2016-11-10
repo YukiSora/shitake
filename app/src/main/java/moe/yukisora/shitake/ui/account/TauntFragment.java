@@ -37,23 +37,27 @@ public class TauntFragment extends Fragment {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), ACTIVITY_RESULT_SELECT_PICTURE);
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == ACTIVITY_RESULT_SELECT_PICTURE) {
                 Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getContext().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 cursor.moveToFirst();
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 String picturePath = cursor.getString(columnIndex);
                 cursor.close();
 
-                UserManager userManager = new UserManager(getActivity());
-                userManager.setProfilePicture(picturePath);
+                new UserManager(getActivity()).setProfilePicture(picturePath);
 
-                getActivity().onBackPressed();
+                //getFragmentManager().popBackStack();
             }
         }
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
+                .commit();
     }
 
 }

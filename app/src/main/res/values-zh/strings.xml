@@ -13,8 +13,8 @@
     <string name="player_list">玩家列表</string>
     <string name="host_list">主机列表</string>
     <string name="deck_list">题集列表</string>
+
     <string name="profile_nickname">Nickname</string>
-    <string name="save">Save</string>
     <string name="profile_change_picture">Change picture</string>
 
 </resources>
