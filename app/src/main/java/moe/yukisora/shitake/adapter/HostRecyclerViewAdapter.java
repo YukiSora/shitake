@@ -1,6 +1,5 @@
 package moe.yukisora.shitake.adapter;
 
-import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.ui.lobby.JoinFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
@@ -37,8 +34,6 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
             public void onClick(View view) {
                 // Attempt to Connect to Server
                 Bluetooth.getInstance().newBluetoothClient(bluetooth.address);
-
-                PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(mFragment.getResources(), R.mipmap.ic_launcher)));
 
                 mFragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()

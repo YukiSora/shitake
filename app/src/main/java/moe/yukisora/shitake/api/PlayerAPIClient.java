@@ -13,8 +13,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class PlayerAPIClient {
@@ -39,7 +39,7 @@ public class PlayerAPIClient {
     public void addSelf(Resources resources) {
         String address = MainActivity.getBluetoothAddress();
         String name = "Yuki Sora";
-        Bitmap picture = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher);
+        Bitmap picture = BitmapFactory.decodeResource(resources, R.drawable.picture);
 
         Player player = new Player(address, name, picture);
         players.put(address, player);
