@@ -16,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.ui.game.QuestionFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class BluetoothClient extends Thread {
@@ -60,6 +61,9 @@ public class BluetoothClient extends Thread {
                 case Bluetooth.DATA_TYPE_START_GAME:
                     startGame();
                     break;
+                case Bluetooth.DATA_TYPE_QUESTION:
+                    question(json.getJSONObject("data"));
+                    break;
             }
         } catch (JSONException ignore) {
         }
@@ -76,6 +80,14 @@ public class BluetoothClient extends Thread {
 
     private void startGame() {
         WaitingFragment.getFragmentTask().startGame();
+    }
+
+    private void question(JSONObject data) throws JSONException {
+        String question = data.getString("question");
+        //wait fragment finish init
+        while (QuestionFragment.getFragmentTask() == null)
+            ;
+        QuestionFragment.getFragmentTask().updateQuestion(question);
     }
 
     private void read() {

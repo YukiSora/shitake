@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         GameAPIClient.newInstance(this);
         PlayerAPIClient.getInstance();
 
-        // Temporary Testing
-        DeckAPIClient.getInstance().setCurrentDeck("Word Up!");
-
         // Configure Bluetooth
         Bluetooth bluetooth = Bluetooth.getInstance();
         if (!bluetooth.isAvailable())
