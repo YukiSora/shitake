@@ -19,6 +19,15 @@ import moe.yukisora.shitake.api.Bluetooth;
  */
 
 public class MainFragment extends Fragment {
+
+    public static MainFragment newInstance() {
+        Bundle args = new Bundle();
+        MainFragment fragment = new MainFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +57,7 @@ public class MainFragment extends Fragment {
                 if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.activity_main_vg_fragment, new JoinFragment())
+                            .replace(R.id.activity_main_vg_fragment, JoinFragment.newInstance())
                             .commit();
                 }
                 else {
@@ -64,7 +73,7 @@ public class MainFragment extends Fragment {
                 if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.activity_main_vg_fragment, new HostFragment())
+                            .replace(R.id.activity_main_vg_fragment, HostFragment.newInstance())
                             .commit();
                 }
                 else {

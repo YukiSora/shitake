@@ -28,6 +28,14 @@ public class JoinFragment extends Fragment {
     private BroadcastReceiver receiver;
     private HostRecyclerViewAdapter adapter;
 
+    public static JoinFragment newInstance() {
+        Bundle args = new Bundle();
+        JoinFragment fragment = new JoinFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

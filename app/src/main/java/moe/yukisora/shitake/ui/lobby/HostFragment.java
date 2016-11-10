@@ -20,6 +20,14 @@ public class HostFragment extends Fragment {
     private ArrayList<DeckRecyclerViewAdapter.ViewData> decks;
     private DeckRecyclerViewAdapter adapter;
 
+    public static HostFragment newInstance() {
+        Bundle args = new Bundle();
+        HostFragment fragment = new HostFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

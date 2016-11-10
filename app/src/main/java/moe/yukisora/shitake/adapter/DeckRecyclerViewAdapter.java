@@ -1,7 +1,6 @@
 package moe.yukisora.shitake.adapter;
 
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -44,13 +43,9 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
 
                 PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Yuki Sora", BitmapFactory.decodeResource(mFragment.getResources(), R.mipmap.ic_launcher)));
 
-                Fragment newFragment = new WaitingFragment();
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("isHost", true);
-                newFragment.setArguments(bundle);
                 mFragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, newFragment)
+                        .replace(R.id.activity_main_vg_fragment, WaitingFragment.newInstance(true))
                         .commit();
             }
         });

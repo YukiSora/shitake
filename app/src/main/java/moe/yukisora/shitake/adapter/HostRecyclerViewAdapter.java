@@ -1,7 +1,6 @@
 package moe.yukisora.shitake.adapter;
 
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
     private JoinFragment mFragment;
 
     public HostRecyclerViewAdapter(Fragment fragment) {
-        this.mFragment = (JoinFragment) fragment;
+        this.mFragment = (JoinFragment)fragment;
     }
 
     @Override
@@ -41,13 +40,9 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
 
                 PlayerAPIClient.getInstance().getPlayers().put(MainActivity.getBluetoothAddress(), PlayerAPIClient.getInstance().new Player(MainActivity.getBluetoothAddress(), "Poi", BitmapFactory.decodeResource(mFragment.getResources(), R.mipmap.ic_launcher)));
 
-                Fragment newFragment = new WaitingFragment();
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("isHost", false);
-                newFragment.setArguments(bundle);
                 mFragment.getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, newFragment)
+                        .replace(R.id.activity_main_vg_fragment, WaitingFragment.newInstance(false))
                         .commit();
             }
         });
@@ -64,7 +59,7 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
         public ViewHolder(View view) {
             super(view);
 
-            hostNameTextView = (TextView) view.findViewById(R.id.hostNameTextView);
+            hostNameTextView = (TextView)view.findViewById(R.id.hostNameTextView);
         }
     }
 

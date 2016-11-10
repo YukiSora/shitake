@@ -26,6 +26,15 @@ public class WaitingFragment extends Fragment {
     private boolean isHost;
     private boolean isStartGame;
 
+    public static WaitingFragment newInstance(boolean isHost) {
+        Bundle args = new Bundle();
+        WaitingFragment fragment = new WaitingFragment();
+        args.putBoolean("isHost", isHost);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     public static PlayerRecyclerViewAdapter getAdapter() {
         return adapter;
     }
