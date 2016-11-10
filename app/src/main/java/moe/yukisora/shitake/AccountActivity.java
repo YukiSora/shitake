@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import moe.yukisora.shitake.ui.account.ProfileFragment;
-import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 public class AccountActivity extends AppCompatActivity {
     @Override

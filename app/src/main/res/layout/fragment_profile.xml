@@ -20,10 +20,16 @@
         android:hint="@string/profile_nickname"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/tvtest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
     <ImageView
         android:id="@+id/iv_profile_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 
     <Button
         android:id="@+id/bt_profile_change_picture"

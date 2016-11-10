@@ -36,10 +36,6 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
-                        .commit();*/
                 Intent intent = new Intent(getActivity(), AccountActivity.class);
                 startActivity(intent);
             }
