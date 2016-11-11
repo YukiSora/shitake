@@ -130,7 +130,6 @@ public class QuestionFragment extends Fragment {
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(question))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(getClass().getSimpleName())
                 .commit();
     }
 

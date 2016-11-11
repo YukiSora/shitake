@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
@@ -86,7 +89,11 @@ public class PendingFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendingFragment.this.showAnswerFragment();
+                try {
+                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_SELECT_ANSWER, new JSONObject()));
+                } catch (JSONException ignore) {
+                }
+                showAnswerFragment();
             }
         });
 
@@ -106,15 +113,6 @@ public class PendingFragment extends Fragment {
 
         animation.setDuration(500);
         animation.start();
-    }
-
-    public void showAnswerFragment() {
-        PendingFragment.this.getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(getClass().getSimpleName())
-                .commit();
     }
 
     public void populatePendingPlayers() {
@@ -166,6 +164,14 @@ public class PendingFragment extends Fragment {
         return rootView;
     }
 
+    public void showAnswerFragment() {
+        PendingFragment.this.getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+    }
+
     public static class FragmentTask {
         private PendingFragment fragment;
 
@@ -175,6 +181,10 @@ public class PendingFragment extends Fragment {
 
         public void addAnswer(String address) {
             fragment.addAnswer(address);
+        }
+
+        public void showAnswerFragment() {
+            fragment.showAnswerFragment();
         }
     }
 }
