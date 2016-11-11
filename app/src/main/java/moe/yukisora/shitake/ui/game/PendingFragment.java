@@ -165,7 +165,7 @@ public class PendingFragment extends Fragment {
     }
 
     public void showAnswerFragment() {
-        PendingFragment.this.getActivity().getSupportFragmentManager()
+        getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)

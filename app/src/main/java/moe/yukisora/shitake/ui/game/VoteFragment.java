@@ -18,6 +18,14 @@ import moe.yukisora.shitake.R;
 public class VoteFragment extends Fragment{
     private Button nextButton;
 
+    public static VoteFragment newInstance() {
+        Bundle args = new Bundle();
+        VoteFragment fragment = new VoteFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
