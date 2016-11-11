@@ -5,23 +5,29 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.AnswerAPIClient;
+import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 /**
  * Created by Delacrix on 10/10/2016.
  */
 
-public class VoteFragment extends Fragment{
+public class VoteFragment extends Fragment {
     private LinearLayout voteAnswerLinearLayout;
+    private boolean isHost;
 
     public static VoteFragment newInstance() {
         Bundle args = new Bundle();
@@ -37,6 +43,7 @@ public class VoteFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_vote, container, false);
 
         voteAnswerLinearLayout = (LinearLayout)view.findViewById(R.id.voteAnswerLinearLayout);
+        isHost = Bluetooth.getInstance().getServer() != null;
 
         return view;
     }
@@ -64,7 +71,17 @@ public class VoteFragment extends Fragment{
         answerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("poi", address);
+                if (isHost) {
+                    PlayerAPIClient.getInstance().get(address).score += GameAPIClient.VOTE_SCORE;
+                }
+                else {
+                    try {
+                        JSONObject data = new JSONObject();
+                        data.put("address", address);
+                        Bluetooth.getInstance().getClient().send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
+                    } catch (JSONException ignore) {
+                    }
+                }
             }
         });
 
