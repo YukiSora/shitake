@@ -54,7 +54,7 @@ public class BluetoothServer extends Thread {
                     answer(json.getJSONObject("data"), thisClient);
                     break;
                 case Bluetooth.DATA_TYPE_SELECTED_ANSWER:
-                    selectedAnswer(json.getJSONObject("data"));
+                    selectedAnswer(json.getJSONObject("data"), thisClient);
                     break;
             }
         } catch (JSONException ignore) {
@@ -94,12 +94,15 @@ public class BluetoothServer extends Thread {
         sendExclude(thisClient, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_PLAYER_INFORMATION, data));
     }
 
-    private void selectedAnswer(JSONObject data) throws JSONException {
+    private void selectedAnswer(JSONObject data, Client thisClient) throws JSONException {
         //get address
         String address = data.getString("address");
 
         //set score
-        PlayerAPIClient.getInstance().get(address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+        if (address.equals("correct"))
+            PlayerAPIClient.getInstance().get(thisClient.address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+        else
+            PlayerAPIClient.getInstance().get(address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
     }
 
     public void sendTo(Client thisClient, String s) {
