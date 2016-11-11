@@ -24,5 +24,6 @@
     <string name="players_done">就位的玩家</string>
     <string name="waiting_players">等待玩家</string>
     <string name="next">下一步</string>
+    <string name="voteMostCreativeAnswer">选择最富有创意的答案</string>
 
 </resources>
