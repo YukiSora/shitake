@@ -72,7 +72,8 @@ public class VoteFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (isHost) {
-                    PlayerAPIClient.getInstance().get(address).score += GameAPIClient.VOTE_SCORE;
+                    PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.VOTE_SCORE;
+                    PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).done = true;
                 }
                 else {
                     try {
@@ -82,6 +83,8 @@ public class VoteFragment extends Fragment {
                     } catch (JSONException ignore) {
                     }
                 }
+
+                showLeaderboardFragment();
             }
         });
 
@@ -90,12 +93,11 @@ public class VoteFragment extends Fragment {
         return view;
     }
 
-    public void showAnswerFragment() {
+    public void showLeaderboardFragment() {
         VoteFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
+                .replace(R.id.activity_main_vg_fragment, LeaderboardFragment.newInstance())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .addToBackStack(getClass().getSimpleName())
                 .commit();
     }
 }

@@ -22,7 +22,7 @@
             android:layout_weight="0"
             android:gravity="center"
             android:padding="10dp"
-            android:text="@string/voteMostCreativeAnswer"
+            android:text="@string/vote_most_creative_answer"
             android:textSize="25sp" />
 
         <LinearLayout

@@ -26,6 +26,9 @@
     <string name="players_done">Players Done</string>
     <string name="waiting_players">Waiting Players</string>
     <string name="next">Next</string>
-    <string name="voteMostCreativeAnswer">Vote most creative answer</string>
+    <string name="vote_most_creative_answer">Vote most creative answer</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="next_round">Next Round</string>
+    <string name="end_game">End Game</string>
 
 </resources>

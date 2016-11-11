@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.ui.game.LeaderboardFragment;
 
 public class BluetoothServer extends Thread {
     private BluetoothServerSocket server;
@@ -57,7 +58,7 @@ public class BluetoothServer extends Thread {
                     selectedAnswer(json.getJSONObject("data"), thisClient);
                     break;
                 case Bluetooth.DATA_TYPE_VOTE:
-                    vote(json.getJSONObject("data"));
+                    vote(json.getJSONObject("data"), thisClient);
                     break;
             }
         } catch (JSONException ignore) {
@@ -103,17 +104,40 @@ public class BluetoothServer extends Thread {
 
         //set score
         if (address.equals("correct"))
-            PlayerAPIClient.getInstance().get(thisClient.address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+            PlayerAPIClient.getInstance().get(thisClient.address).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
         else
-            PlayerAPIClient.getInstance().get(address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+            PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
     }
 
-    private void vote(JSONObject data) throws JSONException {
+    private void vote(JSONObject data, Client thisClient) throws JSONException {
         //get address
         String address = data.getString("address");
 
         //set score
-        PlayerAPIClient.getInstance().get(address).score += GameAPIClient.VOTE_SCORE;
+        PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.VOTE_SCORE;
+        PlayerAPIClient.getInstance().get(thisClient.address).done = true;
+
+        boolean done = true;
+        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
+            if (!player.done) {
+                done = false;
+                break;
+            }
+        }
+        if (done) {
+            //show list
+            LeaderboardFragment.getFragmentTask().showRecyclerView();
+
+            //send to other players
+            try {
+                sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_DONE, new JSONObject()));
+            } catch (JSONException ignore) {
+            }
+
+            //reset
+            for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values())
+                player.done = false;
+        }
     }
 
     public void sendTo(Client thisClient, String s) {

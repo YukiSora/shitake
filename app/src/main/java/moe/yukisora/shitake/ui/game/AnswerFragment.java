@@ -118,9 +118,9 @@ public class AnswerFragment extends Fragment {
             public void onClick(View view) {
                 if (isHost) {
                     if (address.equals("correct"))
-                        PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+                        PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
                     else
-                        PlayerAPIClient.getInstance().get(address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+                        PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
                 }
                 else {
                     try {
