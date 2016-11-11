@@ -101,9 +101,9 @@ public class AnswerFragment extends Fragment {
         Collections.shuffle(addresses, new Random(System.nanoTime()));
 
         // Populate Answers
-        for (String address : addresses) {
-            addPendingViewFromLayoutResource(mAnswerLayout, address, AnswerAPIClient.getInstance().getAnswers().get(address));
-        }
+        for (String address : addresses)
+            if (!address.equals(MainActivity.getBluetoothAddress()))
+                addPendingViewFromLayoutResource(mAnswerLayout, address, AnswerAPIClient.getInstance().getAnswers().get(address));
     }
 
     public View addPendingViewFromLayoutResource(LinearLayout linearLayout, final String address, String answer) {
