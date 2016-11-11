@@ -77,6 +77,9 @@ public class QuestionFragment extends Fragment {
             } catch (JSONException ignore) {
             }
 
+            //set correct answer
+            AnswerAPIClient.getInstance().getAnswers().put("correct", deck.getAnswer());
+
             //set question
             mQuestionTitle.setText(deck.getQuestion());
             isAbleSubmit = true;

@@ -139,7 +139,7 @@ public class PendingFragment extends Fragment {
     }
 
     private void showNextButton() {
-        if (isHost && mArrayPlayers.size() == AnswerAPIClient.getInstance().getAnswers().size())
+        if (isHost && mArrayPlayers.size() == AnswerAPIClient.getInstance().getAnswers().size() - 1)
             nextButton.setAlpha(1);
     }
 
