@@ -68,7 +68,7 @@ public class BluetoothClient extends Thread {
                 case Bluetooth.DATA_TYPE_ANSWER:
                     answer(json.getJSONObject("data"));
                     break;
-                case Bluetooth.DATA_TYPE_SELECT_ANSWER:
+                case Bluetooth.DATA_TYPE_START_SELECT_ANSWER:
                     selectAnswer();
                     break;
             }

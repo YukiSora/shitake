@@ -108,6 +108,7 @@ public class PlayerAPIClient {
         public String address;
         public String name;
         public Bitmap picture;
+        public int score;
 
         public Player(String address, String name, Bitmap picture) {
             this.address = address;

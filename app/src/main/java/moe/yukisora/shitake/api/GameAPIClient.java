@@ -3,7 +3,6 @@ package moe.yukisora.shitake.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,13 +19,13 @@ import java.util.Random;
 import moe.yukisora.shitake.model.Answer;
 import moe.yukisora.shitake.model.User;
 
-import static android.content.ContentValues.TAG;
-
 /**
  * Created by Delacrix on 28/10/2016.
  */
 
 public class GameAPIClient {
+    public static final int CORRECT_ANSWER_SCORE = 10;
+
     private static GameAPIClient sSharedInstance;
 
     // Users Playing

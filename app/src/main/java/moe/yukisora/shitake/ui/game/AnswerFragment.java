@@ -14,12 +14,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.AnswerAPIClient;
+import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 /**
  * Created by Delacrix on 22/09/2016.
@@ -31,6 +38,7 @@ public class AnswerFragment extends Fragment {
     private TextView mQuestion;
 
     private String question;
+    private boolean isHost;
 
     public static AnswerFragment newInstance(String question) {
         Bundle args = new Bundle();
@@ -50,6 +58,7 @@ public class AnswerFragment extends Fragment {
         mAnswerLayout = (LinearLayout)rootView.findViewById(R.id.fragment_answer_vg_list);
 
         question = getArguments().getString("question");
+        isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;
     }
@@ -107,6 +116,21 @@ public class AnswerFragment extends Fragment {
         mAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isHost) {
+                    if (address.equals("correct"))
+                        PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+                    else
+                        PlayerAPIClient.getInstance().get(address).score += GameAPIClient.CORRECT_ANSWER_SCORE;
+                }
+                else {
+                    try {
+                        JSONObject data = new JSONObject();
+                        data.put("address", address);
+                        Bluetooth.getInstance().getClient().send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_SELECTED_ANSWER, data));
+                    } catch (JSONException ignore) {
+                    }
+                }
+
                 showResultFragment(address);
             }
         });

@@ -90,7 +90,7 @@ public class PendingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_SELECT_ANSWER, new JSONObject()));
+                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_SELECT_ANSWER, new JSONObject()));
                 } catch (JSONException ignore) {
                 }
                 showAnswerFragment();
