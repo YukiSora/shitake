@@ -21,6 +21,10 @@
 
     <string name="waiting_question">Waiting question</string>
     <string name="enter_your_answer">Enter your answer.</string>
-    <string name="submit">Sumbit</string>
+    <string name="submit">Submit</string>
+    <string name="collecting_answer">Collecting Answers</string>
+    <string name="players_done">Players Done</string>
+    <string name="waiting_players">Waiting Players</string>
+    <string name="next">Next</string>
 
 </resources>

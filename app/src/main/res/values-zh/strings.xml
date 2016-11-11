@@ -20,5 +20,9 @@
     <string name="waiting_question">等待问题中</string>
     <string name="enter_your_answer">输入你的答案。</string>
     <string name="submit">提交</string>
+    <string name="collecting_answer">收集答案中</string>
+    <string name="players_done">就位的玩家</string>
+    <string name="waiting_players">等待玩家</string>
+    <string name="next">下一步</string>
 
 </resources>

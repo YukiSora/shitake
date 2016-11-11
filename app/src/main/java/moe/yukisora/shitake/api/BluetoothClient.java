@@ -86,10 +86,14 @@ public class BluetoothClient extends Thread {
     }
 
     private void question(JSONObject data) throws JSONException {
+        //get question
         String question = data.getString("question");
+
         //wait fragment finish init
         while (QuestionFragment.getFragmentTask() == null)
             ;
+
+        //set question
         QuestionFragment.getFragmentTask().updateQuestion(question);
         AnswerAPIClient.getInstance().getAnswers().put("correct", data.getString("answer"));
     }
@@ -100,7 +104,7 @@ public class BluetoothClient extends Thread {
         String answer = data.getString("answer");
 
         //set answer
-        AnswerAPIClient.getInstance().getAnswers().put(address, answer);
+        AnswerAPIClient.getInstance().addAnswer(address, answer);
     }
 
     private void read() {

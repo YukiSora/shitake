@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.ui.game;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -32,6 +33,7 @@ public class QuestionFragment extends Fragment {
     private Button mSubmitButton;
 
     private static FragmentTask fragmentTask;
+    private Handler handler;
     private boolean isAbleSubmit;
     private boolean isHost;
 
@@ -50,6 +52,7 @@ public class QuestionFragment extends Fragment {
         mSubmitButton = (Button)rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
+        handler = new Handler();
         isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;
@@ -83,8 +86,6 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isAbleSubmit) {
-//                    GameAPIClient.getInstance().addAnswer(new Answer("Real Answer", DeckAPIClient.getInstance().getDeck().getAnswer()));
-//                    GameAPIClient.getInstance().addAnswer(new Answer("Username", mUserAnswer.getText().toString()));
                     String answer = mUserAnswer.getText().toString();
 
                     //send answer
@@ -118,8 +119,13 @@ public class QuestionFragment extends Fragment {
     }
 
     private void updateQuestion(final String question) {
-        mQuestionTitle.setText(question);
-        isAbleSubmit = true;
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                mQuestionTitle.setText(question);
+                isAbleSubmit = true;
+            }
+        });
     }
 
     public static class FragmentTask {

@@ -85,7 +85,7 @@ public class BluetoothServer extends Thread {
         String answer = data.getString("answer");
 
         //set answer
-        AnswerAPIClient.getInstance().getAnswers().put(address, answer);
+        AnswerAPIClient.getInstance().addAnswer(address, answer);
 
         //send new player information to other players
         sendExclude(thisClient, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_PLAYER_INFORMATION, data));

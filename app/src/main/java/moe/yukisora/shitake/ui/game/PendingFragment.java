@@ -2,6 +2,7 @@ package moe.yukisora.shitake.ui.game;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,15 +13,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
-import moe.yukisora.shitake.api.GameAPIClient;
-import moe.yukisora.shitake.model.User;
+import moe.yukisora.shitake.api.AnswerAPIClient;
+import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 
 /**
@@ -28,36 +30,60 @@ import moe.yukisora.shitake.model.User;
  */
 
 public class PendingFragment extends Fragment {
-    private TextView mTextDone;
-    private TextView mTextWaiting;
-
     private Button nextButton;
-    private Button cancelButton;
 
     private LinearLayout mPlayersDone;
     private LinearLayout mPlayersWait;
 
-    private HashMap<User, View> mArrayPlayers = new HashMap<>();
+    private HashMap<PlayerAPIClient.Player, View> mArrayPlayers = new HashMap<>();
+
+    private static FragmentTask fragmentTask;
+    private Handler handler;
+    private boolean isHost;
+
+    public static FragmentTask getFragmentTask() {
+        return fragmentTask;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_pending, container, false);
 
-        mTextDone = (TextView) rootView.findViewById(R.id.fragment_pending_text_done);
-        mTextWaiting = (TextView) rootView.findViewById(R.id.fragment_pending_text_waiting);
+        nextButton = (Button)rootView.findViewById(R.id.next_button);
 
-        nextButton = (Button) rootView.findViewById(R.id.next_button);
-        cancelButton = (Button) rootView.findViewById(R.id.cancel_button);
-
-        mPlayersDone = (LinearLayout) rootView.findViewById(R.id.fragment_pending_vg_players_done);
-        mPlayersWait = (LinearLayout) rootView.findViewById(R.id.fragment_pending_vg_waiting_players);
+        mPlayersDone = (LinearLayout)rootView.findViewById(R.id.fragment_pending_vg_players_done);
+        mPlayersWait = (LinearLayout)rootView.findViewById(R.id.fragment_pending_vg_waiting_players);
 
         mPlayersWait.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
 
         animate(mPlayersWait);
 
+        fragmentTask = new FragmentTask(this);
+        handler = new Handler();
+        isHost = Bluetooth.getInstance().getServer() != null;
+
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //set button is only visible to host
+        nextButton.setAlpha(0);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PendingFragment.this.showAnswerFragment();
+            }
+        });
+
+        //generate waiting list
+        populatePendingPlayers();
+
+        //generate answer list
+        populateAnswers();
     }
 
     public void animate(View view) {
@@ -71,31 +97,6 @@ public class PendingFragment extends Fragment {
         animation.start();
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        populatePendingPlayers();
-
-        mTextDone.setAlpha(0);
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetValues();
-                PendingFragment.this.showAnswerFragment();
-            }
-        });
-
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkWaitingPlayers();
-            }
-        });
-
-    }
-
     public void showAnswerFragment() {
         PendingFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -106,58 +107,63 @@ public class PendingFragment extends Fragment {
     }
 
     public void populatePendingPlayers() {
-        for (User user : GameAPIClient.getInstance().getmUser()) {
-            View view = addPendingViewFromLayoutResource(mPlayersWait, user);
-            mArrayPlayers.put(user, view);
+        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
+            View view = addPendingViewFromLayoutResource(mPlayersWait, player);
+            mArrayPlayers.put(player, view);
         }
     }
 
-    public void resetValues() {
-        for (User user : mArrayPlayers.keySet()) {
-            user.setmDone(false);
-        }
+    public void populateAnswers() {
+        for (String address : AnswerAPIClient.getInstance().getAnswers().keySet())
+            if (!address.equals("correct"))
+                addAnswerView(address);
+
+        showNextButton();
     }
 
-    public void checkWaitingPlayers() {
-        Boolean allDone = true;
+    public void addAnswer(final String address) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                addAnswerView(address);
 
-        for (User user : mArrayPlayers.keySet()) {
-            if (!user.getmDone()) {
-                user.setmDone(true);
-
-                mTextDone.setAlpha(1);
-                mPlayersWait.removeView(mArrayPlayers.get(user));
-                addPendingViewFromLayoutResource(mPlayersDone, user);
-
-                break;
+                showNextButton();
             }
-        }
-
-        for (User user : mArrayPlayers.keySet()) {
-            if (!user.getmDone()) {
-                allDone = false;
-            }
-        }
-
-        if (allDone) {
-            mTextWaiting.setAlpha(0);
-        }
-
+        });
     }
 
-    public View addPendingViewFromLayoutResource(LinearLayout linearLayout, User user) {
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rootView = inflater.inflate(R.layout.view_pending_player, linearLayout, false);
+    public void addAnswerView(String address) {
+        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(address);
+        mPlayersWait.removeView(mArrayPlayers.get(player));
+        addPendingViewFromLayoutResource(mPlayersDone, player);
+    }
 
-        TextView mTextViewName = (TextView) rootView.findViewById(R.id.view_name);
-        TextView mTextViewAmount = (TextView) rootView.findViewById(R.id.view_amount);
+    private void showNextButton() {
+        if (isHost && mArrayPlayers.size() == AnswerAPIClient.getInstance().getAnswers().size())
+            nextButton.setAlpha(1);
+    }
 
-        mTextViewName.setText(user.getmName());
-        mTextViewAmount.setText("");
+    public View addPendingViewFromLayoutResource(LinearLayout linearLayout, PlayerAPIClient.Player player) {
+        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rootView = inflater.inflate(R.layout.view_player, linearLayout, false);
+
+        ((TextView)rootView.findViewById(R.id.playerName)).setText(player.name);
+        ((ImageView)rootView.findViewById(R.id.playerPicture)).setImageBitmap(player.picture);
 
         linearLayout.addView(rootView);
 
         return rootView;
     }
 
+    public static class FragmentTask {
+        private PendingFragment fragment;
+
+        FragmentTask(Fragment fragment) {
+            this.fragment = (PendingFragment)fragment;
+        }
+
+        public void addAnswer(String address) {
+            fragment.addAnswer(address);
+        }
+    }
 }
