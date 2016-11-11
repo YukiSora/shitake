@@ -39,10 +39,20 @@ public class PendingFragment extends Fragment {
 
     private static FragmentTask fragmentTask;
     private Handler handler;
+    private String question;
     private boolean isHost;
 
     public static FragmentTask getFragmentTask() {
         return fragmentTask;
+    }
+
+    public static PendingFragment newInstance(String question) {
+        Bundle args = new Bundle();
+        PendingFragment fragment = new PendingFragment();
+        args.putString("question", question);
+        fragment.setArguments(args);
+
+        return fragment;
     }
 
     @Nullable
@@ -60,6 +70,7 @@ public class PendingFragment extends Fragment {
         animate(mPlayersWait);
 
         fragmentTask = new FragmentTask(this);
+        question = getArguments().getString("question");
         handler = new Handler();
         isHost = Bluetooth.getInstance().getServer() != null;
 
@@ -100,7 +111,7 @@ public class PendingFragment extends Fragment {
     public void showAnswerFragment() {
         PendingFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new AnswerFragment())
+                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(getClass().getSimpleName())
                 .commit();

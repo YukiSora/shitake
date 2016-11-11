@@ -22,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new QuestionFragment())
+                .replace(R.id.activity_main_vg_fragment, QuestionFragment.newInstance())
                 .commit();
     }
 

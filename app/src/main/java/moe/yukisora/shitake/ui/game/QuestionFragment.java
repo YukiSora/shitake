@@ -34,11 +34,24 @@ public class QuestionFragment extends Fragment {
 
     private static FragmentTask fragmentTask;
     private Handler handler;
+    private String question;
     private boolean isAbleSubmit;
     private boolean isHost;
 
     public static FragmentTask getFragmentTask() {
         return fragmentTask;
+    }
+
+    public static QuestionFragment newInstance() {
+        Bundle args = new Bundle();
+        QuestionFragment fragment = new QuestionFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    public QuestionFragment() {
+        handler = new Handler();
     }
 
     @Nullable
@@ -52,7 +65,6 @@ public class QuestionFragment extends Fragment {
         mSubmitButton = (Button)rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
-        handler = new Handler();
         isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;
@@ -81,6 +93,7 @@ public class QuestionFragment extends Fragment {
             AnswerAPIClient.getInstance().getAnswers().put("correct", deck.getAnswer());
 
             //set question
+            question = deck.getQuestion();
             mQuestionTitle.setText(deck.getQuestion());
             isAbleSubmit = true;
         }
@@ -115,7 +128,7 @@ public class QuestionFragment extends Fragment {
     public void showPendingFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, new PendingFragment())
+                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(question))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .addToBackStack(getClass().getSimpleName())
                 .commit();
@@ -125,6 +138,7 @@ public class QuestionFragment extends Fragment {
         handler.post(new Runnable() {
             @Override
             public void run() {
+                QuestionFragment.this.question = question;
                 mQuestionTitle.setText(question);
                 isAbleSubmit = true;
             }

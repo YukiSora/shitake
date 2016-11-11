@@ -7,7 +7,6 @@
     <com.balysv.materialripple.MaterialRippleLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         app:mrl_rippleOverlay="true"
         app:mrl_rippleRoundedCorners="50dp">
@@ -16,6 +15,9 @@
             android:id="@+id/view_btn_answer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Jocelyn" />
+            android:background="@drawable/rounded_button_green"
+            android:textColor="@color/white" />
+
     </com.balysv.materialripple.MaterialRippleLayout>
+
 </LinearLayout>
