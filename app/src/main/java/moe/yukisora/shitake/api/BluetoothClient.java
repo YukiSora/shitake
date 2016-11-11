@@ -43,7 +43,7 @@ public class BluetoothClient extends Thread {
             out = new OutputStreamWriter(server.getOutputStream());
 
             //send self player information to server
-            write(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_PLAYER_INFORMATION, PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).toJSON()));
+            send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_PLAYER_INFORMATION, PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).toJSON()));
         } catch (IOException | JSONException e) {
             close();
         }
@@ -63,6 +63,9 @@ public class BluetoothClient extends Thread {
                     break;
                 case Bluetooth.DATA_TYPE_QUESTION:
                     question(json.getJSONObject("data"));
+                    break;
+                case Bluetooth.DATA_TYPE_ANSWER:
+                    answer(json.getJSONObject("data"));
                     break;
             }
         } catch (JSONException ignore) {
@@ -88,6 +91,16 @@ public class BluetoothClient extends Thread {
         while (QuestionFragment.getFragmentTask() == null)
             ;
         QuestionFragment.getFragmentTask().updateQuestion(question);
+        AnswerAPIClient.getInstance().getAnswers().put("correct", data.getString("answer"));
+    }
+
+    private void answer(JSONObject data) throws JSONException {
+        //get answer
+        String address = data.getString("address");
+        String answer = data.getString("answer");
+
+        //set answer
+        AnswerAPIClient.getInstance().getAnswers().put(address, answer);
     }
 
     private void read() {
@@ -101,7 +114,7 @@ public class BluetoothClient extends Thread {
         }
     }
 
-    public void write(final String s) {
+    public void send(final String s) {
         new Thread(new Runnable() {
             @Override
             public void run() {
