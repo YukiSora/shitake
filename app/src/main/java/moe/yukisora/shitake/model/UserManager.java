@@ -3,6 +3,10 @@ package moe.yukisora.shitake.model;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+/**
+ * Object for managing current user profile<br>
+ * Saves information with SharedPreferences
+ */
 public class UserManager {
 
     private Activity activity;

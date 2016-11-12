@@ -50,10 +50,9 @@ public class TauntFragment extends Fragment {
                 cursor.close();
 
                 new UserManager(getActivity()).setProfilePicture(picturePath);
-
-                //getFragmentManager().popBackStack();
             }
         }
+        // go back anyway - if picture was chosen (and saved) or not (use of back button)
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_vg_fragment, new ProfileFragment())
