@@ -31,5 +31,4 @@ public class AccountActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
 }

@@ -43,6 +43,7 @@ public class TauntFragment extends Fragment {
             if (requestCode == ACTIVITY_RESULT_SELECT_PICTURE) {
                 Uri selectedImage = data.getData();
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                
                 Cursor cursor = getContext().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 cursor.moveToFirst();
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
