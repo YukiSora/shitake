@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import moe.yukisora.shitake.ui.account.ProfileFragment;
 
 public class AccountActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,4 +31,5 @@ public class AccountActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }

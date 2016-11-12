@@ -1,7 +1,6 @@
 package moe.yukisora.shitake.ui.account;
 
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,9 +10,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.UserManager;
@@ -57,14 +53,7 @@ public class ProfileFragment extends Fragment {
         if (!picturePath.equals("")) {
             ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         } else {
-            // TODO no picture, encourage to choose one
-            try {
-                InputStream stream = getActivity().getAssets().open("logo.png");
-                Drawable d = Drawable.createFromStream(stream, null);
-                ivProfilePicture.setImageDrawable(d);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ivProfilePicture.setImageResource(R.drawable.no_picture);
         }
 
         view.findViewById(R.id.bt_profile_change_picture).setOnClickListener(new View.OnClickListener() {
@@ -77,6 +66,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-
 
 }
