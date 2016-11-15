@@ -23,7 +23,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView ivProfilePicture;
     private EditText etNickname;
-    private Button mSaveButton;
+    private Button mBtChangePicture;
 
     private UserManager mUserManager;
     private boolean mCanExit;
@@ -39,7 +39,7 @@ public class ProfileFragment extends Fragment {
         mDialogOn = false;
 
         etNickname = (EditText) rootView.findViewById(R.id.et_profile_nickname);
-        mSaveButton = (Button) rootView.findViewById(R.id.bt_profile_change_picture);
+        mBtChangePicture = (Button) rootView.findViewById(R.id.bt_profile_change_picture);
         ivProfilePicture = (ImageView) rootView.findViewById(R.id.iv_profile_picture);
 
         return rootView;
@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         setTextNickname();
         setProfilePicture();
 
-        mSaveButton.setOnClickListener(new View.OnClickListener() {
+        mBtChangePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (canExit()) {
@@ -109,13 +109,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setCanExit() {
-        if (etNickname.getText().toString().equals("")) {
+       /* if (etNickname.getText().toString().equals("")) {
             mCanExit = false;
             showDialogEmptyNickname();
-        } else {
+        } else {*/
             mCanExit = true;
             mUserManager.setName(etNickname.getText().toString());
-        }
+        //}
     }
 
     public boolean canExit() {

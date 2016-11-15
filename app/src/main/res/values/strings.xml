@@ -21,6 +21,8 @@
 
     <string name="profile_nickname">Nickname</string>
     <string name="profile_change_picture">Change picture</string>
+    <string name="start">Start</string>
+    <string name="register_text">Before playing, type please your nickname. It will be possible to change it later.</string>
 
     <string name="waiting_question">Waiting question</string>
     <string name="enter_your_answer">Enter your answer.</string>

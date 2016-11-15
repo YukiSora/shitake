@@ -14,6 +14,7 @@ import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.model.UserManager;
 import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
@@ -51,10 +52,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!bluetooth.isEnabled())
             bluetooth.enableBluetooth(this);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, MainFragment.newInstance(), "main")
-                .commit();
+        if (new UserManager(this).getName().equals("")) {
+            Bundle b = new Bundle();
+            b.putBoolean(AccountActivity.REGISTER_PARAM, true);
+            Intent intent = new Intent(this, AccountActivity.class);
+            intent.putExtras(b);
+            startActivity(intent);
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.activity_main_vg_fragment, MainFragment.newInstance(), "main")
+                    .commit();
+        }
 
         // Temporary - Drawer Layout
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);

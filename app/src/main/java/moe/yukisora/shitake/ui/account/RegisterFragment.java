@@ -1,5 +1,7 @@
 package moe.yukisora.shitake.ui.account;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,17 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.model.UserManager;
+import moe.yukisora.shitake.ui.lobby.MainFragment;
 
 public class RegisterFragment extends Fragment {
 
     private Button mRegisterButton;
+    private EditText etNickname;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_register, container, false);
 
-        mRegisterButton = (Button) rootView.findViewById(R.id.btRegister);
+        mRegisterButton = (Button) rootView.findViewById(R.id.bt_register);
+        etNickname = (EditText) rootView.findViewById(R.id.et_profile_nickname);
 
         return rootView;
     }
@@ -32,13 +38,32 @@ public class RegisterFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText etNickname = (EditText) getView().findViewById(R.id.et_register_nickname);
                 String nickname = etNickname.getText().toString();
-                System.out.println(nickname);
-                etNickname.setText("");
+                if (!nickname.equals("")) {
+                    new UserManager(getActivity()).setName(nickname);
+
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_main_vg_fragment, MainFragment.newInstance(), "main")
+                            .commit();
+                } else {
+                    showDialogEmptyNickname();
+                }
             }
         });
     }
 
+    private void showDialogEmptyNickname() {
+        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle(R.string.error);
+        alertDialog.setMessage(getString(R.string.empty_nickname));
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
 
 }

@@ -1,30 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="30dp"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo" />
+
     <TextView
+        style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shitake" />
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/et_register_nickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Your nickname"
-        android:padding="20dp"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp" />
-
-    <Button
-        android:id="@+id/btRegister"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button_green"
-        android:padding="20dp"
-        android:text="Register" />
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/register_text" />
+
+    <EditText
+        android:id="@+id/et_profile_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="@string/profile_nickname"
+        android:inputType="textPersonName" />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleRoundedCorners="50dp">
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/start" />
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
 
 </LinearLayout>

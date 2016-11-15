@@ -30,4 +30,6 @@
     <string name="waiting_question">Čekající otázky</string>
     <string name="empty_nickname">Jméno nesmí být prázdné</string>
     <string name="ok">Ok</string>
+    <string name="register_text">Než začneš hrát, vlož prosím svou přezdívku. Bude možné ji později změnit.</string>
+    <string name="start">Začít</string>
 </resources>

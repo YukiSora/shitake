@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import moe.yukisora.shitake.ui.account.ProfileFragment;
+import moe.yukisora.shitake.ui.account.RegisterFragment;
 
 public class AccountActivity extends AppCompatActivity {
+
+    public static final String REGISTER_PARAM = "isRegistering";
 
     private ProfileFragment profileFragment;
 
@@ -14,7 +17,24 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_generic);
 
-        goToProfileFragment();
+        Bundle b = getIntent().getExtras();
+        boolean isRegistering = false;
+        if (b != null) {
+            isRegistering = b.getBoolean(REGISTER_PARAM);
+        }
+
+        if (isRegistering) {
+            goToRegisterFragment();
+        } else {
+            goToProfileFragment();
+        }
+    }
+
+    private void goToRegisterFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_vg_fragment, new RegisterFragment())
+                .commit();
     }
 
     @Override
