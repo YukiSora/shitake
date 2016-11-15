@@ -40,7 +40,7 @@ public class RegisterFragment extends Fragment {
             public void onClick(View v) {
                 String nickname = etNickname.getText().toString();
                 if (!nickname.equals("")) {
-                    new UserManager(getActivity()).setName(nickname);
+                    UserManager.getInstance().setName(nickname);
 
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()

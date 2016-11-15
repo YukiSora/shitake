@@ -50,7 +50,7 @@ public class TauntFragment extends Fragment {
                 String picturePath = cursor.getString(columnIndex);
                 cursor.close();
 
-                new UserManager(getActivity()).setProfilePicture(picturePath);
+                UserManager.getInstance().setProfilePicture(picturePath);
             }
         }
         // go back anyway - if picture was chosen (and saved) or not (use of back button)

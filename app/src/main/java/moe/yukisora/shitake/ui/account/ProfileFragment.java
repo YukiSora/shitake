@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        mUserManager = new UserManager(getActivity());
+        mUserManager = UserManager.getInstance();
         mCanExit = true;
         mDialogOn = false;
 
@@ -78,6 +78,18 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void setProfilePicture() {
+        String picturePath = mUserManager.getProfilePicture();
+
+        Log.d(TAG, "onViewCreated: " + picturePath);
+
+        if (!picturePath.equals("")) {
+            ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        } else {
+            ivProfilePicture.setImageResource(R.drawable.no_picture);
+        }
+    }
+
     private void showDialogEmptyNickname() {
         // only one dialog at a time
         if (!mDialogOn) {
@@ -96,26 +108,14 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void setProfilePicture() {
-        String picturePath = mUserManager.getProfilePicture();
-
-        Log.d(TAG, "onViewCreated: " + picturePath);
-
-        if (!picturePath.equals("")) {
-            ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-        } else {
-            ivProfilePicture.setImageResource(R.drawable.no_picture);
-        }
-    }
-
     private void setCanExit() {
-       /* if (etNickname.getText().toString().equals("")) {
+        if (etNickname.getText().toString().equals("")) {
             mCanExit = false;
             showDialogEmptyNickname();
-        } else {*/
+        } else {
             mCanExit = true;
             mUserManager.setName(etNickname.getText().toString());
-        //}
+        }
     }
 
     public boolean canExit() {

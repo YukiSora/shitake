@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DeckAPIClient.newInstance(this);
         GameAPIClient.newInstance(this);
         PlayerAPIClient.getInstance();
+        UserManager.newInstance(this);
 
         // Configure Bluetooth
         Bluetooth bluetooth = Bluetooth.getInstance();
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (!bluetooth.isEnabled())
             bluetooth.enableBluetooth(this);
 
-        if (new UserManager(this).getName().equals("")) {
+        if (UserManager.getInstance().getName().equals("")) {
             Bundle b = new Bundle();
             b.putBoolean(AccountActivity.REGISTER_PARAM, true);
             Intent intent = new Intent(this, AccountActivity.class);

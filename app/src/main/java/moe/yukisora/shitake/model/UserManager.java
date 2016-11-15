@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.model;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
@@ -9,11 +10,12 @@ import android.content.SharedPreferences;
  */
 public class UserManager {
 
+    private static UserManager userManager;
+
     private Activity activity;
     private User user;
 
-    // preferences objects
-    private SharedPreferences preferences;
+    // preferences object
     private SharedPreferences.Editor editor;
 
     // static fields for saving a fetching
@@ -21,13 +23,27 @@ public class UserManager {
     private static final String USER_NAME = "UserName";
     private static final String USER_PROFILE_PIC = "UserTaunt";
 
-    public UserManager(Activity activity) {
+    // Singleton New Instance
+    public static synchronized UserManager newInstance(Activity activity) {
+        if (userManager == null) {
+            userManager = new UserManager(activity);
+        }
+
+        return userManager;
+    }
+
+    // Singleton Get Instance
+    public static synchronized UserManager getInstance() {
+        return userManager;
+    }
+
+    private UserManager(Activity activity) {
         this.activity = activity;
         restore();
     }
 
     private void restore() {
-        preferences = activity.getSharedPreferences(USER_MANAGER_NAME, 0);
+        SharedPreferences preferences = activity.getSharedPreferences(USER_MANAGER_NAME, Context.MODE_PRIVATE);
         editor = preferences.edit();
 
         String name = preferences.getString(USER_NAME, "");
