@@ -16,4 +16,18 @@
 
     <string name="profile_nickname">Přezdívka</string>
     <string name="profile_change_picture">Změnit obrázek</string>
+    <string name="next">Další</string>
+    <string name="next_round">Další kolo</string>
+    <string name="leaderboard">Žebříček</string>
+    <string name="error">Chyba</string>
+    <string name="enter_your_answer">Vlož svou odpoveď</string>
+    <string name="end_game">Konec hry</string>
+    <string name="collecting_answer">Příjem odpovědí</string>
+    <string name="players_done">Hotoví hráči</string>
+    <string name="submit">Odeslat</string>
+    <string name="vote_most_creative_answer">Hlasuj pro nejkreativnější odpověď</string>
+    <string name="waiting_players">Čekající hráči</string>
+    <string name="waiting_question">Čekající otázky</string>
+    <string name="empty_nickname">Jméno nesmí být prázdné</string>
+    <string name="ok">Ok</string>
 </resources>

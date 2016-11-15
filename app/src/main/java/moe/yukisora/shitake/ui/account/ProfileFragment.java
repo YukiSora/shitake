@@ -1,5 +1,7 @@
 package moe.yukisora.shitake.ui.account;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.UserManager;
@@ -20,10 +21,13 @@ import static android.content.ContentValues.TAG;
 
 public class ProfileFragment extends Fragment {
 
-    private UserManager mUserManager;
     private ImageView ivProfilePicture;
     private EditText etNickname;
     private Button mSaveButton;
+
+    private UserManager mUserManager;
+    private boolean mCanExit;
+    private boolean mDialogOn;
 
     @Nullable
     @Override
@@ -31,9 +35,12 @@ public class ProfileFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mUserManager = new UserManager(getActivity());
+        mCanExit = true;
+        mDialogOn = false;
 
         etNickname = (EditText) rootView.findViewById(R.id.et_profile_nickname);
         mSaveButton = (Button) rootView.findViewById(R.id.bt_profile_change_picture);
+        ivProfilePicture = (ImageView) rootView.findViewById(R.id.iv_profile_picture);
 
         return rootView;
     }
@@ -43,27 +50,17 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setTextNickname();
-
-        String picturePath = mUserManager.getProfilePicture();
-
-        ((TextView) view.findViewById(R.id.tvtest)).setText("A" + picturePath);
-        ivProfilePicture = (ImageView) getView().findViewById(R.id.iv_profile_picture);
-
-        Log.d(TAG, "onViewCreated: " + picturePath);
-
-        if (!picturePath.equals("")) {
-            ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-        } else {
-            ivProfilePicture.setImageResource(R.drawable.no_picture);
-        }
+        setProfilePicture();
 
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_main_vg_fragment, new TauntFragment(), "taunt")
-                        .commit();
+                if (canExit()) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_main_vg_fragment, new TauntFragment(), "taunt")
+                            .commit();
+                }
             }
         });
     }
@@ -75,10 +72,54 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    mUserManager.setName(etNickname.getText().toString());
+                    setCanExit();
                 }
             }
         });
     }
 
+    private void showDialogEmptyNickname() {
+        // only one dialog at a time
+        if (!mDialogOn) {
+            mDialogOn = true;
+            final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+            alertDialog.setTitle(R.string.error);
+            alertDialog.setMessage(getString(R.string.empty_nickname));
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            mDialogOn = false;
+                        }
+                    });
+            alertDialog.show();
+        }
+    }
+
+    private void setProfilePicture() {
+        String picturePath = mUserManager.getProfilePicture();
+
+        Log.d(TAG, "onViewCreated: " + picturePath);
+
+        if (!picturePath.equals("")) {
+            ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        } else {
+            ivProfilePicture.setImageResource(R.drawable.no_picture);
+        }
+    }
+
+    private void setCanExit() {
+        if (etNickname.getText().toString().equals("")) {
+            mCanExit = false;
+            showDialogEmptyNickname();
+        } else {
+            mCanExit = true;
+            mUserManager.setName(etNickname.getText().toString());
+        }
+    }
+
+    public boolean canExit() {
+        setCanExit();
+        return mCanExit;
+    }
 }

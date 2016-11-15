@@ -2,6 +2,9 @@
 
     <string name="app_name" translatable="false">"Shitake"</string>
 
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+
     <string name="main_btn_account">My Account</string>
     <string name="main_btn_join">Join Game</string>
     <string name="main_btn_create">Create Game</string>
@@ -30,5 +33,6 @@
     <string name="leaderboard">Leaderboard</string>
     <string name="next_round">Next Round</string>
     <string name="end_game">End Game</string>
+    <string name="empty_nickname">Nickname can\'t be empty</string>
 
 </resources>
