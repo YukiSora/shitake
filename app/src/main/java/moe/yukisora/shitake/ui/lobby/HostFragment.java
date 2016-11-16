@@ -38,6 +38,9 @@ public class HostFragment extends Fragment {
         //set bluetooth discoverable
         Bluetooth.getInstance().setDiscoverable(getActivity());
 
+        //init self information
+        PlayerAPIClient.getInstance().addSelf(getResources());
+
         return view;
     }
 
@@ -57,9 +60,6 @@ public class HostFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         initDecks();
-
-        //init self information
-        PlayerAPIClient.getInstance().addSelf(getResources());
     }
 
     private void initDecks() {

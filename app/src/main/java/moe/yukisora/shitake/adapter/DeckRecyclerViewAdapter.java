@@ -11,6 +11,7 @@ import android.widget.TextView;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.ui.lobby.HostFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
@@ -31,9 +32,10 @@ public class DeckRecyclerViewAdapter extends RecyclerView.Adapter<DeckRecyclerVi
         final ViewData deck = mFragment.getDecks().get(position);
 
         holder.deckTitleTextView.setText(deck.title);
-        holder.deckCardView.setOnClickListener(new View.OnClickListener() {
+        holder.deckCardView.setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
+                //start a Bluetooth server
                 Bluetooth.getInstance().newBluetoothServer();
 
                 DeckAPIClient.getInstance().setCurrentDeck(deck.title);

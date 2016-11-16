@@ -19,6 +19,12 @@
         app:cardCornerRadius="@dimen/activity_vertical_margin"
         app:cardElevation="8dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/card_background"
+            android:scaleType="centerCrop"/>
+
         <TextView
             android:id="@+id/deckTitleTextView"
             android:layout_width="wrap_content"
