@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import moe.yukisora.shitake.AccountActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -42,18 +43,18 @@ public class MainFragment extends Fragment {
 
         final Bluetooth bluetooth = Bluetooth.getInstance();
 
-        view.findViewById(R.id.main_btn_account).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_btn_account).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 Intent intent = new Intent(getActivity(), AccountActivity.class);
                 startActivity(intent);
             }
         });
 
         //Join Game
-        view.findViewById(R.id.main_btn_join).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_btn_join).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
@@ -67,9 +68,9 @@ public class MainFragment extends Fragment {
         });
 
         //Create Game
-        view.findViewById(R.id.main_btn_create).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_btn_create).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 if (bluetooth.isEnabled()) {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
@@ -83,17 +84,17 @@ public class MainFragment extends Fragment {
         });
 
         //Tutorial
-        view.findViewById(R.id.main_btn_tutorial).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_btn_tutorial).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 Log.i("poi", "I am going to Tutorial Fragment.");
             }
         });
 
         //About Us
-        view.findViewById(R.id.main_btn_about).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_btn_about).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 Log.i("poi", "I am going to About Fragment.");
             }
         });
