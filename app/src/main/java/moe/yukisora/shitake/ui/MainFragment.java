@@ -1,4 +1,4 @@
-package moe.yukisora.shitake.ui.lobby;
+package moe.yukisora.shitake.ui;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import moe.yukisora.shitake.AccountActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
+import moe.yukisora.shitake.ui.lobby.HostFragment;
+import moe.yukisora.shitake.ui.lobby.JoinFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.

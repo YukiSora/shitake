@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.UserManager;
-import moe.yukisora.shitake.ui.lobby.MainFragment;
+import moe.yukisora.shitake.ui.MainFragment;
 
 public class RegisterFragment extends Fragment {
 

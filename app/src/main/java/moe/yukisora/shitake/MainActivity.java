@@ -15,7 +15,7 @@ import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.model.UserManager;
-import moe.yukisora.shitake.ui.lobby.MainFragment;
+import moe.yukisora.shitake.ui.MainFragment;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;

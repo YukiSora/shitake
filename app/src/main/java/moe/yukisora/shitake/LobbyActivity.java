@@ -3,7 +3,7 @@ package moe.yukisora.shitake;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import moe.yukisora.shitake.ui.lobby.MainFragment;
+import moe.yukisora.shitake.ui.MainFragment;
 
 /**
  * Created by Delacrix on 10/10/2016.
