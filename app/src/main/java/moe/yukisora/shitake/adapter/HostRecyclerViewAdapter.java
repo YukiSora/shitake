@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.ui.lobby.JoinFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
@@ -29,10 +30,10 @@ public class HostRecyclerViewAdapter extends RecyclerView.Adapter<HostRecyclerVi
         final ViewData bluetooth = mFragment.getBluetooths().get(position);
 
         holder.hostNameTextView.setText(bluetooth.name);
-        holder.hostNameTextView.setOnClickListener(new View.OnClickListener() {
+        holder.hostNameTextView.setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Attempt to Connect to Server
+            public void preventDoubleClickOnClick(View view) {
+                //attempt to Connect to Server
                 Bluetooth.getInstance().newBluetoothClient(bluetooth.address);
 
                 mFragment.getActivity().getSupportFragmentManager()

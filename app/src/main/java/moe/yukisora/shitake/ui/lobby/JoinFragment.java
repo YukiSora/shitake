@@ -5,10 +5,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +43,64 @@ public class JoinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_join, container, false);
 
+        configDiscovery();
+
+        //init self information
+        PlayerAPIClient.getInstance().addSelf(getResources());
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Recycler View
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.hostRecyclerView);
+        recyclerView.setNestedScrollingEnabled(false);
+
+        //Layout
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Adapter
+        adapter = new HostRecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        //Divider
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+
+        //Swipe Refresh Layout
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.hostSwipeRefreshLayout);
+        swipeRefreshLayout.setColorSchemeColors(Color.RED, Color.GREEN, Color.BLUE, Color.CYAN);
+        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(Color.argb(90, 102, 204, 255));
+        swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                        stopDiscovery();
+                        configDiscovery();
+                        startDiscovery();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
+
+        startDiscovery();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        stopDiscovery();
+    }
+
+    private void configDiscovery() {
         bluetooths = new ArrayList<>();
 
         //Bluetooth discovery receiver
@@ -66,39 +126,13 @@ public class JoinFragment extends Fragment {
             }
         };
         getActivity().registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-
-        return view;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        //Recycler View
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.hostRecyclerView);
-        recyclerView.setNestedScrollingEnabled(false);
-
-        //Layout
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //Adapter
-        adapter = new HostRecyclerViewAdapter(this);
-        recyclerView.setAdapter(adapter);
-
-        //Divider
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-
-        //Bluetooth discovery
+    private void startDiscovery() {
         Bluetooth.getInstance().startDiscovery();
-
-        //init self information
-        PlayerAPIClient.getInstance().addSelf(getResources());
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
+    private void stopDiscovery() {
         Bluetooth.getInstance().stopDiscovery();
         getActivity().unregisterReceiver(receiver);
     }
