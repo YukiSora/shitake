@@ -45,11 +45,15 @@ public class TauntFragment extends Fragment {
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 
                 Cursor cursor = getContext().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                cursor.moveToFirst();
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-
+                String picturePath;
+                if (cursor == null) {
+                    picturePath = selectedImage.toString();
+                } else {
+                    cursor.moveToFirst();
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    picturePath = cursor.getString(columnIndex);
+                    cursor.close();
+                }
                 UserManager.getInstance().setProfilePicture(picturePath);
             }
         }
