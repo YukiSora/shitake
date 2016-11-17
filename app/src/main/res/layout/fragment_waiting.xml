@@ -37,13 +37,13 @@
             android:orientation="vertical">
 
             <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/startGame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:mrl_rippleOverlay="true"
                 app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
                 <Button
-                    android:id="@+id/startGame"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button_green"
