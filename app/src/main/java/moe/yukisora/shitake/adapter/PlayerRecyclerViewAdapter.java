@@ -20,8 +20,8 @@ public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerRecycl
     public void onBindViewHolder(ViewHolder holder, int position) {
         PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(position);
 
-        holder.playerName.setText(player.name);
-        holder.playerPicture.setImageBitmap(player.picture);
+        holder.playerPictureImageView.setImageBitmap(player.picture);
+        holder.playerNameTextView.setText(player.name);
     }
 
     @Override
@@ -30,14 +30,14 @@ public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView playerPicture;
-        public TextView playerName;
+        public ImageView playerPictureImageView;
+        public TextView playerNameTextView;
 
         public ViewHolder(View view) {
             super(view);
 
-            playerPicture = (ImageView)view.findViewById(R.id.playerPicture);
-            playerName = (TextView)view.findViewById(R.id.playerName);
+            playerPictureImageView = (ImageView)view.findViewById(R.id.playerPicture);
+            playerNameTextView = (TextView)view.findViewById(R.id.playerName);
         }
     }
 }

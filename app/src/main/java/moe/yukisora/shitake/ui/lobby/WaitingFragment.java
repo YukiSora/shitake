@@ -19,6 +19,7 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.PlayerRecyclerViewAdapter;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -76,10 +77,11 @@ public class WaitingFragment extends Fragment {
         //Divider
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
+
         if (isHost) {
-            view.findViewById(R.id.startGame).setOnClickListener(new View.OnClickListener() {
+            view.findViewById(R.id.startGame).setOnClickListener(new PreventDoubleClickOnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void preventDoubleClickOnClick(View view) {
                     //send to other players game started
                     try {
                         Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_GAME, new JSONObject()));
@@ -91,7 +93,7 @@ public class WaitingFragment extends Fragment {
             });
         }
         else {
-            view.findViewById(R.id.startGame).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.startGame).setVisibility(View.GONE);
         }
     }
 
@@ -103,18 +105,20 @@ public class WaitingFragment extends Fragment {
             Bluetooth.getInstance().closeClient();
             Bluetooth.getInstance().closeServer();
         }
+
+        //clear player list
         PlayerAPIClient.getInstance().clearPlayer();
     }
 
     public void startGame() {
         isStartGame = true;
 
-        Intent intent =new Intent(WaitingFragment.this.getActivity(), GameActivity.class);
+        Intent intent = new Intent(getActivity(), GameActivity.class);
         startActivity(intent);
     }
 
     public static class FragmentTask {
-        private  WaitingFragment fragment;
+        private WaitingFragment fragment;
 
         FragmentTask(Fragment fragment) {
             this.fragment = (WaitingFragment)fragment;
