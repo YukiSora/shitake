@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:mrl_rippleOverlay="true"
-        app:mrl_rippleRoundedCorners="50dp">
+        app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
         <Button
             android:id="@+id/view_btn_answer"

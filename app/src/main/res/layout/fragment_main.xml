@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleRoundedCorners="50dp">
+            app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
             <Button
                 android:id="@+id/main_btn_account"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleRoundedCorners="50dp">
+            app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
             <Button
                 android:id="@+id/main_btn_join"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleRoundedCorners="50dp">
+            app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
             <Button
                 android:id="@+id/main_btn_create"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleRoundedCorners="50dp">
+            app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
             <Button
                 android:id="@+id/main_btn_tutorial"
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleRoundedCorners="50dp">
+            app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
             <Button
                 android:id="@+id/main_btn_about"
