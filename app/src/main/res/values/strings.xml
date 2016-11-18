@@ -20,10 +20,13 @@
     <string name="deck_list">Deck List</string>
 
     <string name="profile_nickname">Nickname</string>
+    <string name="empty_nickname">Nickname can\'t be empty</string>
     <string name="profile_change_picture">Change picture</string>
     <string name="start">Start</string>
     <string name="register_text">Before playing, type please your nickname. It will be possible to change it later.</string>
 
+    <string name="quit_game">Quit Game</string>
+    <string name="are_you_sure_quit_this_game">Are you sure quit this game?</string>
     <string name="waiting_question">Waiting question</string>
     <string name="enter_your_answer">Enter your answer.</string>
     <string name="submit">Submit</string>
@@ -35,6 +38,6 @@
     <string name="leaderboard">Leaderboard</string>
     <string name="next_round">Next Round</string>
     <string name="end_game">End Game</string>
-    <string name="empty_nickname">Nickname can\'t be empty</string>
+
 
 </resources>

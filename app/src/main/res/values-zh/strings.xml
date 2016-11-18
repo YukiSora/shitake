@@ -17,6 +17,8 @@
     <string name="profile_nickname">昵称</string>
     <string name="profile_change_picture">更改图片</string>
 
+    <string name="quit_game">退出游戏</string>
+    <string name="are_you_sure_quit_this_game">你确定退出这次游戏?</string>
     <string name="waiting_question">等待问题中</string>
     <string name="enter_your_answer">输入你的答案。</string>
     <string name="submit">提交</string>
