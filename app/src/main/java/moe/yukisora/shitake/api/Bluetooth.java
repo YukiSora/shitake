@@ -16,7 +16,7 @@ public class Bluetooth {
     public static final int DATA_TYPE_START_SELECT_ANSWER = 4;
     public static final int DATA_TYPE_SELECTED_ANSWER = 5;
     public static final int DATA_TYPE_VOTE = 6;
-    public static final int DATA_TYPE_DONE = 7;
+    public static final int DATA_TYPE_START_LEADERBOARD = 7;
     public static final String UUID_VALUE = "859f02dd-e6f5-4d56-826c-40f1e1bceea8";
     private static Bluetooth bluetooth;
     private BluetoothAdapter bluetoothAdapter;

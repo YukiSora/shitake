@@ -123,7 +123,8 @@ public class AnswerFragment extends Fragment {
                 else {
                     try {
                         JSONObject data = new JSONObject();
-                        data.put("address", address);
+                        data.put("address", MainActivity.getBluetoothAddress());
+                        data.put("answer", address);
                         Bluetooth.getInstance().getClient().send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_SELECTED_ANSWER, data));
                     } catch (JSONException ignore) {
                     }

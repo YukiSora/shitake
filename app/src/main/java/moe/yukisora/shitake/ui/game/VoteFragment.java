@@ -73,12 +73,12 @@ public class VoteFragment extends Fragment {
             public void onClick(View view) {
                 if (isHost) {
                     PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.VOTE_SCORE;
-                    PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).done = true;
                 }
                 else {
                     try {
                         JSONObject data = new JSONObject();
-                        data.put("address", address);
+                        data.put("address", MainActivity.getBluetoothAddress());
+                        data.put("vote", address);
                         Bluetooth.getInstance().getClient().send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
                     } catch (JSONException ignore) {
                     }

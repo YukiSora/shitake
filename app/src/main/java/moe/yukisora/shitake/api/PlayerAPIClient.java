@@ -110,7 +110,6 @@ public class PlayerAPIClient {
         public Bitmap picture;
         public int score;
         public int addingScore;
-        public boolean done;
 
         public Player(String address, String name, Bitmap picture) {
             this.address = address;

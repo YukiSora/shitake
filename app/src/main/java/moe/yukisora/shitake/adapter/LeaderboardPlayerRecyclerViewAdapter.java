@@ -31,8 +31,6 @@ public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<L
         holder.playerPicture.setImageBitmap(player.picture);
         holder.playerName.setText(player.name);
         holder.playerScore.setText(player.score + "");
-        if (player.done)
-            holder.playerAddingScore.setText(player.addingScore + "");
     }
 
     @Override

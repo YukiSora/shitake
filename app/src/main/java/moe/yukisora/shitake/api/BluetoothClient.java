@@ -70,10 +70,10 @@ public class BluetoothClient extends Thread {
                     answer(json.getJSONObject("data"));
                     break;
                 case Bluetooth.DATA_TYPE_START_SELECT_ANSWER:
-                    selectAnswer();
+                    startSelectAnswer();
                     break;
-                case Bluetooth.DATA_TYPE_DONE:
-                    done();
+                case Bluetooth.DATA_TYPE_START_LEADERBOARD:
+                    startLeaderboard();
                     break;
             }
         } catch (JSONException ignore) {
@@ -115,11 +115,11 @@ public class BluetoothClient extends Thread {
         AnswerAPIClient.getInstance().addAnswer(address, answer);
     }
 
-    private void selectAnswer() {
+    private void startSelectAnswer() {
         PendingFragment.getFragmentTask().showNextFragment();
     }
 
-    private void done() {
+    private void startLeaderboard() {
         LeaderboardFragment.getFragmentTask().showRecyclerView();
     }
 
