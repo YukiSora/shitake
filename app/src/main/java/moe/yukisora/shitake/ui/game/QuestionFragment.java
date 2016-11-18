@@ -21,6 +21,8 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
+import moe.yukisora.shitake.api.PendingViewBehaviour;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.model.Deck;
 
@@ -138,7 +140,52 @@ public class QuestionFragment extends Fragment {
     public void showPendingFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(question))
+                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(question, new PendingViewBehaviour() {
+                    @Override
+                    public PreventDoubleClickOnClickListener getOnClickListener() {
+                        return new PreventDoubleClickOnClickListener() {
+                            @Override
+                            public void preventDoubleClickOnClick(View v) {
+                                try {
+                                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_SELECT_ANSWER, new JSONObject()));
+                                } catch (JSONException ignore) {
+                                }
+
+                                showNextFragment();
+                            }
+                        };
+                    }
+
+                    @Override
+                    public void showNextFragment() {
+                        getFragment().getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                .commit();
+                    }
+
+                    @Override
+                    public void populateDonePlayers() {
+                        for (String address : AnswerAPIClient.getInstance().getAnswers().keySet())
+                            if (!address.equals("correct"))
+                                getFragment().exchangeView(PlayerAPIClient.getInstance().get(address));
+
+                        getFragment().showNextButton();
+                    }
+
+                    @Override
+                    public void done(final String address) {
+                        getHandler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                getFragment().exchangeView(PlayerAPIClient.getInstance().get(address));
+
+                                getFragment().showNextButton();
+                            }
+                        });
+                    }
+                }))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }

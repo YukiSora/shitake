@@ -116,7 +116,7 @@ public class BluetoothClient extends Thread {
     }
 
     private void selectAnswer() {
-        PendingFragment.getFragmentTask().showAnswerFragment();
+        PendingFragment.getFragmentTask().showNextFragment();
     }
 
     private void done() {

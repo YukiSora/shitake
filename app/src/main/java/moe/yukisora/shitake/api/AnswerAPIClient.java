@@ -32,6 +32,6 @@ public class AnswerAPIClient {
     public void addAnswer(String address, String answer) {
         answers.put(address, answer);
         if (PendingFragment.getFragmentTask() != null)
-            PendingFragment.getFragmentTask().addAnswer(address);
+            PendingFragment.getFragmentTask().done(address);
     }
 }

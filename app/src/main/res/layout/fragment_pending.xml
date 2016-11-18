@@ -36,7 +36,7 @@
             android:text="@string/players_done" />
 
         <LinearLayout
-            android:id="@+id/fragment_pending_vg_players_done"
+            android:id="@+id/doneLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -55,7 +55,7 @@
             android:text="@string/waiting_players" />
 
         <LinearLayout
-            android:id="@+id/fragment_pending_vg_waiting_players"
+            android:id="@+id/waitingLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -70,13 +70,13 @@
             android:orientation="vertical">
 
             <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/nextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:mrl_rippleOverlay="true"
                 app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
                 <Button
-                    android:id="@+id/next_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_button_green"

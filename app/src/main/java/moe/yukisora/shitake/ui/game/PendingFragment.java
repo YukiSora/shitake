@@ -2,29 +2,25 @@ package moe.yukisora.shitake.ui.game;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import java.util.HashMap;
 
 import moe.yukisora.shitake.R;
-import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PendingViewBehaviour;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 
 
@@ -33,26 +29,24 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
  */
 
 public class PendingFragment extends Fragment {
-    private Button nextButton;
-
-    private LinearLayout mPlayersDone;
-    private LinearLayout mPlayersWait;
-
-    private HashMap<PlayerAPIClient.Player, View> mArrayPlayers = new HashMap<>();
-
     private static FragmentTask fragmentTask;
-    private Handler handler;
-    private String question;
+    private HashMap<PlayerAPIClient.Player, View> waitingPlayers;
+    private LinearLayout doneLinearLayout;
+    private LinearLayout waitingLinearLayout;
+    private MaterialRippleLayout nextButton;
+    private PendingViewBehaviour pendingViewBehaviour;
     private boolean isHost;
 
     public static FragmentTask getFragmentTask() {
         return fragmentTask;
     }
 
-    public static PendingFragment newInstance(String question) {
+    public static PendingFragment newInstance(String question, PendingViewBehaviour pendingViewBehaviour) {
         Bundle args = new Bundle();
         PendingFragment fragment = new PendingFragment();
         args.putString("question", question);
+        pendingViewBehaviour.setFragment(fragment);
+        args.putSerializable("pendingViewBehaviour", pendingViewBehaviour);
         fragment.setArguments(args);
 
         return fragment;
@@ -63,19 +57,14 @@ public class PendingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_pending, container, false);
 
-        nextButton = (Button)rootView.findViewById(R.id.next_button);
-
-        mPlayersDone = (LinearLayout)rootView.findViewById(R.id.fragment_pending_vg_players_done);
-        mPlayersWait = (LinearLayout)rootView.findViewById(R.id.fragment_pending_vg_waiting_players);
-
-        mPlayersWait.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
-
-        animate(mPlayersWait);
-
         fragmentTask = new FragmentTask(this);
-        question = getArguments().getString("question");
-        handler = new Handler();
+        waitingPlayers = new HashMap<>();
+        pendingViewBehaviour = (PendingViewBehaviour)getArguments().getSerializable("pendingViewBehaviour");
         isHost = Bluetooth.getInstance().getServer() != null;
+
+        doneLinearLayout = (LinearLayout)rootView.findViewById(R.id.doneLinearLayout);
+        waitingLinearLayout = (LinearLayout)rootView.findViewById(R.id.waitingLinearLayout);
+        nextButton = (MaterialRippleLayout)rootView.findViewById(R.id.nextButton);
 
         return rootView;
     }
@@ -84,27 +73,22 @@ public class PendingFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //animate
+        waitingLinearLayout.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
+        animate(waitingLinearLayout);
+
         //set button is only visible to host
-        nextButton.setAlpha(0);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_SELECT_ANSWER, new JSONObject()));
-                } catch (JSONException ignore) {
-                }
-                showAnswerFragment();
-            }
-        });
+        nextButton.setVisibility(View.GONE);
+        nextButton.setOnClickListener(pendingViewBehaviour.getOnClickListener());
 
-        //generate waiting list
-        populatePendingPlayers();
+        //generate waiting players list
+        populateWaitingPlayers();
 
-        //generate answer list
-        populateAnswers();
+        //generate done players list
+        pendingViewBehaviour.populateDonePlayers();
     }
 
-    public void animate(View view) {
+    private void animate(View view) {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.layout_expanding);
 
         view.setVisibility(LinearLayout.VISIBLE);
@@ -115,44 +99,23 @@ public class PendingFragment extends Fragment {
         animation.start();
     }
 
-    public void populatePendingPlayers() {
-        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values()) {
-            View view = addPendingViewFromLayoutResource(mPlayersWait, player);
-            mArrayPlayers.put(player, view);
-        }
+    private void populateWaitingPlayers() {
+        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values())
+            waitingPlayers.put(player, addView(waitingLinearLayout, player));
     }
 
-    public void populateAnswers() {
-        for (String address : AnswerAPIClient.getInstance().getAnswers().keySet())
-            if (!address.equals("correct"))
-                addAnswerView(address);
-
-        showNextButton();
+    public void showNextButton() {
+        if (isHost && waitingPlayers.size() == 0)
+            nextButton.setVisibility(View.VISIBLE);
     }
 
-    public void addAnswer(final String address) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                addAnswerView(address);
-
-                showNextButton();
-            }
-        });
+    public void exchangeView(PlayerAPIClient.Player player) {
+        waitingLinearLayout.removeView(waitingPlayers.get(player));
+        waitingPlayers.remove(player);
+        addView(doneLinearLayout, player);
     }
 
-    public void addAnswerView(String address) {
-        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(address);
-        mPlayersWait.removeView(mArrayPlayers.get(player));
-        addPendingViewFromLayoutResource(mPlayersDone, player);
-    }
-
-    private void showNextButton() {
-        if (isHost && mArrayPlayers.size() == AnswerAPIClient.getInstance().getAnswers().size() - 1)
-            nextButton.setAlpha(1);
-    }
-
-    public View addPendingViewFromLayoutResource(LinearLayout linearLayout, PlayerAPIClient.Player player) {
+    private View addView(LinearLayout linearLayout, PlayerAPIClient.Player player) {
         LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = inflater.inflate(R.layout.view_player, linearLayout, false);
 
@@ -164,14 +127,6 @@ public class PendingFragment extends Fragment {
         return rootView;
     }
 
-    public void showAnswerFragment() {
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .commit();
-    }
-
     public static class FragmentTask {
         private PendingFragment fragment;
 
@@ -179,12 +134,12 @@ public class PendingFragment extends Fragment {
             this.fragment = (PendingFragment)fragment;
         }
 
-        public void addAnswer(String address) {
-            fragment.addAnswer(address);
+        public void done(String address) {
+            fragment.pendingViewBehaviour.done(address);
         }
 
-        public void showAnswerFragment() {
-            fragment.showAnswerFragment();
+        public void showNextFragment() {
+            fragment.pendingViewBehaviour.showNextFragment();
         }
     }
 }
