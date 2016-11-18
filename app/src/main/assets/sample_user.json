@@ -1,9 +1,0 @@
-{
-  "sample_user":
-  [
-    {"Username" : "Aerith Gainsborough", "Profile Picture" : "me.png"},
-    {"Username" : "Tifa Lockhart", "Profile Picture" : "me.png"},
-    {"Username" : "Yuffie Kisaragi", "Profile Picture" : "me.png"},
-    {"Username" : "Vincent Valentine", "Profile Picture" : "me.png"}
-  ]
-}

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.model.Player;
 
 public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerRecyclerViewAdapter.ViewHolder> {
     @Override
@@ -18,7 +19,7 @@ public class PlayerRecyclerViewAdapter extends RecyclerView.Adapter<PlayerRecycl
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(position);
+        Player player = PlayerAPIClient.getInstance().get(position);
 
         holder.playerPictureImageView.setImageBitmap(player.picture);
         holder.playerNameTextView.setText(player.name);

@@ -22,6 +22,7 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PendingViewBehaviour;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.model.Player;
 
 
 /**
@@ -30,7 +31,7 @@ import moe.yukisora.shitake.api.PlayerAPIClient;
 
 public class PendingFragment extends Fragment {
     private static FragmentTask fragmentTask;
-    private HashMap<PlayerAPIClient.Player, View> waitingPlayers;
+    private HashMap<Player, View> waitingPlayers;
     private LinearLayout doneLinearLayout;
     private LinearLayout waitingLinearLayout;
     private MaterialRippleLayout nextButton;
@@ -99,7 +100,7 @@ public class PendingFragment extends Fragment {
     }
 
     private void populateWaitingPlayers() {
-        for (PlayerAPIClient.Player player : PlayerAPIClient.getInstance().getPlayers().values())
+        for (Player player : PlayerAPIClient.getInstance().getPlayers().values())
             waitingPlayers.put(player, addView(waitingLinearLayout, player));
     }
 
@@ -108,13 +109,13 @@ public class PendingFragment extends Fragment {
             nextButton.setVisibility(View.VISIBLE);
     }
 
-    public void exchangeView(PlayerAPIClient.Player player) {
+    public void exchangeView(Player player) {
         waitingLinearLayout.removeView(waitingPlayers.get(player));
         waitingPlayers.remove(player);
         addView(doneLinearLayout, player);
     }
 
-    private View addView(LinearLayout linearLayout, PlayerAPIClient.Player player) {
+    private View addView(LinearLayout linearLayout, Player player) {
         LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = inflater.inflate(R.layout.view_player, linearLayout, false);
 

@@ -12,7 +12,6 @@ import android.view.MenuItem;
 
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
-import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.model.UserManager;
 import moe.yukisora.shitake.ui.MainFragment;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Singleton
         DeckAPIClient.newInstance(this);
-        GameAPIClient.newInstance(this);
         PlayerAPIClient.getInstance();
         UserManager.newInstance(this);
 

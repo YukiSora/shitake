@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.model.Player;
 import moe.yukisora.shitake.ui.game.LeaderboardFragment;
 
 public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<LeaderboardPlayerRecyclerViewAdapter.ViewHolder> {
@@ -26,7 +27,7 @@ public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<L
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().get(position);
+        Player player = PlayerAPIClient.getInstance().get(position);
 
         holder.playerPicture.setImageBitmap(player.picture);
         holder.playerName.setText(player.name);

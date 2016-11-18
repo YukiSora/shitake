@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.model.Player;
 
 public class BluetoothServer extends Thread {
     private BluetoothServerSocket server;
@@ -72,7 +73,7 @@ public class BluetoothServer extends Thread {
         Bitmap picture = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         //create new Player
-        PlayerAPIClient.Player player = PlayerAPIClient.getInstance().new Player(address, name, picture);
+        Player player = new Player(address, name, picture);
         PlayerAPIClient.getInstance().addPlayer(player);
 
         //send other players information to new player

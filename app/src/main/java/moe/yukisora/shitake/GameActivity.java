@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import moe.yukisora.shitake.api.Bluetooth;
-import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
 
 /**
@@ -19,8 +18,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_generic);
-
-        GameAPIClient.getInstance().startGame();
 
         getSupportFragmentManager()
                 .beginTransaction()

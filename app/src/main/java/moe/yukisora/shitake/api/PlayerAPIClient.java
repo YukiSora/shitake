@@ -4,17 +4,13 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
-import android.util.Base64;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.model.Player;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class PlayerAPIClient {
@@ -102,39 +98,5 @@ public class PlayerAPIClient {
 
     public Player get(String address) {
         return players.get(address);
-    }
-
-    public class Player {
-        public String address;
-        public String name;
-        public Bitmap picture;
-        public int score;
-        public int addingScore;
-
-        public Player(String address, String name, Bitmap picture) {
-            this.address = address;
-            this.name = name;
-            this.picture = picture;
-        }
-
-        private String bitmapToString() {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, out);
-            byte[] byteArray = out.toByteArray();
-
-            return Base64.encodeToString(byteArray, Base64.DEFAULT);
-        }
-
-        public JSONObject toJSON() {
-            JSONObject json = new JSONObject();
-            try {
-                json.put("address", address);
-                json.put("name", name);
-                json.put("picture", bitmapToString());
-            } catch (JSONException ignore) {
-            }
-
-            return json;
-        }
     }
 }

@@ -16,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
+import moe.yukisora.shitake.model.Player;
 import moe.yukisora.shitake.ui.game.LeaderboardFragment;
 import moe.yukisora.shitake.ui.game.PendingFragment;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
@@ -86,7 +87,7 @@ public class BluetoothClient extends Thread {
         byte[] byteArray = Base64.decode(data.getString("picture"), Base64.DEFAULT);
         Bitmap picture = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
-        PlayerAPIClient.getInstance().addPlayer(PlayerAPIClient.getInstance().new Player(address, name, picture));
+        PlayerAPIClient.getInstance().addPlayer(new Player(address, name, picture));
     }
 
     private void startGame() {
