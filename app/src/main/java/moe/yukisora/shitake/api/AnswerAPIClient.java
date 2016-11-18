@@ -7,6 +7,7 @@ import moe.yukisora.shitake.ui.game.PendingFragment;
 public class AnswerAPIClient {
     private static AnswerAPIClient answerAPIClient;
     private HashMap<String, String> answers;
+    private String question;
 
     private AnswerAPIClient() {
         answers = new HashMap<>();
@@ -33,5 +34,13 @@ public class AnswerAPIClient {
         answers.put(address, answer);
         if (PendingFragment.getFragmentTask() != null)
             PendingFragment.getFragmentTask().done(address);
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

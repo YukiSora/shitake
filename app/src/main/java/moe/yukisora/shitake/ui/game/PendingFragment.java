@@ -41,10 +41,9 @@ public class PendingFragment extends Fragment {
         return fragmentTask;
     }
 
-    public static PendingFragment newInstance(String question, PendingViewBehaviour pendingViewBehaviour) {
+    public static PendingFragment newInstance(PendingViewBehaviour pendingViewBehaviour) {
         Bundle args = new Bundle();
         PendingFragment fragment = new PendingFragment();
-        args.putString("question", question);
         pendingViewBehaviour.setFragment(fragment);
         args.putSerializable("pendingViewBehaviour", pendingViewBehaviour);
         fragment.setArguments(args);

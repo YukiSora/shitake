@@ -37,13 +37,11 @@ public class AnswerFragment extends Fragment {
     private LinearLayout mAnswerLayout;
     private TextView mQuestion;
 
-    private String question;
     private boolean isHost;
 
-    public static AnswerFragment newInstance(String question) {
+    public static AnswerFragment newInstance() {
         Bundle args = new Bundle();
         AnswerFragment fragment = new AnswerFragment();
-        args.putString("question", question);
         fragment.setArguments(args);
 
         return fragment;
@@ -57,7 +55,6 @@ public class AnswerFragment extends Fragment {
         mQuestion = (TextView)rootView.findViewById(R.id.fragment_answer_text_question);
         mAnswerLayout = (LinearLayout)rootView.findViewById(R.id.fragment_answer_vg_list);
 
-        question = getArguments().getString("question");
         isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;
@@ -69,7 +66,7 @@ public class AnswerFragment extends Fragment {
 
         populateAnswers();
 
-        mQuestion.setText(question);
+        mQuestion.setText(AnswerAPIClient.getInstance().getQuestion());
         mQuestion.setAlpha(0);
 
         mAnswerLayout.startAnimation(getAnimation());

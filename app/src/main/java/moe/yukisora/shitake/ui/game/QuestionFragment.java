@@ -39,7 +39,6 @@ public class QuestionFragment extends Fragment {
 
     private static FragmentTask fragmentTask;
     private Handler handler;
-    private String question;
     private boolean isAbleSubmit;
     private boolean isHost;
 
@@ -98,7 +97,7 @@ public class QuestionFragment extends Fragment {
             AnswerAPIClient.getInstance().getAnswers().put("correct", deck.getAnswer());
 
             //set question
-            question = deck.getQuestion();
+            AnswerAPIClient.getInstance().setQuestion(deck.getQuestion());
             mQuestionTitle.setText(deck.getQuestion());
             isAbleSubmit = true;
         }
@@ -140,7 +139,7 @@ public class QuestionFragment extends Fragment {
     public void showPendingFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(question, new PendingViewBehaviour() {
+                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(new PendingViewBehaviour() {
                     @Override
                     public PreventDoubleClickOnClickListener getOnClickListener() {
                         return new PreventDoubleClickOnClickListener() {
@@ -160,7 +159,7 @@ public class QuestionFragment extends Fragment {
                     public void showNextFragment() {
                         getFragment().getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance(question))
+                                .replace(R.id.activity_main_vg_fragment, AnswerFragment.newInstance())
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .commit();
                     }
@@ -194,7 +193,7 @@ public class QuestionFragment extends Fragment {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                QuestionFragment.this.question = question;
+                AnswerAPIClient.getInstance().setQuestion(question);
                 mQuestionTitle.setText(question);
                 isAbleSubmit = true;
             }
