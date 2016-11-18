@@ -8,8 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.DeckAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.model.Deck;
 
 /**
@@ -30,7 +32,7 @@ public class QuestionFragment extends Fragment {
     private TextView mQuestionTitle;
     private TextView mUserAnswer;
 
-    private Button mSubmitButton;
+    private MaterialRippleLayout mSubmitButton;
 
     private static FragmentTask fragmentTask;
     private Handler handler;
@@ -62,7 +64,7 @@ public class QuestionFragment extends Fragment {
         mQuestionTitle = (TextView)rootView.findViewById(R.id.fragment_question_text_title);
         mUserAnswer = (TextView)rootView.findViewById(R.id.fragment_question_text_answer);
 
-        mSubmitButton = (Button)rootView.findViewById(R.id.submit_button);
+        mSubmitButton = (MaterialRippleLayout)rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
         isHost = Bluetooth.getInstance().getServer() != null;
@@ -80,7 +82,7 @@ public class QuestionFragment extends Fragment {
             //get question
             Deck deck = DeckAPIClient.getInstance().getDeck();
 
-            //send question
+            //send question to other players
             try {
                 JSONObject data = new JSONObject();
                 data.put("question", deck.getQuestion());
@@ -98,9 +100,10 @@ public class QuestionFragment extends Fragment {
             isAbleSubmit = true;
         }
 
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+        //submit button
+        mSubmitButton.setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void preventDoubleClickOnClick(View v) {
                 if (isAbleSubmit) {
                     String answer = mUserAnswer.getText().toString();
 
@@ -119,7 +122,7 @@ public class QuestionFragment extends Fragment {
                     //set answer
                     AnswerAPIClient.getInstance().getAnswers().put(MainActivity.getBluetoothAddress(), answer);
 
-                    QuestionFragment.this.showPendingFragment();
+                    showPendingFragment();
                 }
             }
         });

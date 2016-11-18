@@ -25,7 +25,6 @@ public class DeckAPIClient {
     private static DeckAPIClient sSharedInstance;
     private ArrayList<Deck> mDeck;
     private HashMap<String, ArrayList<Deck>> decks;
-    private String currentDeck;
     private int mCounter;
 
     private DeckAPIClient(@NonNull Context context) {
@@ -83,7 +82,6 @@ public class DeckAPIClient {
     }
 
     public void setCurrentDeck(String currentDeck) {
-        this.currentDeck = currentDeck;
         mCounter = 0;
         mDeck = decks.get(currentDeck);
 
