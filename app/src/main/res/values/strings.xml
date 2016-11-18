@@ -29,6 +29,7 @@
     <string name="are_you_sure_quit_this_game">Are you sure quit this game?</string>
     <string name="waiting_question">Waiting question</string>
     <string name="enter_your_answer">Enter your answer.</string>
+    <string name="answer_cannot_be_empty">Answer cannot be empty</string>
     <string name="submit">Submit</string>
     <string name="collecting_answer">Collecting Answers</string>
     <string name="players_done">Players Done</string>

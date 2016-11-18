@@ -21,6 +21,7 @@
     <string name="are_you_sure_quit_this_game">你确定退出这次游戏?</string>
     <string name="waiting_question">等待问题中</string>
     <string name="enter_your_answer">输入你的答案。</string>
+    <string name="answer_cannot_be_empty">答案不能为空</string>
     <string name="submit">提交</string>
     <string name="collecting_answer">收集答案中</string>
     <string name="players_done">就位的玩家</string>

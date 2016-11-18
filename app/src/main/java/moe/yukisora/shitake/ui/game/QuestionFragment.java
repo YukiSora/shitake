@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 
@@ -106,6 +107,12 @@ public class QuestionFragment extends Fragment {
             public void preventDoubleClickOnClick(View v) {
                 if (isAbleSubmit) {
                     String answer = mUserAnswer.getText().toString();
+
+                    //reject empty answer
+                    if (answer.equals("")) {
+                        Toast.makeText(getContext(), getString(R.string.answer_cannot_be_empty), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     //send answer
                     try {
