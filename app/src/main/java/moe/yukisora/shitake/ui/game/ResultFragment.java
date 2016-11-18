@@ -10,18 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
+
+import com.balysv.materialripple.MaterialRippleLayout;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 
 /**
  * Created by Delacrix on 10/10/2016.
  */
 
 public class ResultFragment extends Fragment {
-    private Button resultButton;
+    private MaterialRippleLayout resultButton;
     private ImageView resultImageView;
 
     private String address;
@@ -42,7 +44,7 @@ public class ResultFragment extends Fragment {
 
         address = getArguments().getString("address");
 
-        resultButton = (Button)view.findViewById(R.id.resultButton);
+        resultButton = (MaterialRippleLayout)view.findViewById(R.id.resultButton);
         resultImageView = (ImageView)view.findViewById(R.id.resultImageView);
 
         return view;
@@ -61,7 +63,7 @@ public class ResultFragment extends Fragment {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                resultButton.setAlpha(1);
+                resultButton.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -78,10 +80,10 @@ public class ResultFragment extends Fragment {
         resultImageView.startAnimation(animation);
 
         //Button
-        resultButton.setAlpha(0);
-        resultButton.setOnClickListener(new View.OnClickListener() {
+        resultButton.setVisibility(View.GONE);
+        resultButton.setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 showVoteFragment();
             }
         });
