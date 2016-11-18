@@ -27,6 +27,7 @@ import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.GameAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 
 /**
  * Created by Delacrix on 22/09/2016.
@@ -110,9 +111,9 @@ public class AnswerFragment extends Fragment {
 
         mAnswer.setAllCaps(true);
         mAnswer.setText(answer);
-        mAnswer.setOnClickListener(new View.OnClickListener() {
+        mAnswer.setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void preventDoubleClickOnClick(View view) {
                 if (isHost) {
                     if (address.equals("correct"))
                         PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
