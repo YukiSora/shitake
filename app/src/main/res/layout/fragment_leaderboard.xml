@@ -40,13 +40,13 @@
                 android:id="@+id/nextRound"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:mrl_rippleOverlay="true"
                 app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_button_green"
                     android:gravity="center"
                     android:text="@string/next_round"
@@ -58,13 +58,13 @@
                 android:id="@+id/endGame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:mrl_rippleOverlay="true"
                 app:mrl_rippleRoundedCorners="@dimen/button_rounded_corner">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_button_green"
                     android:gravity="center"
                     android:text="@string/end_game"
