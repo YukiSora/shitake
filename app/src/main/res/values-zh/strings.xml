@@ -26,6 +26,10 @@
 
     <string name="quit_game">退出游戏</string>
     <string name="are_you_sure_quit_this_game">你确定退出这次游戏?</string>
+    <string name="customize_question">自定义问题</string>
+    <string name="enter_question">输入问题</string>
+    <string name="enter_correct_answer">输入正确答案</string>
+    <string name="question_and_answer_cannot_be_empty">问题和答案不能为空</string>
     <string name="waiting_question">等待问题中</string>
     <string name="enter_your_answer">输入你的答案。</string>
     <string name="answer_cannot_be_empty">答案不能为空</string>

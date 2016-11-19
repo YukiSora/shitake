@@ -74,6 +74,7 @@ public class HostFragment extends Fragment {
         decks.add(adapter.new ViewData("Proverbs"));
         decks.add(adapter.new ViewData("Adults Only"));
         decks.add(adapter.new ViewData("Animals"));
+        decks.add(adapter.new ViewData("Customize Deck"));
     }
 
     public ArrayList<DeckRecyclerViewAdapter.ViewData> getDecks() {

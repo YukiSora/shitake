@@ -25,6 +25,7 @@ public class DeckAPIClient {
     private static DeckAPIClient sSharedInstance;
     private ArrayList<Deck> mDeck;
     private HashMap<String, ArrayList<Deck>> decks;
+    private String currentDeck;
     private int mCounter;
 
     private DeckAPIClient(@NonNull Context context) {
@@ -78,13 +79,18 @@ public class DeckAPIClient {
     }
 
     public Deck getDeck() {
-        return mDeck.get(mCounter++);
+        if (currentDeck.equals("Customize Deck"))
+            return null;
+        else
+            return mDeck.get(mCounter++);
     }
 
     public void setCurrentDeck(String currentDeck) {
+        this.currentDeck = currentDeck;
         mCounter = 0;
-        mDeck = decks.get(currentDeck);
-
-        Collections.shuffle(mDeck, new Random(System.nanoTime()));
+        if (!currentDeck.equals("Customize Deck")) {
+            mDeck = decks.get(currentDeck);
+            Collections.shuffle(mDeck, new Random(System.nanoTime()));
+        }
     }
 }

@@ -28,8 +28,12 @@
 
     <string name="quit_game">Quit Game</string>
     <string name="are_you_sure_quit_this_game">Are you sure quit this game?</string>
+    <string name="customize_question">Customize question</string>
+    <string name="enter_question">Enter question</string>
+    <string name="enter_correct_answer">Enter correct answer</string>
     <string name="waiting_question">Waiting question</string>
     <string name="enter_your_answer">Enter your answer.</string>
+    <string name="question_and_answer_cannot_be_empty">Question and answer cannot be empty</string>
     <string name="answer_cannot_be_empty">Answer cannot be empty</string>
     <string name="submit">Submit</string>
     <string name="collecting_answer">Collecting Answers</string>

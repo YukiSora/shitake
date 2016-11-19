@@ -30,6 +30,14 @@
     <string name="quit_game">Quit Game</string>
     <!--translate required-->
     <string name="are_you_sure_quit_this_game">Are you sure quit this game?</string>
+    <!--translate required-->
+    <string name="customize_question">Customize question</string>
+    <!--translate required-->
+    <string name="enter_question">Enter question</string>
+    <!--translate required-->
+    <string name="enter_correct_answer">Enter correct answer</string>
+    <!--translate required-->
+    <string name="question_and_answer_cannot_be_empty">Question and answer cannot be empty</string>
     <string name="waiting_question">Čekající otázky</string>
     <string name="enter_your_answer">Vlož svou odpoveď</string>
     <!--translate required-->

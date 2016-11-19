@@ -1,5 +1,7 @@
 package moe.yukisora.shitake.ui.game;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,29 +75,50 @@ public class QuestionFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         if (isHost) {
             //get question
             Deck deck = DeckAPIClient.getInstance().getDeck();
 
-            //send question to other players
-            try {
-                JSONObject data = new JSONObject();
-                data.put("question", deck.getQuestion());
-                data.put("answer", deck.getAnswer());
-                Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_QUESTION, data));
-            } catch (JSONException ignore) {
+            //customize deck
+            if (deck == null) {
+                //layout
+                View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.view_customize_deck, null);
+                final EditText questionEditText = ((EditText)dialogView.findViewById(R.id.questionDialog));
+                final EditText answerEditText = ((EditText)dialogView.findViewById(R.id.answerDialog));
+
+                //create dialog
+                final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                        .setTitle(getString(R.string.customize_question))
+                        .setView(dialogView)
+                        .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).create();
+                alertDialog.show();
+
+                //dialog button action
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String question = questionEditText.getText().toString();
+                        String answer = answerEditText.getText().toString();
+                        if (!question.equals("") && !answer.equals("")) {
+                            confirmQuestion(new Deck(question, answer));
+                            alertDialog.dismiss();
+                        }
+                        else {
+                            Toast.makeText(getContext(), getString(R.string.question_and_answer_cannot_be_empty), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
-
-            //set correct answer
-            AnswerAPIClient.getInstance().getAnswers().put("correct", deck.getAnswer());
-
-            //set question
-            AnswerAPIClient.getInstance().setQuestion(deck.getQuestion());
-            mQuestionTitle.setText(deck.getQuestion());
-            isAbleSubmit = true;
+            else {
+                confirmQuestion(deck);
+            }
         }
 
         //submit button
@@ -136,6 +160,25 @@ public class QuestionFragment extends Fragment {
         super.onDestroy();
 
         fragmentTask = null;
+    }
+
+    private void confirmQuestion(Deck deck) {
+        //send question to other players
+        try {
+            JSONObject data = new JSONObject();
+            data.put("question", deck.getQuestion());
+            data.put("answer", deck.getAnswer());
+            Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_QUESTION, data));
+        } catch (JSONException ignore) {
+        }
+
+        //set correct answer
+        AnswerAPIClient.getInstance().getAnswers().put("correct", deck.getAnswer());
+
+        //set question
+        AnswerAPIClient.getInstance().setQuestion(deck.getQuestion());
+        mQuestionTitle.setText(deck.getQuestion());
+        isAbleSubmit = true;
     }
 
     public void showPendingFragment() {
