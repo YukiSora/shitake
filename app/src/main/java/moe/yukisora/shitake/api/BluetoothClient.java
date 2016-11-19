@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.model.Player;
+import moe.yukisora.shitake.ui.game.LeaderboardFragment;
 import moe.yukisora.shitake.ui.game.PendingFragment;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
@@ -79,6 +80,12 @@ public class BluetoothClient extends Thread {
                 case Bluetooth.DATA_TYPE_START_LEADERBOARD:
                     startLeaderboard(json.getJSONObject("data"));
                     break;
+                case Bluetooth.DATA_TYPE_START_NEXT_ROUND:
+                    nextRound();
+                    break;
+                case Bluetooth.DATA_TYPE_END_GAME:
+                    endGame();
+                    break;
             }
         } catch (JSONException ignore) {
         }
@@ -128,7 +135,7 @@ public class BluetoothClient extends Thread {
         String address = data.getString("address");
 
         //add address
-        ResultAPIClient.getResultAPIClient().addAddress(address);
+        ResultAPIClient.getInstance().addAddress(address);
     }
 
     private void startLeaderboard(JSONObject data) throws JSONException {
@@ -140,6 +147,14 @@ public class BluetoothClient extends Thread {
         }
 
         PendingFragment.getFragmentTask().showNextFragment();
+    }
+
+    private void endGame() {
+        LeaderboardFragment.getFragmentTask().endGame();
+    }
+
+    private void nextRound() {
+        LeaderboardFragment.getFragmentTask().nextRound();
     }
 
     private void read() {

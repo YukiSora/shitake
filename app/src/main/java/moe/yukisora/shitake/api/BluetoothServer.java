@@ -122,7 +122,7 @@ public class BluetoothServer extends Thread {
         sendExclude(thisClient, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
 
         //add address
-        ResultAPIClient.getResultAPIClient().addAddress(address);
+        ResultAPIClient.getInstance().addAddress(address);
     }
 
     public void sendTo(Client thisClient, String s) {

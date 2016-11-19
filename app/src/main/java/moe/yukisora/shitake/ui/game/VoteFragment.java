@@ -99,7 +99,7 @@ public class VoteFragment extends Fragment {
 
     public void showLeaderboardFragment() {
         //add self
-        ResultAPIClient.getResultAPIClient().getAddresses().add(MainActivity.getBluetoothAddress());
+        ResultAPIClient.getInstance().getAddresses().add(MainActivity.getBluetoothAddress());
 
         //send to other players
         try {
@@ -150,7 +150,7 @@ public class VoteFragment extends Fragment {
 
                     @Override
                     public void populateDonePlayers() {
-                        for (String address : ResultAPIClient.getResultAPIClient().getAddresses())
+                        for (String address : ResultAPIClient.getInstance().getAddresses())
                             getFragment().exchangeView(PlayerAPIClient.getInstance().get(address));
 
                         getFragment().showNextButton();

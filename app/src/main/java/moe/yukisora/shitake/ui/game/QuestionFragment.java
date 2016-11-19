@@ -54,10 +54,6 @@ public class QuestionFragment extends Fragment {
         return fragment;
     }
 
-    public QuestionFragment() {
-        handler = new Handler();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,6 +65,7 @@ public class QuestionFragment extends Fragment {
         mSubmitButton = (MaterialRippleLayout)rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
+        handler = new Handler();
         isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;
@@ -132,6 +129,13 @@ public class QuestionFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        fragmentTask = null;
     }
 
     public void showPendingFragment() {

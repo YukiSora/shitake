@@ -12,7 +12,7 @@ public class ResultAPIClient {
         addresses = new ArrayList<>();
     }
 
-    public static ResultAPIClient getResultAPIClient() {
+    public static ResultAPIClient getInstance() {
         if (resultAPIClient == null)
             resultAPIClient = new ResultAPIClient();
 
