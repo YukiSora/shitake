@@ -13,6 +13,7 @@ import java.util.HashMap;
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.Player;
+import moe.yukisora.shitake.model.UserManager;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
 
 public class PlayerAPIClient {
@@ -36,8 +37,13 @@ public class PlayerAPIClient {
 
     public void addSelf(Resources resources) {
         String address = MainActivity.getBluetoothAddress();
-        String name = "Yuki Sora";
-        Bitmap picture = BitmapFactory.decodeResource(resources, R.drawable.picture);
+        String name = UserManager.getInstance().getName();
+        Bitmap picture;
+        String picturePath = UserManager.getInstance().getProfilePicture();
+        if (!picturePath.equals(""))
+            picture = BitmapFactory.decodeFile(picturePath);
+        else
+            picture = BitmapFactory.decodeResource(resources, R.drawable.no_picture);
 
         Player player = new Player(address, name, picture);
         players.put(address, player);
