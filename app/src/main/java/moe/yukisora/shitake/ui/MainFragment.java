@@ -112,7 +112,7 @@ public class MainFragment extends Fragment {
             new AlertDialog.Builder(getActivity())
                     .setTitle(getResources().getString(R.string.bluetooth_is_not_available))
                     .setMessage(getResources().getString(R.string.bluetooth_requested))
-                    .setPositiveButton("Ok", null)
+                    .setPositiveButton(getString(R.string.ok), null)
                     .show();
         }
     }
