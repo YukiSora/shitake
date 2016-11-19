@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,24 +78,27 @@ public class WaitingFragment extends Fragment {
         //Divider
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-
-        if (isHost) {
-            view.findViewById(R.id.startGame).setOnClickListener(new PreventDoubleClickOnClickListener() {
-                @Override
-                public void preventDoubleClickOnClick(View view) {
-                    //send to other players game started
-                    try {
-                        Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_GAME, new JSONObject()));
-                    } catch (JSONException ignore) {
-                    }
-
-                    startGame();
+        view.findViewById(R.id.startGame).setOnClickListener(new PreventDoubleClickOnClickListener() {
+            @Override
+            public void preventDoubleClickOnClick(View view) {
+                //at least two players
+                if (PlayerAPIClient.getInstance().getPlayers().size() == 1) {
+                    Toast.makeText(getContext(), getString(R.string.requires_at_least_two_players), Toast.LENGTH_SHORT).show();
+                    return;
                 }
-            });
-        }
-        else {
+
+                //send to other players game started
+                try {
+                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_GAME, new JSONObject()));
+                } catch (JSONException ignore) {
+                }
+
+                startGame();
+            }
+        });
+
+        if (!isHost)
             view.findViewById(R.id.startGame).setVisibility(View.GONE);
-        }
     }
 
     @Override

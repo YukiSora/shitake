@@ -17,6 +17,8 @@
     <string name="start_game">Začít hru</string>
     <string name="deck_list">Seznam her</string>
     <string name="host_list">Seznam hostů</string>
+    <!--translate required-->
+    <string name="requires_at_least_two_players">Requires at least two players</string>
 
     <string name="profile_nickname">Přezdívka</string>
     <string name="empty_nickname">Jméno nesmí být prázdné</string>

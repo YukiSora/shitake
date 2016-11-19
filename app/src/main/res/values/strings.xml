@@ -18,6 +18,7 @@
     <string name="player_list">Player List</string>
     <string name="host_list">Host List</string>
     <string name="deck_list">Deck List</string>
+    <string name="requires_at_least_two_players">Requires at least two players</string>
 
     <string name="profile_nickname">Nickname</string>
     <string name="empty_nickname">Nickname can\'t be empty</string>
