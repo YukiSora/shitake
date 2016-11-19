@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.LeaderboardPlayerRecyclerViewAdapter;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.PlayerAPIClient;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -40,6 +41,8 @@ public class LeaderboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
 
         isHost = Bluetooth.getInstance().getServer() != null;
+
+        PlayerAPIClient.getInstance().sort();
 
         return view;
     }

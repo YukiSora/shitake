@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import moe.yukisora.shitake.MainActivity;
@@ -86,6 +88,15 @@ public class PlayerAPIClient {
     public void clearPlayer() {
         players.clear();
         playersInOrder.clear();
+    }
+
+    public void sort() {
+        Collections.sort(playersInOrder, new Comparator<String>() {
+            @Override
+            public int compare(String arg1, String arg2) {
+                return players.get(arg2).score + players.get(arg2).addingScore - players.get(arg1).score - players.get(arg1).addingScore;
+            }
+        });
     }
 
     public HashMap<String, Player> getPlayers() {
