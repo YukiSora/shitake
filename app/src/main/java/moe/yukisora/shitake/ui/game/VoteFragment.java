@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -120,7 +121,16 @@ public class VoteFragment extends Fragment {
                             @Override
                             public void preventDoubleClickOnClick(View v) {
                                 try {
-                                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_LEADERBOARD, new JSONObject()));
+                                    JSONObject data = new JSONObject();
+                                    JSONArray addingScore = new JSONArray();
+                                    for (String address : PlayerAPIClient.getInstance().getPlayers().keySet()) {
+                                        JSONObject player = new JSONObject();
+                                        player.put("address", address);
+                                        player.put("addingScore", PlayerAPIClient.getInstance().get(address).addingScore);
+                                        addingScore.put(player);
+                                    }
+                                    data.put("addingScore", addingScore);
+                                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_LEADERBOARD, data));
                                 } catch (JSONException ignore) {
                                 }
 

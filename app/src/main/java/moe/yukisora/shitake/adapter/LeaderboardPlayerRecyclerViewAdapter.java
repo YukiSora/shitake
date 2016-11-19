@@ -17,7 +17,7 @@ public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<L
     LeaderboardFragment fragment;
 
     public LeaderboardPlayerRecyclerViewAdapter(Fragment fragment) {
-        this.fragment = (LeaderboardFragment) fragment;
+        this.fragment = (LeaderboardFragment)fragment;
     }
 
     @Override
@@ -32,6 +32,9 @@ public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<L
         holder.playerPicture.setImageBitmap(player.picture);
         holder.playerName.setText(player.name);
         holder.playerScore.setText(player.score + "");
+        holder.playerAddingScore.setText("+" + player.addingScore);
+        player.score += player.addingScore;
+        player.addingScore = 0;
     }
 
     @Override
@@ -48,10 +51,10 @@ public class LeaderboardPlayerRecyclerViewAdapter extends RecyclerView.Adapter<L
         public ViewHolder(View view) {
             super(view);
 
-            playerPicture = (ImageView) view.findViewById(R.id.playerPicture);
-            playerName = (TextView) view.findViewById(R.id.playerName);
-            playerScore = (TextView) view.findViewById(R.id.playerScore);
-            playerAddingScore = (TextView) view.findViewById(R.id.playerAddingScore);
+            playerPicture = (ImageView)view.findViewById(R.id.playerPicture);
+            playerName = (TextView)view.findViewById(R.id.playerName);
+            playerScore = (TextView)view.findViewById(R.id.playerScore);
+            playerAddingScore = (TextView)view.findViewById(R.id.playerAddingScore);
         }
     }
 }

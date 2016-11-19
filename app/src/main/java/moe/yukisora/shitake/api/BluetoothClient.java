@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,7 +18,6 @@ import java.util.UUID;
 
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.model.Player;
-import moe.yukisora.shitake.ui.game.LeaderboardFragment;
 import moe.yukisora.shitake.ui.game.PendingFragment;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
 import moe.yukisora.shitake.ui.lobby.WaitingFragment;
@@ -77,7 +77,7 @@ public class BluetoothClient extends Thread {
                     vote(json.getJSONObject("data"));
                     break;
                 case Bluetooth.DATA_TYPE_START_LEADERBOARD:
-                    startLeaderboard();
+                    startLeaderboard(json.getJSONObject("data"));
                     break;
             }
         } catch (JSONException ignore) {
@@ -131,8 +131,15 @@ public class BluetoothClient extends Thread {
         ResultAPIClient.getResultAPIClient().addAddress(address);
     }
 
-    private void startLeaderboard() {
-        LeaderboardFragment.getFragmentTask().showRecyclerView();
+    private void startLeaderboard(JSONObject data) throws JSONException {
+        //get adding score
+        JSONArray addingScore = data.getJSONArray("addingScore");
+        for (int i = 0; i < addingScore.length(); i++) {
+            JSONObject player = (JSONObject)addingScore.get(i);
+            PlayerAPIClient.getInstance().get(player.getString("address")).addingScore += player.getInt("addingScore");
+        }
+
+        PendingFragment.getFragmentTask().showNextFragment();
     }
 
     private void read() {
