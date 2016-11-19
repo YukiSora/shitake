@@ -11,11 +11,6 @@ public class TutorialActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_generic);
-
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.activity_main_vg_fragment, new RegisterFragment())
-//                .commit();
+        setContentView(R.layout.activity_tutorial);
     }
 }

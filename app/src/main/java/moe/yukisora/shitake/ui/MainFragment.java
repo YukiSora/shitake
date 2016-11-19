@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import moe.yukisora.shitake.AboutActivity;
 import moe.yukisora.shitake.AccountActivity;
 import moe.yukisora.shitake.R;
+import moe.yukisora.shitake.TutorialActivity;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.ui.lobby.HostFragment;
@@ -89,7 +90,8 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_tutorial).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
             public void preventDoubleClickOnClick(View view) {
-                Log.i("poi", "I am going to Tutorial Fragment.");
+                Intent intent = new Intent(getActivity(), TutorialActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -97,7 +99,8 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_btn_about).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
             public void preventDoubleClickOnClick(View view) {
-                Log.i("poi", "I am going to About Fragment.");
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
             }
         });
     }
