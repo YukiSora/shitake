@@ -19,7 +19,10 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.api.GameAPIClient;
+import moe.yukisora.shitake.api.PendingViewBehaviour;
 import moe.yukisora.shitake.api.PlayerAPIClient;
+import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
+import moe.yukisora.shitake.api.ResultAPIClient;
 
 /**
  * Created by Delacrix on 10/10/2016.
@@ -94,9 +97,67 @@ public class VoteFragment extends Fragment {
     }
 
     public void showLeaderboardFragment() {
+        //add self
+        ResultAPIClient.getResultAPIClient().getAddresses().add(MainActivity.getBluetoothAddress());
+
+        //send to other players
+        try {
+            JSONObject data = new JSONObject();
+            data.put("address", MainActivity.getBluetoothAddress());
+            if (isHost)
+                Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
+            else
+                Bluetooth.getInstance().getClient().send(Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
+        } catch (JSONException ignore) {
+        }
+
         VoteFragment.this.getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_vg_fragment, LeaderboardFragment.newInstance())
+                .replace(R.id.activity_main_vg_fragment, PendingFragment.newInstance(new PendingViewBehaviour() {
+                    @Override
+                    public PreventDoubleClickOnClickListener getOnClickListener() {
+                        return new PreventDoubleClickOnClickListener() {
+                            @Override
+                            public void preventDoubleClickOnClick(View v) {
+                                try {
+                                    Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_START_LEADERBOARD, new JSONObject()));
+                                } catch (JSONException ignore) {
+                                }
+
+                                showNextFragment();
+                            }
+                        };
+                    }
+
+                    @Override
+                    public void showNextFragment() {
+                        getFragment().getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.activity_main_vg_fragment, LeaderboardFragment.newInstance())
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                .commit();
+                    }
+
+                    @Override
+                    public void populateDonePlayers() {
+                        for (String address : ResultAPIClient.getResultAPIClient().getAddresses())
+                            getFragment().exchangeView(PlayerAPIClient.getInstance().get(address));
+
+                        getFragment().showNextButton();
+                    }
+
+                    @Override
+                    public void done(final String address) {
+                        getHandler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                getFragment().exchangeView(PlayerAPIClient.getInstance().get(address));
+
+                                getFragment().showNextButton();
+                            }
+                        });
+                    }
+                }))
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }

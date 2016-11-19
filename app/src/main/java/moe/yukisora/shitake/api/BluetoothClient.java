@@ -73,6 +73,9 @@ public class BluetoothClient extends Thread {
                 case Bluetooth.DATA_TYPE_START_SELECT_ANSWER:
                     startSelectAnswer();
                     break;
+                case Bluetooth.DATA_TYPE_VOTE:
+                    vote(json.getJSONObject("data"));
+                    break;
                 case Bluetooth.DATA_TYPE_START_LEADERBOARD:
                     startLeaderboard();
                     break;
@@ -118,6 +121,14 @@ public class BluetoothClient extends Thread {
 
     private void startSelectAnswer() {
         PendingFragment.getFragmentTask().showNextFragment();
+    }
+
+    private void vote(JSONObject data) throws JSONException {
+        //get address
+        String address = data.getString("address");
+
+        //add address
+        ResultAPIClient.getResultAPIClient().addAddress(address);
     }
 
     private void startLeaderboard() {

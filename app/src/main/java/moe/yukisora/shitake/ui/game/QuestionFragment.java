@@ -78,8 +78,6 @@ public class QuestionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        AnswerAPIClient.newInstance();
-
         if (isHost) {
             //get question
             Deck deck = DeckAPIClient.getInstance().getDeck();

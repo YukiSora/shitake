@@ -13,12 +13,6 @@ public class AnswerAPIClient {
         answers = new HashMap<>();
     }
 
-    public static AnswerAPIClient newInstance() {
-        answerAPIClient = new AnswerAPIClient();
-
-        return answerAPIClient;
-    }
-
     public static AnswerAPIClient getInstance() {
         if (answerAPIClient == null)
             answerAPIClient = new AnswerAPIClient();

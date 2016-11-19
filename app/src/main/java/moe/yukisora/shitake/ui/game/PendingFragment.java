@@ -127,6 +127,13 @@ public class PendingFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        fragmentTask = null;
+    }
+
     public static class FragmentTask {
         private PendingFragment fragment;
 

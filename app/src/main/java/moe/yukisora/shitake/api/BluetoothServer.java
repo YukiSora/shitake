@@ -117,6 +117,12 @@ public class BluetoothServer extends Thread {
 
         //set score
         PlayerAPIClient.getInstance().get(vote).addingScore += GameAPIClient.VOTE_SCORE;
+
+        //send this player vote to other players
+        sendExclude(thisClient, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_VOTE, data));
+
+        //add address
+        ResultAPIClient.getResultAPIClient().addAddress(address);
     }
 
     public void sendTo(Client thisClient, String s) {
