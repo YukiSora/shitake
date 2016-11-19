@@ -27,7 +27,6 @@
         <activity
             android:name=".GameActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".LobbyActivity" />
         <activity android:name=".TutorialActivity" />
     </application>
 </manifest>

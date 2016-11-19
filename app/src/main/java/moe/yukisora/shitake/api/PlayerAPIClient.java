@@ -51,20 +51,6 @@ public class PlayerAPIClient {
             playersInOrder.add(address);
     }
 
-    public void addPlayer(String address, String name, Bitmap picture) {
-        Player player = new Player(address, name, picture);
-        players.put(address, player);
-        if (!playersInOrder.contains(address))
-            playersInOrder.add(address);
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                WaitingFragment.getAdapter().notifyItemInserted(players.size() - 1);
-            }
-        });
-    }
-
     public void addPlayer(Player player) {
         players.put(player.address, player);
         if (!playersInOrder.contains(player.address))

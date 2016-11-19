@@ -127,10 +127,6 @@ public class PendingFragment extends Fragment {
         return rootView;
     }
 
-    public boolean isHost() {
-        return isHost;
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
