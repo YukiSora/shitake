@@ -1,5 +1,8 @@
 <resources>
 
+    <string name="error">出错</string>
+    <string name="ok">Ok</string>
+
     <string name="main_btn_account">我的账户</string>
     <string name="main_btn_join">加入游戏</string>
     <string name="main_btn_create">创建游戏</string>
@@ -15,7 +18,10 @@
     <string name="deck_list">题集列表</string>
 
     <string name="profile_nickname">昵称</string>
+    <string name="empty_nickname">昵称不能为空</string>
     <string name="profile_change_picture">更改图片</string>
+    <string name="start">开始</string>
+    <string name="register_text">开始游戏前，请输入您的昵称。以后可以更改它。</string>
 
     <string name="quit_game">退出游戏</string>
     <string name="are_you_sure_quit_this_game">你确定退出这次游戏?</string>
