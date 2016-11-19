@@ -35,6 +35,8 @@
 
         <Button
             android:id="@+id/bt_profile_change_picture"
+            android:background="@drawable/rounded_button_green"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
