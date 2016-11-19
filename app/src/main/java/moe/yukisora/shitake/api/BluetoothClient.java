@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.UUID;
 
+import moe.yukisora.shitake.GameActivity;
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.model.Player;
 import moe.yukisora.shitake.ui.game.LeaderboardFragment;
@@ -150,7 +151,7 @@ public class BluetoothClient extends Thread {
     }
 
     private void endGame() {
-        LeaderboardFragment.getFragmentTask().endGame();
+        GameActivity.getActivityTask().endGame();
     }
 
     private void nextRound() {

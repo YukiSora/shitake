@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import moe.yukisora.shitake.GameActivity;
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.LeaderboardPlayerRecyclerViewAdapter;
 import moe.yukisora.shitake.api.AnswerAPIClient;
@@ -97,7 +98,7 @@ public class LeaderboardFragment extends Fragment {
         view.findViewById(R.id.endGame).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
             public void preventDoubleClickOnClick(View view) {
-                endGame();
+                GameActivity.getActivityTask().endGame();
                 try {
                     Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_END_GAME, new JSONObject()));
                 } catch (JSONException ignore) {
@@ -120,10 +121,6 @@ public class LeaderboardFragment extends Fragment {
         ResultAPIClient.getInstance().getAddresses().clear();
     }
 
-    public void endGame() {
-        getActivity().finish();
-    }
-
     public void showQuestionFragment() {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -137,10 +134,6 @@ public class LeaderboardFragment extends Fragment {
 
         FragmentTask(Fragment fragment) {
             this.fragment = (LeaderboardFragment)fragment;
-        }
-
-        public void endGame() {
-            fragment.endGame();
         }
 
         public void nextRound() {

@@ -1,9 +1,13 @@
 package moe.yukisora.shitake;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import moe.yukisora.shitake.api.Bluetooth;
 import moe.yukisora.shitake.ui.game.QuestionFragment;
@@ -13,11 +17,18 @@ import moe.yukisora.shitake.ui.game.QuestionFragment;
  */
 
 public class GameActivity extends AppCompatActivity {
+    private static ActivityTask activityTask;
+
+    public static ActivityTask getActivityTask() {
+        return activityTask;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_generic);
+
+        activityTask = new ActivityTask(this);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -41,6 +52,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void superOnBackPressed() {
+        if (Bluetooth.getInstance().getServer() != null) {
+            try {
+                Bluetooth.getInstance().getServer().sendExclude(null, Bluetooth.wrapMessage(Bluetooth.DATA_TYPE_END_GAME, new JSONObject()));
+            } catch (JSONException ignore) {
+            }
+        }
         super.onBackPressed();
     }
 
@@ -50,5 +67,21 @@ public class GameActivity extends AppCompatActivity {
 
         Bluetooth.getInstance().closeClient();
         Bluetooth.getInstance().closeServer();
+    }
+
+    private void endGame() {
+        finish();
+    }
+
+    public static class ActivityTask {
+        private GameActivity activity;
+
+        ActivityTask(Activity activity) {
+            this.activity = (GameActivity)activity;
+        }
+
+        public void endGame() {
+            activity.endGame();
+        }
     }
 }
