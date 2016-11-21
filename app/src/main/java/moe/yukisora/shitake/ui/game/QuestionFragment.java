@@ -68,8 +68,9 @@ public class QuestionFragment extends Fragment {
 
         mSubmitButton = (MaterialRippleLayout) rootView.findViewById(R.id.submit_button);
 
-        fragmentTask = new FragmentTask(this);
         handler = new Handler();
+
+        fragmentTask = new FragmentTask(this);
         isHost = Bluetooth.getInstance().getServer() != null;
 
         return rootView;

@@ -53,8 +53,8 @@ public class AnswerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_answer, container, false);
 
-        mQuestion = (TextView)rootView.findViewById(R.id.fragment_answer_text_question);
-        mAnswerLayout = (LinearLayout)rootView.findViewById(R.id.fragment_answer_vg_list);
+        mQuestion = (TextView) rootView.findViewById(R.id.fragment_answer_text_question);
+        mAnswerLayout = (LinearLayout) rootView.findViewById(R.id.fragment_answer_vg_list);
 
         isHost = Bluetooth.getInstance().getServer() != null;
 
@@ -105,9 +105,9 @@ public class AnswerFragment extends Fragment {
     }
 
     public View addPendingViewFromLayoutResource(LinearLayout linearLayout, final String address, String answer) {
-        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = inflater.inflate(R.layout.view_answer, linearLayout, false);
-        Button mAnswer = (Button)rootView.findViewById(R.id.view_btn_answer);
+        Button mAnswer = (Button) rootView.findViewById(R.id.view_btn_answer);
 
         mAnswer.setAllCaps(true);
         mAnswer.setText(answer);
@@ -119,8 +119,7 @@ public class AnswerFragment extends Fragment {
                         PlayerAPIClient.getInstance().get(MainActivity.getBluetoothAddress()).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
                     else
                         PlayerAPIClient.getInstance().get(address).addingScore += GameAPIClient.CORRECT_ANSWER_SCORE;
-                }
-                else {
+                } else {
                     try {
                         JSONObject data = new JSONObject();
                         data.put("address", MainActivity.getBluetoothAddress());

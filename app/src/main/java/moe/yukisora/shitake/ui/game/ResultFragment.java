@@ -44,8 +44,8 @@ public class ResultFragment extends Fragment {
 
         address = getArguments().getString("address");
 
-        resultButton = (MaterialRippleLayout)view.findViewById(R.id.resultButton);
-        resultImageView = (ImageView)view.findViewById(R.id.resultImageView);
+        resultButton = (MaterialRippleLayout) view.findViewById(R.id.resultButton);
+        resultImageView = (ImageView) view.findViewById(R.id.resultImageView);
 
         return view;
     }

@@ -1,5 +1,6 @@
 package moe.yukisora.shitake.adapter;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
