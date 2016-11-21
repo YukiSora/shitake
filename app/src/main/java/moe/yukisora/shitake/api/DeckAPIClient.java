@@ -93,4 +93,8 @@ public class DeckAPIClient {
             Collections.shuffle(mDeck, new Random(System.nanoTime()));
         }
     }
+
+    public boolean isRemaining() {
+        return currentDeck.equals("Customize Deck") || mDeck.size() != mCounter;
+    }
 }

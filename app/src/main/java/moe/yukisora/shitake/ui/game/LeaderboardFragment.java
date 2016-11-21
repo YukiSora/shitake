@@ -19,6 +19,7 @@ import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.adapter.LeaderboardPlayerRecyclerViewAdapter;
 import moe.yukisora.shitake.api.AnswerAPIClient;
 import moe.yukisora.shitake.api.Bluetooth;
+import moe.yukisora.shitake.api.DeckAPIClient;
 import moe.yukisora.shitake.api.PlayerAPIClient;
 import moe.yukisora.shitake.api.PreventDoubleClickOnClickListener;
 import moe.yukisora.shitake.api.ResultAPIClient;
@@ -83,6 +84,9 @@ public class LeaderboardFragment extends Fragment {
             view.findViewById(R.id.nextRound).setVisibility(View.GONE);
             view.findViewById(R.id.endGame).setVisibility(View.GONE);
         }
+
+        if (isHost && !DeckAPIClient.getInstance().isRemaining())
+            view.findViewById(R.id.nextRound).setVisibility(View.GONE);
 
         view.findViewById(R.id.nextRound).setOnClickListener(new PreventDoubleClickOnClickListener() {
             @Override
