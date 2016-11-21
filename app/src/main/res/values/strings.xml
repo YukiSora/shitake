@@ -51,11 +51,6 @@
 
     <string name="our_team">Our Team</string>
 
-    <string name="special_thanks">Special Thanks</string>
-    <string name="freepik">http://freepik.com</string>
-    <string name="github_repository">Github Repository</string>
-    <string name="github_link">https://github.com/YukiSora/shitake</string>
-
     <string name="wang_ruihao">Wang Ruihao</string>
     <string name="chief_architect">Chief Architect</string>
     <string name="koh_teck_kai">Koh Teck Kai</string>
@@ -64,5 +59,10 @@
     <string name="user_management">User Management</string>
     <string name="anchali_renganathen">Anchali Renganathen</string>
     <string name="glorified_intern">Glorified Intern</string>
+
+    <string name="special_thanks">Special Thanks</string>
+    <string name="freepik">http://freepik.com</string>
+    <string name="github_repository">Github Repository</string>
+    <string name="github_link">https://github.com/YukiSora/shitake</string>
 
 </resources>
