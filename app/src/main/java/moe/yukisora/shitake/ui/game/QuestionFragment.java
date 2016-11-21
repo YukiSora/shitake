@@ -2,6 +2,7 @@ package moe.yukisora.shitake.ui.game;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -90,14 +91,28 @@ public class QuestionFragment extends Fragment {
                 final EditText answerEditText = ((EditText)dialogView.findViewById(R.id.answerDialog));
 
                 //create dialog
-                final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-                        .setTitle(getString(R.string.customize_question))
-                        .setView(dialogView)
-                        .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                            }
-                        }).create();
+                final AlertDialog alertDialog;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    alertDialog = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Light_Dialog_Alert)
+                            .setTitle(getString(R.string.customize_question))
+                            .setView(dialogView)
+                            .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).create();
+                } else {
+                    alertDialog = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Light_Dialog_Alert)
+                            .setTitle(getString(R.string.customize_question))
+                            .setView(dialogView)
+                            .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).create();
+                }
+
                 alertDialog.show();
 
                 //dialog button action

@@ -12,12 +12,14 @@
         android:id="@+id/questionDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="25dp"
         android:hint="@string/enter_question" />
 
     <EditText
         android:id="@+id/answerDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="25dp"
         android:hint="@string/enter_correct_answer" />
 
 </LinearLayout>

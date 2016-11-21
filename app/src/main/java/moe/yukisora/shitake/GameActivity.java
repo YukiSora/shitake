@@ -3,6 +3,7 @@ package moe.yukisora.shitake;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -38,17 +39,31 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle(getResources().getString(R.string.quit_game))
-                .setMessage(getResources().getString(R.string.are_you_sure_quit_this_game))
-                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        superOnBackPressed();
-                    }
-                })
-                .setPositiveButton("No", null)
-                .show();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert)
+                    .setTitle(getResources().getString(R.string.quit_game))
+                    .setMessage(getResources().getString(R.string.are_you_sure_quit_this_game))
+                    .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            superOnBackPressed();
+                        }
+                    })
+                    .setPositiveButton("No", null)
+                    .show();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(getResources().getString(R.string.quit_game))
+                    .setMessage(getResources().getString(R.string.are_you_sure_quit_this_game))
+                    .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            superOnBackPressed();
+                        }
+                    })
+                    .setPositiveButton("No", null)
+                    .show();
+        }
     }
 
     private void superOnBackPressed() {

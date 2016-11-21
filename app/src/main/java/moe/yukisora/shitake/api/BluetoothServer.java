@@ -15,16 +15,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import moe.yukisora.shitake.MainActivity;
 import moe.yukisora.shitake.model.Player;
 
 public class BluetoothServer extends Thread {
     private BluetoothServerSocket server;
-    private ArrayList<Client> clients;
+    private CopyOnWriteArrayList<Client> clients;
 
     BluetoothServer() {
-        clients = new ArrayList<>();
+        clients = new CopyOnWriteArrayList<>();
     }
 
     @Override

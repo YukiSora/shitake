@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    public void setTextNickname(){
+    public void setTextNickname() {
         etNickname.setText(mUserManager.getName());
 
         etNickname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -83,7 +83,7 @@ public class ProfileFragment extends Fragment {
 
         Log.d(TAG, "onViewCreated: " + picturePath);
 
-        if (!picturePath.equals("")) {
+        if (picturePath != null) {
             ivProfilePicture.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         } else {
             ivProfilePicture.setImageResource(R.drawable.no_picture);
@@ -94,17 +94,16 @@ public class ProfileFragment extends Fragment {
         // only one dialog at a time
         if (!mDialogOn) {
             mDialogOn = true;
-            final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-            alertDialog.setTitle(R.string.error);
-            alertDialog.setMessage(getString(R.string.empty_nickname));
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.error)
+                    .setMessage(getString(R.string.empty_nickname))
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                             mDialogOn = false;
                         }
-                    });
-            alertDialog.show();
+                    })
+                    .show();
         }
     }
 

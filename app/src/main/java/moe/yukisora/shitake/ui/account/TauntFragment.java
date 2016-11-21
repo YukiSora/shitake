@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import moe.yukisora.shitake.R;
 import moe.yukisora.shitake.model.UserManager;
+
+import static android.content.ContentValues.TAG;
 
 public class TauntFragment extends Fragment {
 
@@ -46,8 +49,14 @@ public class TauntFragment extends Fragment {
                 
                 Cursor cursor = getContext().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 String picturePath;
+
+                Log.d(TAG, "onActivityResult: " + selectedImage.toString());
+
+                picturePath = selectedImage.toString();
+
                 if (cursor == null) {
                     picturePath = selectedImage.toString();
+
                 } else {
                     cursor.moveToFirst();
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
