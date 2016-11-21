@@ -43,4 +43,7 @@
     <string name="next_round">下一轮</string>
     <string name="end_game">结束游戏</string>
 
+    <string name="tutorial_text">从各种令人兴奋的的生活小知识问题类别中选择一個，然后每个玩家编写假的答案愚弄对方\n\n你能在列表中区分真正的答案和你朋友的假答案的吗？你会得到积分当选择正确的答案或者其他人掉入你的陷阱\n\n这是完美的应用程序，当你滞留在机场候机楼，等待你的晚餐，或甚至在教室里用可定制的问题和答案进行美妙的互动。\n\n所以，与朋友聚在一起，将面对一个漫长的夜晚。</string>
+    <string name="back">后退</string>
+
 </resources>
