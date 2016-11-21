@@ -51,18 +51,18 @@
 
     <string name="our_team">Our Team</string>
 
-    <string name="wang_ruihao">Wang Ruihao</string>
+    <string name="wang_ruihao" translatable="false">Wang Ruihao</string>
     <string name="chief_architect">Chief Architect</string>
-    <string name="koh_teck_kai">Koh Teck Kai</string>
+    <string name="koh_teck_kai" translatable="false">Koh Teck Kai</string>
     <string name="game_designer">Game Designer</string>
-    <string name="milan_ko_k">Milan Košťák</string>
+    <string name="milan_ko_k" translatable="false">Milan Košťák</string>
     <string name="user_management">User Management</string>
-    <string name="anchali_renganathen">Anchali Renganathen</string>
+    <string name="anchali_renganathen" translatable="false">Anchali Renganathen</string>
     <string name="glorified_intern">Glorified Intern</string>
 
     <string name="special_thanks">Special Thanks</string>
-    <string name="freepik">http://freepik.com</string>
+    <string name="freepik" translatable="false">http://freepik.com</string>
     <string name="github_repository">Github Repository</string>
-    <string name="github_link">https://github.com/YukiSora/shitake</string>
+    <string name="github_link" translatable="false">https://github.com/YukiSora/shitake</string>
 
 </resources>

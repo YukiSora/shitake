@@ -17,8 +17,7 @@
     <string name="start_game">Začít hru</string>
     <string name="deck_list">Seznam her</string>
     <string name="host_list">Seznam hostů</string>
-    <!--translate required-->
-    <string name="requires_at_least_two_players">Requires at least two players</string>
+    <string name="requires_at_least_two_players">Vyžaduje alespoň 2 hráče</string>
 
     <string name="profile_nickname">Přezdívka</string>
     <string name="empty_nickname">Jméno nesmí být prázdné</string>
@@ -26,22 +25,15 @@
     <string name="start">Začít</string>
     <string name="register_text">Než začneš hrát, vlož prosím svou přezdívku. Bude možné ji později změnit.</string>
 
-    <!--translate required-->
-    <string name="quit_game">Quit Game</string>
-    <!--translate required-->
-    <string name="are_you_sure_quit_this_game">Are you sure quit this game?</string>
-    <!--translate required-->
-    <string name="customize_question">Customize question</string>
-    <!--translate required-->
-    <string name="enter_question">Enter question</string>
-    <!--translate required-->
-    <string name="enter_correct_answer">Enter correct answer</string>
-    <!--translate required-->
-    <string name="question_and_answer_cannot_be_empty">Question and answer cannot be empty</string>
+    <string name="quit_game">Ukončit hru</string>
+    <string name="are_you_sure_quit_this_game">Určite chcete hru ukončit?</string>
+    <string name="customize_question">Upravit otázku</string>
+    <string name="enter_question">Vložte otázku</string>
+    <string name="enter_correct_answer">Vložte správnou odpověď</string>
+    <string name="question_and_answer_cannot_be_empty">Vyplňte otázku i odpověď</string>
     <string name="waiting_question">Čekající otázky</string>
-    <string name="enter_your_answer">Vlož svou odpoveď</string>
-    <!--translate required-->
-    <string name="answer_cannot_be_empty">Answer cannot be empty</string>
+    <string name="enter_your_answer">Vlož svou odpověď</string>
+    <string name="answer_cannot_be_empty">Vyplňte odpověď</string>
     <string name="submit">Odeslat</string>
     <string name="collecting_answer">Příjem odpovědí</string>
     <string name="players_done">Hotoví hráči</string>
@@ -52,26 +44,16 @@
     <string name="next_round">Další kolo</string>
     <string name="end_game">Konec hry</string>
 
-    <!--translate required-->
-    <string name="shitake_tutorial">How to play?</string>
-    <!--translate required-->
-    <string name="tutorial_text">Choose from a variety of exciting categories of real life trivia questions in which each player makes up fake answers to fool one another.\n\nCan you differentiate the outrageous real answer among the list of your friends’ fake answers? You will get points for choosing the right one, and any players that fallen into your trap.\n\nIt’s the perfect app when you are stranded at the airport terminal, waiting for your dinner to arrive, or even in the classroom to have wonderful interaction with our customisable questions and answer.\n\nSo gather around mateys, it is going to be a long night ahead of us.</string>
-    <!--translate required-->
-    <string name="back">Back</string>
+    <string name="shitake_tutorial">Jak hrát?</string>
+    <string name="tutorial_text">Vybírejte z celé řady kategorií otázek ze skutečného života, kdy se každý hráč snaží vymyslet falešnou odpověď, aby napálil své protihráče.\n\nDokážete vymyslet mazanější odpověď než vaši přátelé? Body dostanete za zvolení správné odpovědi a také pokud nějaký jiný hráče spadne to pasti vaší falešné odpovědi.\n\nNení to prostě ta pravá aplikace v situaci, kdy se zaseknete na letišti nebo jen čekáte až vám donesou objednanou večeři v restauraci? Můžete se jednoduše zabavit s našimi upravovatelnými otázkami a odpověďmi.\n\nTak se připravte, tohle bude dlouhá noc!</string>
+    <string name="back">Zpět</string>
 
-    <!--translate required-->
-    <string name="our_team">Our Team</string>
-    <!--translate required-->
-    <string name="chief_architect">Chief Architect</string>
-    <!--translate required-->
-    <string name="game_designer">Game Designer</string>
-    <!--translate required-->
-    <string name="user_management">User Management</string>
-    <!--translate required-->
-    <string name="glorified_intern">Glorified Intern</string>
-    <!--translate required-->
-    <string name="special_thanks">Special Thanks</string>
-    <!--translate required-->
-    <string name="github_repository">Github Repository</string>
+    <string name="our_team">Náš tým</string>
+    <string name="chief_architect">Vedoucí vývojář</string>
+    <string name="game_designer">Herní designér</string>
+    <string name="user_management">Správa uživatelů</string>
+    <string name="glorified_intern">Opěvovaná internistka</string>
+    <string name="special_thanks">Speciální poděkování</string>
+    <string name="github_repository">Repository na Githubu</string>
 
 </resources>
