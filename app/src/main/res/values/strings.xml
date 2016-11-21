@@ -45,7 +45,24 @@
     <string name="next_round">Next Round</string>
     <string name="end_game">End Game</string>
 
+    <string name="shitake_tutorial">How to play?</string>
     <string name="tutorial_text">Choose from a variety of exciting categories of real life trivia questions in which each player makes up fake answers to fool one another.\n\nCan you differentiate the outrageous real answer among the list of your friends’ fake answers? You will get points for choosing the right one, and any players that fallen into your trap.\n\nIt’s the perfect app when you are stranded at the airport terminal, waiting for your dinner to arrive, or even in the classroom to have wonderful interaction with our customisable questions and answer.\n\nSo gather around mateys, it is going to be a long night ahead of us.</string>
     <string name="back">Back</string>
+
+    <string name="our_team">Our Team</string>
+
+    <string name="special_thanks">Special Thanks</string>
+    <string name="freepik">http://freepik.com</string>
+    <string name="github_repository">Github Repository</string>
+    <string name="github_link">https://github.com/YukiSora/shitake</string>
+
+    <string name="wang_ruihao">Wang Ruihao</string>
+    <string name="chief_architect">Chief Architect</string>
+    <string name="koh_teck_kai">Koh Teck Kai</string>
+    <string name="game_designer">Game Designer</string>
+    <string name="milan_ko_k">Milan Košťák</string>
+    <string name="user_management">User Management</string>
+    <string name="anchali_renganathen">Anchali Renganathen</string>
+    <string name="glorified_intern">Glorified Intern</string>
 
 </resources>
