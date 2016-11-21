@@ -1,6 +1,7 @@
 package moe.yukisora.shitake.ui.game;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -176,6 +178,9 @@ public class QuestionFragment extends Fragment {
         super.onDestroy();
 
         fragmentTask = null;
+
+        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(mUserAnswer.getWindowToken(), 0);
     }
 
     private void confirmQuestion(Deck deck) {
