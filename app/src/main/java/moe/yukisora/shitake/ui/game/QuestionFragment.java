@@ -63,10 +63,10 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_question, container, false);
 
-        mQuestionTitle = (TextView)rootView.findViewById(R.id.fragment_question_text_title);
-        mUserAnswer = (TextView)rootView.findViewById(R.id.fragment_question_text_answer);
+        mQuestionTitle = (TextView) rootView.findViewById(R.id.fragment_question_text_title);
+        mUserAnswer = (TextView) rootView.findViewById(R.id.fragment_question_text_answer);
 
-        mSubmitButton = (MaterialRippleLayout)rootView.findViewById(R.id.submit_button);
+        mSubmitButton = (MaterialRippleLayout) rootView.findViewById(R.id.submit_button);
 
         fragmentTask = new FragmentTask(this);
         handler = new Handler();
@@ -87,8 +87,8 @@ public class QuestionFragment extends Fragment {
             if (deck == null) {
                 //layout
                 View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.view_customize_deck, null);
-                final EditText questionEditText = ((EditText)dialogView.findViewById(R.id.questionDialog));
-                final EditText answerEditText = ((EditText)dialogView.findViewById(R.id.answerDialog));
+                final EditText questionEditText = ((EditText) dialogView.findViewById(R.id.questionDialog));
+                final EditText answerEditText = ((EditText) dialogView.findViewById(R.id.answerDialog));
 
                 //create dialog
                 final AlertDialog alertDialog;
@@ -119,19 +119,19 @@ public class QuestionFragment extends Fragment {
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String question = questionEditText.getText().toString();
-                        String answer = answerEditText.getText().toString();
+                        String question = questionEditText.getText().toString().trim();
+                        String answer = answerEditText.getText().toString().trim();
+
                         if (!question.equals("") && !answer.equals("")) {
                             confirmQuestion(new Deck(question, answer));
                             alertDialog.dismiss();
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getContext(), getString(R.string.question_and_answer_cannot_be_empty), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-            }
-            else {
+
+            } else {
                 confirmQuestion(deck);
             }
         }
@@ -264,7 +264,7 @@ public class QuestionFragment extends Fragment {
         private QuestionFragment fragment;
 
         FragmentTask(Fragment fragment) {
-            this.fragment = (QuestionFragment)fragment;
+            this.fragment = (QuestionFragment) fragment;
         }
 
         public void updateQuestion(String question) {
