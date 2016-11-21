@@ -24,8 +24,8 @@
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:padding="10dp"
             android:text="@string/shitake_tutorial" />
 
@@ -47,7 +47,9 @@
                 android:id="@+id/tutorial_btn_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/back" />
+                android:background="@drawable/rounded_button_green"
+                android:text="@string/back"
+                android:textColor="@color/white" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
 
