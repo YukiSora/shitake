@@ -52,7 +52,6 @@
     <string name="chief_architect">首席架构师</string>
     <string name="game_designer">游戏设计师</string>
     <string name="user_management">用户管理</string>
-        <string name="glorified_intern">荣誉实习生</string>
     <string name="github_repository">Github 仓库</string>
 
 </resources>

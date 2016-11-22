@@ -86,27 +86,6 @@
             android:text="@string/user_management"
             android:textStyle="italic" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/anchali_renganathen"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/glorified_intern"
-            android:textStyle="italic" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
